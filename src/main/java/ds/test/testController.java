@@ -1,7 +1,12 @@
 package ds.test;
 
+import ds.account.Account;
+import ds.account.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by Damian on 24.06.2017.
@@ -9,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class testController {
+
+    @Autowired
+    AccountRepository repository;
+
     private class Test {
         public int lvl;
         public String name;
@@ -21,9 +30,9 @@ public class testController {
     }
 
     @RequestMapping("/test")
-    public Test retreiveTestObject (){
-        Test t1 = new Test(999999,"Dimitra","Super Awesomeness and being the best girl in the world!!!");
-        return t1;
+    public List<Account> testRepo (){
+        List<Account> accounts = repository.findByusername("Damian");
+        return accounts;
     }
 
 }
