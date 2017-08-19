@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = "/")
+    /*@RequestMapping(value = "/")
     public String index() {
         return "index";
-    }
+    }*/
 
 }
