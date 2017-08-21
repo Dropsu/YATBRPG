@@ -16,11 +16,4 @@ public class YatbrpgApplication {
 		SpringApplication.run(YatbrpgApplication.class, args);
 	}
 
-
-	@Bean
-    public CommandLineRunner testRepository (AccountRepository repository) {
-        return args -> {
-            repository.save(new Account("Damian", "Password"));
-        };
-	}
 }

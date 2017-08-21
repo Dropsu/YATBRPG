@@ -2,10 +2,9 @@ package ds.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,33 +12,56 @@ import java.util.Set;
 @Entity
 public class Account {
 
-
-
     @Id
     @GeneratedValue
     private Long id;
 
-    public Long getId() {
-        return id;
+    @JsonIgnore
+    @NotNull
+    @Size(min = 6,max = 25)
+    private String password;
+    @NotNull
+    @Size(min = 4,max = 16)
+    @Column(unique = true)
+    private String username;
+
+    Account() { // jpa only
+    }
+
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getUsername() {
         return username;
     }
 
-    @JsonIgnore
-    public String password;
-    public String username;
-
-    public Account(String name, String password) {
-        this.username = name;
-        this.password = password;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    Account() { // jpa only
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Account)) return false;
+
+        Account account = (Account) o;
+
+        return getUsername().equals(account.getUsername());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getUsername().hashCode();
     }
 }
