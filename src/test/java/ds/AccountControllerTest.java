@@ -46,6 +46,6 @@ public class AccountControllerTest {
     public void OnRegisteringNewAccountShouldReturnHomeView () throws Exception {
         mockMvc.perform(post("/account/register")
                 .param("username","whatever")
-                .param("password","some")).andExpect(view().name("home"));
+                .param("password","some")).andExpect(view().name("login"));
     }
 }

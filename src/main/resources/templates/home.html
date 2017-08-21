@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>In Game</title>
 </head>
 <body>
-    <h4>Welcome To Wizards And Inquisitors Online Game</h4>
-    <p>Register:</p>
-    <form method="POST" th:action="@{/account/register}">
-        Username: <input type="text" name="username" /><br/>
-        Password: <input type="password" name="password" /><br/>
-        <input type="submit" value="Zarejestruj" />
-    </form>
-
+<h1>Logged In!</h1>
+<a th:href="@{/logout}">Log out</a>
 </body>
 </html>

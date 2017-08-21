@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
+
 /**
  * Created by Damian on 21.08.2017.
  */
@@ -23,6 +25,6 @@ public class AccountControllerImpl implements AccountController {
     @RequestMapping(method = RequestMethod.POST)
     public String registerAccount(Account account) {
         accountService.registerAccount(account);
-        return "home";
+        return "login";
     }
 }
