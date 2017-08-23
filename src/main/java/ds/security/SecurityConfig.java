@@ -36,9 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").authenticated()
                 .antMatchers("/account/register").permitAll();
+
+                httpSecurity.authorizeRequests()
+                .antMatchers("/console/**").permitAll()
+                .and().headers().frameOptions().disable().and()
+                .csrf().disable();
     }
 
-    @Override protected void configure(AuthenticationManagerBuilder auth)
+ @Override protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth
                 .jdbcAuthentication()
@@ -55,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
     }
+
 
 
 }
