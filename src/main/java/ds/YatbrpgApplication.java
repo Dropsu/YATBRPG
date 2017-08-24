@@ -18,4 +18,5 @@ public class YatbrpgApplication {
 		SpringApplication.run(YatbrpgApplication.class, args);
 	}
  // zmiana przez MARCEL
+	//Zmiana przez Damian
 }
