@@ -17,5 +17,5 @@ public class YatbrpgApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(YatbrpgApplication.class, args);
 	}
-
+ // zmiana przez MARCEL
 }
