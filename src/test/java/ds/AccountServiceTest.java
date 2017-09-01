@@ -2,7 +2,7 @@ package ds;
 
 import ds.account.Account;
 import ds.account.AccountRepository;
-import ds.account.AccountService;
+import ds.account.AccountServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,12 +15,12 @@ import static org.mockito.Mockito.verify;
  */
 public class AccountServiceTest {
     private AccountRepository mockRepository;
-    private AccountService service;
+    private AccountServiceImpl service;
 
     @Before
     public void setUpMocksAndService (){
         mockRepository = mock(AccountRepository.class);
-        service = new AccountService(mockRepository);
+        service = new AccountServiceImpl(mockRepository);
     }
 
     @Test

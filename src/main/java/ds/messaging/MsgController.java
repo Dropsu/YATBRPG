@@ -3,7 +3,6 @@ package ds.messaging;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.annotation.SendToUser;
-import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 import org.slf4j.Logger;
 
@@ -20,17 +19,17 @@ public class MsgController {
             LoggerFactory.getLogger(MsgController.class);
 
     @MessageMapping("/sayHi")
-    public Shout greetSentName(Shout incoming) {
+    public Message greetSentName(Message incoming) {
         LOGGER.info(incoming.getMessage());
-        Shout outgoing = new Shout();
+        Message outgoing = new Message();
         outgoing.setMessage("HI "+incoming.getMessage());
         return outgoing;
     }
 
     @MessageMapping("/greetMe")
     @SendToUser("/queue/notifications")
-    public Shout greetLoggedInUser(Principal principal) {
-        Shout outgoing = new Shout();
+    public Message greetLoggedInUser(Principal principal) {
+        Message outgoing = new Message();
         outgoing.setMessage("HI "+principal.getName());
         return outgoing;
     }

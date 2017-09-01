@@ -1,8 +1,9 @@
 package ds;
 
 import ds.account.Account;
+import ds.account.AccountContoller;
 import ds.account.AccountControllerImpl;
-import ds.account.AccountService;
+import ds.account.AccountServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -20,13 +21,13 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  */
 public class AccountControllerTest {
 
-    private AccountService mockService;
-    private AccountControllerImpl accountController;
+    private AccountServiceImpl mockService;
+    private AccountContoller accountController;
     private MockMvc mockMvc;
 
     @Before
     public void setUpMocksAndController() {
-        mockService = mock(AccountService.class);
+        mockService = mock(AccountServiceImpl.class);
         accountController = new AccountControllerImpl(mockService);
         mockMvc = standaloneSetup(accountController).build();
     }

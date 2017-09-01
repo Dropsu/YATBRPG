@@ -1,6 +1,8 @@
 package ds.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import ds.game.entities.Mage;
+import ds.game.entities.PlayersHero;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,12 +27,21 @@ public class Account {
     @Column(unique = true)
     private String username;
 
+    @OneToOne
+    private Mage playersHero;
+
+
+
     Account() { // jpa only
     }
 
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public void addHero(){
+        this.playersHero = new Mage();
     }
 
     public String getPassword() {
@@ -47,6 +58,14 @@ public class Account {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Mage getPlayersHero() {
+        return playersHero;
+    }
+
+    public void setPlayersHero(Mage playersHero) {
+        this.playersHero = playersHero;
     }
 
     @Override
