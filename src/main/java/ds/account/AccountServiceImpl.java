@@ -12,19 +12,20 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl implements AccountService {
 
 
-    private AccountRepository repository;
+    private AccountRepository accountRepository;
 
-    @Autowired
+
     private MageRepository mageRepository;
 
     @Autowired
-    public AccountServiceImpl(AccountRepository repository) {
-        this.repository = repository;
+    public AccountServiceImpl(AccountRepository accountRepository, MageRepository mageRepository) {
+        this.accountRepository = accountRepository;
+        this.mageRepository = mageRepository;
     }
 
     public void registerAccount(Account account) {
         account.addHero();
         mageRepository.save(account.getPlayersHero());
-        repository.save(account);
+        accountRepository.save(account);
     }
 }

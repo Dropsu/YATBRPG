@@ -16,18 +16,18 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     @GeneratedValue
     private Long id;
 
-    protected int level;
-    protected int experiencePoints;
+    public int level;
+    public int experiencePoints;
 
-    protected int gold;
+    public int gold;
 
     @OneToOne
-    protected Equipment equipment;
+    public Equipment equipment;
 
-    protected int concentration;
+    public int concentration;
 
     @OneToMany
-    protected List<Spell> spells;
+    public List<Spell> spells;
 
     public Mage () {
         this.level = 0;
@@ -37,6 +37,7 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
         this.equipment = null;
 
         this.concentration=10;
+        this.strength = 10;
         this.accuracy=10;
         this.agility = 10;
         this.condition=10;

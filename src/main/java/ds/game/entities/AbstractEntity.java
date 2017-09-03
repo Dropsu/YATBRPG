@@ -9,18 +9,18 @@ import java.util.List;
 @MappedSuperclass
 public abstract class AbstractEntity {
 	
-	protected String name;
-	protected int healthPoints;
-	protected int healthRegen;
+	public String name;
+	public int healthPoints;
+	public int healthRegen;
 	
-	protected int strength;
-	protected int accuracy;
-	protected int agility;
-	protected int condition;
+	public int strength;
+	public int accuracy;
+	public int agility;
+	public int condition;
 
-	protected int noWeaponDamage;
+	public int noWeaponDamage;
 
 	@OneToMany
-	protected List<Ability> abilities;
+	public List<Ability> abilities;
 
 }

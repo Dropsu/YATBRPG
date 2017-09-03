@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>Promotion</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/promotion.js"></script>
+</head>
+<body>
+<button onclick="sendForStats()">Send For Stats</button>
+
+<p></p>
+
+<ul>
+    <li>Level: <p id="level"th:text="${@session.mage.level}"></p></li>
+    <li>Experience Points: <p id="exp"th:text="${@session.mage.experiencePoints}"></p></li>
+    <li>Strength:<p id="strength"th:text="${@session.mage.strength}"></p> </li>
+    <li>Agility:<p id="agility"th:text="${@session.mage.agility}"></p> </li>
+    <li>Accuracy:<p id="accuracy"th:text="${@session.mage.accuracy}"></p> </li>
+    <li>Condition: <p id="condition"th:text="${@session.mage.condition}"></p></li>
+    <li>Concentration:<p id="concentration"th:text="${@session.mage.concentration}"></p> </li>
+</ul>
+
+<p>Points: <p id="points"></p> </p>
+
+</body>
+</html>
