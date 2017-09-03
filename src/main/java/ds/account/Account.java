@@ -27,7 +27,7 @@ public class Account {
     @Column(unique = true)
     private String username;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Mage playersHero;
 
 

@@ -1,5 +1,6 @@
-package ds.config;
+package ds.listeners;
 
+import ds.config.Session;
 import ds.game.hero.MageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,7 @@ public class SessionListener implements HttpSessionListener {
 
     @Autowired
     Session session;
+
     @Override
     public void sessionCreated(HttpSessionEvent se) {
     }
@@ -27,6 +29,5 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         mageRepository.save(session.mage);
-        System.out.println("Session Destroyed");
     }
 }
