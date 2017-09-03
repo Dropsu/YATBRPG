@@ -28,19 +28,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Configuration
 public class HomeControllerTest {
 
-    private Session sessionMock;
-    private AccountRepository accountRepositoryMock;
-
-    @Before
-    public void setUp () {
-        sessionMock = mock(Session.class);
-        accountRepositoryMock = mock(AccountRepository.class);
-    }
 
     @Test
-    @WithMockUser
     public void homeControllerOnGetShouldReturnHomePage () throws Exception {
-        HomeController controller = new HomeController(accountRepositoryMock,sessionMock);
+        HomeController controller = new HomeController();
         MockMvc mockMvc = standaloneSetup(controller).build();
         mockMvc.perform(get("/")).andExpect(view().name("home"));
     }
