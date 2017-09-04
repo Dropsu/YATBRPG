@@ -17,6 +17,7 @@ public class PromotionService {
     private int abilitiesPointsPerLevel = 4;
 
     public void grantLevelAndAbilitiesPointsIfEnoughExp (){
+    	
         /*TODO: Marcelu, sprawdz za pomoca metody z ReadyToPromotionChecker czy
         * bohater powinien byc awansowany, jezeli tak przyznaj mu abilitiesPointsPerLevel, bohater znajduje sie
         * w w obiekcie session*/

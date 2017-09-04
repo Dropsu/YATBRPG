@@ -16,6 +16,9 @@ public class ReadyToPromotionCheckerImpl implements ReadyToPromotionChecker {
 
     @Override
     public boolean readyToPromotion(Mage mage) {
+    	if(mage.experiencePoints>experienceTable[mage.level+1]) {
+    		return true;
+    	} else
         //TODO: Marcelu, sprawdz poziom maga i korzystajac z tabeli expa z tej klasy zwroc czy powinien byc awansowany
         return false;
     }
