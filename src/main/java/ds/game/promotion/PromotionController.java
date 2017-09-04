@@ -7,6 +7,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
@@ -17,17 +18,23 @@ import java.security.Principal;
 @Controller
 public class PromotionController {
 
+    private PromotionService promotionService;
+
     @Autowired
-    private Session session;
+    public PromotionController(PromotionService promotionService) {
+        this.promotionService = promotionService;
+    }
 
     @RequestMapping("/promotion")
     public String promotionPage(){
-        session.mage.concentration+=5;
+        promotionService.grantLevelAndAbilitiesPointsIfEnoughExp();
         return "promotion";
     }
 
-    @MessageMapping("/send-promotion-data")
-    public Mage sendPromotionData (HttpSession session) {
-        return (Mage) session.getAttribute("hero");
+    @RequestMapping(value = "/promotion", method = RequestMethod.POST)
+    public String distributePoints(DistributedPoints distributedPoints){
+        promotionService.distributePoints(distributedPoints);
+        return "promotion";
     }
+
 }

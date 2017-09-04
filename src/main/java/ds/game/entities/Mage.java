@@ -29,6 +29,11 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     @OneToMany
     public List<Spell> spells;
 
+    public int sumAbilitiesPoints () {
+        //TODO: Marcelu, zwroc sume atrybutow
+        return 0;
+    }
+
     public Mage () {
         this.level = 0;
         this.experiencePoints = 0;
