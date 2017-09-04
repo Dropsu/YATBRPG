@@ -18,6 +18,7 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
 
     public int level;
     public int experiencePoints;
+    public int abilitiesPointsToSpare;
 
     public int gold;
 
@@ -32,6 +33,7 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     public Mage () {
         this.level = 0;
         this.experiencePoints = 0;
+        this.abilitiesPointsToSpare = 0;
 
         this.gold = 0;
         this.equipment = null;
