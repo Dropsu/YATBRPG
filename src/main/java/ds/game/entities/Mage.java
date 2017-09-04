@@ -31,9 +31,9 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     public List<Spell> spells;
 
     public Mage () {
-        this.level = 0;
+        this.level = 1;
         this.experiencePoints = 0;
-        this.abilitiesPointsToSpare = 0;
+        this.abilitiesPointsToSpare = 4;
 
         this.gold = 0;
         this.equipment = null;

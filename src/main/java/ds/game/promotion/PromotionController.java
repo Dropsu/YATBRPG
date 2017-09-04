@@ -25,16 +25,16 @@ public class PromotionController {
         this.promotionService = promotionService;
     }
 
-    @RequestMapping("/promotion")
+    @RequestMapping("/hero")
     public String promotionPage(){
         promotionService.grantLevelAndAbilitiesPointsIfEnoughExp();
-        return "promotion";
+        return "hero";
     }
 
-    @RequestMapping(value = "/promotion", method = RequestMethod.POST)
+    @RequestMapping(value = "/hero", method = RequestMethod.POST)
     public String distributePoints(DistributedPoints distributedPoints){
         promotionService.distributePoints(distributedPoints);
-        return "promotion";
+        return "hero";
     }
 
 }

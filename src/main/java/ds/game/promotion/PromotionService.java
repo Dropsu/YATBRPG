@@ -12,24 +12,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class PromotionService {
 
-    @Autowired
-    private Session session; // MAG ZNAJDUJE SIE TU!!!
+    private Session session;
     private int abilitiesPointsPerLevel = 4;
+    private int [] experienceTable = new int[20];
+
+    @Autowired
+    public PromotionService(Session session) {
+        this.session = session;
+        for (int level = 0; level < 20 ; level++) {
+            experienceTable[level]=level*100;
+        }
+    }
 
     public void grantLevelAndAbilitiesPointsIfEnoughExp (){
-    	
-        /*TODO: Marcelu, sprawdz za pomoca metody z ReadyToPromotionChecker czy
-        * bohater powinien byc awansowany, jezeli tak przyznaj mu abilitiesPointsPerLevel, bohater znajduje sie
-        * w w obiekcie session*/
+        while(session.mage.experiencePoints>=experienceTable[session.mage.level+1]){
+            session.mage.level++;
+            session.mage.abilitiesPointsToSpare+=abilitiesPointsPerLevel;
+        }
     }
 
     public Message distributePoints(DistributedPoints distributedPoints){
-        //TODO: Sprawdz czy nie za duzo punktow dodano, jezeli nie, przypisz magowi punkty z distributedPoints
-        return new Message("Punkty Rozdane");
+
+        if(correctNumberOfPointsIsAdded(distributedPoints)){
+            session.mage.strength=distributedPoints.getStrength();
+            session.mage.condition=distributedPoints.getCondition();
+            session.mage.agility=distributedPoints.getAgility();
+            session.mage.accuracy=distributedPoints.getAccuracy();
+            session.mage.concentration=distributedPoints.getConcentration();
+            session.mage.abilitiesPointsToSpare=0;
+            return new Message("Points spared");
+        } else
+        return new Message("Error during Point Sparing");
     }
 
-    private boolean checkIfNotTooMuchPointsIsAdded (DistributedPoints distributedPoints){
-        //TODO: Marcelu, sprawdz korzytajac z metod z distributedPoints i Mage czy ilośc punktow w hero abilities jest o abilitiesPointsPerLevel wieksza niz w mage
-        return false;
+    private boolean correctNumberOfPointsIsAdded(DistributedPoints distributedPoints){
+        if(distributedPoints.sumAbilitiesPoints()==session.mage.abilitiesPointsToSpare) {
+            return false;
+        }
+        else return true;
     }
 }

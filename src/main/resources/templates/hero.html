@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Promotion</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/promotion.js"></script>
+</head>
+<body>
+
+Level: <p id="level"th:text="${@session.mage.level}"></p>
+Experience Points: <p id="exp"th:text="${@session.mage.experiencePoints}">
+
+<form method="POST" th:action="@{/hero}">
+    <p>Strength:<input name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button type="button" id="addStr">Add</button></p>
+    <p>Agility:<input name="agility" id="agility"th:value="${@session.mage.agility}" readonly><button type="button" id="addAgi">Add</button></p>
+    <p>Accuracy:<input name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button type="button" id="addAcc">Add</button></p>
+    <p>Condition: <input name="condition" id="condition"th:value="${@session.mage.condition}" readonly><button type="button" id="addCond">Add</button></p>
+    <p>Concentration:<input name="concentration" id="concentration"th:value="${@session.mage.concentration}" readonly><button type="button" id="addConc">Add</button></p>
+    <input th:type="submit" value="confirm">
+</form>
+<p>Points: <p id="points"th:text="${@session.mage.abilitiesPointsToSpare}"></p> </p>
+
+<button id="reset">Reset</button>
+<a th:href="@{/}">Back</a>
+
+</body>
+</html>
