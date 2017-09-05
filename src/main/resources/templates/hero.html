@@ -12,18 +12,19 @@
 </head>
 <body>
 
-Level: <p id="level"th:text="${@session.mage.level}"></p>
-Experience Points: <p id="exp"th:text="${@session.mage.experiencePoints}">
+<p>Name: <span id="name"th:text="${@session.mage.name}"></span></p>
+<p>Level: <span id="level"th:text="${@session.mage.level}"></span></p>
+<p>Experience Points: <span id="exp"th:text="${@session.mage.experiencePoints}"></p>
 
 <form method="POST" th:action="@{/hero}">
-    <p>Strength:<input name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button type="button" id="addStr">Add</button></p>
-    <p>Agility:<input name="agility" id="agility"th:value="${@session.mage.agility}" readonly><button type="button" id="addAgi">Add</button></p>
-    <p>Accuracy:<input name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button type="button" id="addAcc">Add</button></p>
-    <p>Condition: <input name="condition" id="condition"th:value="${@session.mage.condition}" readonly><button type="button" id="addCond">Add</button></p>
-    <p>Concentration:<input name="concentration" id="concentration"th:value="${@session.mage.concentration}" readonly><button type="button" id="addConc">Add</button></p>
+    <p><span>Strength:<input name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button type="button" id="addStr">Add</button></span></p>
+    <p><span>Agility:<input name="agility" id="agility"th:value="${@session.mage.agility}" readonly><button type="button" id="addAgi">Add</button></span></p>
+    <p><span>Accuracy:<input name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button type="button" id="addAcc">Add</button></span></p>
+    <p><span>Condition: <input name="condition" id="condition"th:value="${@session.mage.condition}" readonly><button type="button" id="addCond">Add</button></span></p>
+    <p> <span>Concentration:<input name="concentration" id="concentration"th:value="${@session.mage.concentration}" readonly><button type="button" id="addConc">Add</button></span></p>
     <input th:type="submit" value="confirm">
 </form>
-<p>Points: <p id="points"th:text="${@session.mage.abilitiesPointsToSpare}"></p> </p>
+<span>Points: <span id="points"th:text="${@session.mage.abilitiesPointsToSpare}"></span> </span></p>
 
 <button id="reset">Reset</button>
 <a th:href="@{/}">Back</a>

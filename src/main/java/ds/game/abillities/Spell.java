@@ -5,13 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Spell extends Ability {
+public abstract class Spell extends Ability {
 
     @Id
     @GeneratedValue
     private long id;
 
+    public int manaCost;
+
     public Spell() {
     }
-
 }

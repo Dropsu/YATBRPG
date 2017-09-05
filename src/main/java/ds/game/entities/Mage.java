@@ -1,9 +1,11 @@
 package ds.game.entities;
 
+import ds.game.abillities.MatchThrow;
 import ds.game.abillities.Spell;
 import ds.game.equipment.Equipment;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,10 +29,8 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
 
     public int concentration;
 
-    @OneToMany
-    public List<Spell> spells;
-
     public Mage () {
+        this.name = "Bartl";
         this.level = 1;
         this.experiencePoints = 0;
         this.abilitiesPointsToSpare = 4;
@@ -44,13 +44,27 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
         this.agility = 10;
         this.condition=10;
 
-        this.healthPoints=10;
+        this.healthPoints=20;
         this.healthRegen=0;
-        this.manaPoints=20;
+        this.manaPoints=40;
         this.manaRegeneration=0;
         this.noWeaponDamage=1;
 
-        this.abilities = null;
-        this.spells = null;
+        this.abilities.add(new MatchThrow());
+    }
+
+    public Mage (Mage other){
+        this.name = other.name+" fight copy"; //TODO: to remove after testing
+        this.healthPoints = other.healthPoints;
+        this.manaPoints = other.manaPoints;
+
+        this.concentration = other.concentration;
+        this.condition = other.condition;
+        this.strength = other.strength;
+        this.accuracy = other.accuracy;
+        this.agility = other.agility;
+
+        this.abilities = other.abilities;
+
     }
 }

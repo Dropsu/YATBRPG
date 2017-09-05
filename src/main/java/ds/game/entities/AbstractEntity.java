@@ -3,8 +3,11 @@ package ds.game.entities;
 
 import ds.game.abillities.Ability;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 @MappedSuperclass
 public abstract class AbstractEntity {
@@ -20,7 +23,7 @@ public abstract class AbstractEntity {
 
 	public int noWeaponDamage;
 
-	@OneToMany
-	public List<Ability> abilities;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<Ability> abilities = new ArrayList<>();
 
 }
