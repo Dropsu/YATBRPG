@@ -27,13 +27,14 @@ public class FightService {
         this.session = session;
     }
 
-    public void prepareFight(){
+    public Fight prepareFight(){
         if(session.fight==null) {
             session.fight = new Fight(new Mage(session.mage), new Wolf());
         }
+        return session.fight;
     }
 
-    public void handleAction(String abilityName){ //TODO: make it prettier
+    public Fight handleAction(String abilityName){ //TODO: make it prettier
         List<Ability> result = session.mage.abilities.stream()
                 .filter(ability -> Objects.equals(ability.name, abilityName))
                 .collect(Collectors.toList());
@@ -46,6 +47,7 @@ public class FightService {
             target = session.fight.opponent;
         }
         ability.Effect(target);
+        return session.fight;
     }
 
     public void addToLog(String abilityName){

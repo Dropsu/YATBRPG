@@ -28,11 +28,17 @@ public class FightController {
         return "fight";
     }
 
+    @MessageMapping(value = "/fight-prepare")
+    @SendToUser("/queue/notifications")
+    public Fight prepareFight(String prepare){
+        return fightService.prepareFight();
+    }
+
     @MessageMapping(value = "/fight-ability")
     @SendToUser("/queue/notifications")
-    public Message  handleAbility (String abilityName){
-        fightService.handleAction(abilityName);
+    public Fight  handleAbility (String abilityName){
         fightService.addToLog(abilityName);
-        return new Message("returning "+ abilityName);
+        return fightService.handleAction(abilityName);
+
     }
 }

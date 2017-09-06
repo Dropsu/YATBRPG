@@ -11,43 +11,36 @@
     <title>Fight</title>
 </head>
 <body>
-<p>Name: <span id="name"th:text="${@session.fight.mage.name}"></span></p>
-<p>Level: <span id="level"th:text="${@session.fight.mage.level}"></span></p>
-<p>Health Points: <span id="hp"th:text="${@session.fight.mage.healthPoints}"></span></p>
+<p>Name: <span id="mage-name"></span></p>
+<p>Level: <span id="mage-level"></span></p>
+<p>Health Points: <span id="mage-hp"></span></p>
 
-<p>Strength:<span name="strength" id="strength"th:text="${@session.fight.mage.strength}"></span></p>
-<p>Agility:<span name="agility" id="agility"th:text="${@session.fight.mage.agility}"></span></p>
-<p>Accuracy:<span name="accuracy" id="accuracy"th:text="${@session.fight.mage.accuracy}"></span></p>
-<p>Condition: <span name="condition" id="condition"th:text="${@session.fight.mage.condition}"></span></p>
-<p>Concentration:<span name="concentration" id="concentration"th:text="${@session.fight.mage.concentration}"></span></p>
+<p>Strength:<span name="strength" id="mage-strength"></span></p>
+<p>Agility:<span name="agility" id="mage-agility"></span></p>
+<p>Accuracy:<span name="accuracy" id="mage-accuracy"></span></p>
+<p>Condition: <span name="condition" id="mage-condition"></span></p>
+<p>Concentration:<span name="concentration" id="mage-concentration"></span></p>
+
+
+
+<div id="abilities"></div>
+
+
+
+<p>Name: <span id="opponent-name"></span></p>
+<p>Health Points: <span id="opponent-hp"></span></p>
+
+
+<p>Strength:<span name="strength" id="opponent-strength"></span></p>
+<p>Agility:<span name="agility" id="opponent-agility"></span></p>
+<p>Accuracy:<span name="accuracy" id="opponent-accuracy"></span></p>
+<p>Condition: <span name="condition" id="opponent-condition"></span></p>
+
 
 <table>
-    <th:block th:each="ability : ${@session.mage.abilities}">
-        <tr>
-            <input type="button" th:value="${ability.name}" onclick="send(this.value)"/>
-        </tr>
-    </th:block>
-</table>
-
-<p>Name: <span id="name"th:text="${@session.fight.opponent.name}"></span></p>
-<p>Health Points: <span id="hp"th:text="${@session.fight.opponent.healthPoints}"></span></p>
-
-
-<p>Strength:<span name="strength" id="strength"th:text="${@session.fight.opponent.strength}"></span></p>
-<p>Agility:<span name="agility" id="agility"th:text="${@session.fight.opponent.agility}"></span></p>
-<p>Accuracy:<span name="accuracy" id="accuracy"th:text="${@session.fight.opponent.accuracy}"></span></p>
-<p>Condition: <span name="condition" id="condition"th:text="${@session.fight.opponent.condition}"></span></p>
-
-<!--<table>
     <tbody id="log">
     </tbody>
-</table>-->
-<table>
-    <th:block th:each="message : ${@session.fight.log}">
-        <tr>
-            <td th:text="${message}"></td>
-        </tr>
-    </th:block>
 </table>
+
 </body>
 </html>
