@@ -20,10 +20,12 @@ public class MatchThrow extends Spell {
     public MatchThrow() {
         this.name="Match Throw";
         this.target=Target.OTHER;
+        this.damage = 7;
+        this.description = "Throws a match in opponent's face - deal "+damage+" damage.";
     }
 
     @Override
-    public void Effect(AbstractEntity entity) {
-        entity.healthPoints -=7;
+    public void causeEffect(AbstractEntity entity) {
+        entity.healthPoints -=damage;
     }
 }

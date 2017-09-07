@@ -2,6 +2,7 @@ package ds.game.fight;
 
 import ds.config.Session;
 import ds.game.abillities.Ability;
+import ds.game.abillities.Source;
 import ds.game.abillities.Target;
 import ds.game.entities.AbstractEntity;
 import ds.game.entities.Mage;
@@ -34,23 +35,87 @@ public class FightService {
         return session.fight;
     }
 
-    public Fight handleAction(String abilityName){ //TODO: make it prettier
-        List<Ability> result = session.mage.abilities.stream()
-                .filter(ability -> Objects.equals(ability.name, abilityName))
-                .collect(Collectors.toList());
-        Ability ability = result.get(0);
+    public Fight nextTurn(Source source, String abilityName){
 
-        AbstractEntity target = null;
-        if(ability.target==Target.SELF){
-            target=session.fight.mage;
-        } else if (ability.target==Target.OTHER) {
-            target = session.fight.opponent;
+        handleAbility(source,abilityName);
+
+        if(checkIfOpponentAlive()) {
+            doOpponentsTurn();
         }
-        ability.Effect(target);
         return session.fight;
     }
 
-    public void addToLog(String abilityName){
-        session.fight.log.add(abilityName);
+    private boolean checkIfOpponentAlive() {
+        return session.fight.opponent.healthPoints>0;
+    }
+
+    private void handleAbility(Source source, String abilityName){
+
+        Ability ability = determineAbilityFromItsName(source,abilityName);
+        AbstractEntity target = determineTarget(source, ability);
+        addToLog(source,ability,target);
+        causeAbilityEffect(ability, target);
+    }
+
+
+    private Ability determineAbilityFromItsName(Source source,String abilityName) {
+        List<Ability> listToSearchIn = determineWhereToLookForAbility(source);
+        List<Ability> result = listToSearchIn.stream()
+                .filter(ability -> Objects.equals(ability.name, abilityName))
+                .collect(Collectors.toList());
+        return result.get(0);
+    }
+
+    private List<Ability> determineWhereToLookForAbility(Source source) {
+        List<Ability> listToSearchIn;
+        if(source == Source.MAGE){
+            listToSearchIn = session.fight.mage.abilities;
+        } else {
+            listToSearchIn = session.fight.opponent.abilities;
+
+        }
+        return listToSearchIn;
+    }
+
+    private AbstractEntity determineTarget(Source source, Ability ability) {
+        AbstractEntity target;
+        if(source==Source.MAGE){
+            if(ability.target== Target.SELF){
+                target = session.fight.mage;
+            } else {
+                target= session.fight.opponent;
+            }
+        } else {
+            if(ability.target==Target.SELF){
+                target = session.fight.opponent;
+            } else {
+                target = session.fight.mage;
+            }
+        }
+        return target;
+    }
+
+    private void addToLog(Source source, Ability ability, AbstractEntity target){
+        String sourceName = determineSourceName(source);
+        session.fight.log.add(sourceName+" has used "+ability.name+" on "+target.name+
+        " ("+ability.name+": "+ability.description+")");
+    }
+
+    private String determineSourceName(Source source) {
+        String sourceName;
+        if(source==Source.MAGE){
+            sourceName = session.fight.mage.name;
+        } else {
+            sourceName = session.fight.opponent.name;
+        }
+        return sourceName;
+    }
+
+    private void causeAbilityEffect(Ability ability, AbstractEntity target) {
+        ability.causeEffect(target);
+    }
+
+    private void doOpponentsTurn(){
+        handleAbility(Source.OPPONENT,session.fight.opponent.abilities.get(0).name);
     }
 }

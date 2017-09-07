@@ -1,7 +1,6 @@
 package ds.game.fight;
 
-import ds.game.abillities.Ability;
-import ds.messaging.Message;
+import ds.game.abillities.Source;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.annotation.SendToUser;
@@ -36,9 +35,7 @@ public class FightController {
 
     @MessageMapping(value = "/fight-ability")
     @SendToUser("/queue/notifications")
-    public Fight  handleAbility (String abilityName){
-        fightService.addToLog(abilityName);
-        return fightService.handleAction(abilityName);
-
+    public Fight  nextTurn (String abilityName){
+        return fightService.nextTurn(Source.MAGE,abilityName);
     }
 }

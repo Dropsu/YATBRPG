@@ -18,10 +18,13 @@ public class Roar extends Ability {
 
     public Roar() {
         this.name="Roar";
+        this.target=Target.SELF;
+        this.description = "Wrrr";
     }
 
     @Override
-    public void Effect(AbstractEntity entity) {
+    public void causeEffect(AbstractEntity entity) {
         entity.noWeaponDamage+=5;
+        entity.healthPoints+=1;
     }
 }

@@ -13,11 +13,13 @@ public abstract class Ability {
     private long id;
     public String name;
     public Target target;
+    public String description;
+    public int damage;
 
     public Ability() {
     }
 
-    public abstract void Effect (AbstractEntity entity);
+    public abstract void causeEffect(AbstractEntity entity);
 
     @Override
     public boolean equals(Object o) {

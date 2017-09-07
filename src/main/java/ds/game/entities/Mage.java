@@ -54,7 +54,7 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     }
 
     public Mage (Mage other){
-        this.name = other.name+" fight copy"; //TODO: to remove after testing
+        this.name = other.name;
         this.healthPoints = other.healthPoints;
         this.manaPoints = other.manaPoints;
 
