@@ -1,6 +1,8 @@
 package ds.game.abillities;
 
 import ds.game.entities.AbstractEntity;
+import ds.game.entities.AbstractMagicalEntity;
+import ds.game.entities.Mage;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,12 +22,14 @@ public class MatchThrow extends Spell {
     public MatchThrow() {
         this.name="Match Throw";
         this.target=Target.OTHER;
-        this.damage = 7;
+        this.damage = 1;
         this.description = "Throws a match in opponent's face - deal "+damage+" damage.";
+        this.missable = true;
+        this.cost = 15;
     }
 
     @Override
-    public void causeEffect(AbstractEntity entity) {
-        entity.healthPoints -=damage;
+    protected void causeEffect(AbstractEntity source, AbstractEntity target) {
+        target.healthPoints -= damage;
     }
 }

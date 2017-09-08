@@ -1,5 +1,8 @@
 package ds.game.abillities;
 
+import ds.game.entities.AbstractEntity;
+import ds.game.entities.AbstractMagicalEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,8 +14,22 @@ public abstract class Spell extends Ability {
     @GeneratedValue
     private long id;
 
-    public int manaCost;
+    @Override
+    public void use(AbstractEntity source, AbstractEntity target) {
+        if(payAbilityCost(source)) {
+            super.use(source, target);
+        }
+    }
+
+    protected boolean payAbilityCost (AbstractEntity source){
+        if(source instanceof AbstractMagicalEntity){
+            AbstractMagicalEntity magicalEntity = (AbstractMagicalEntity) source;
+            magicalEntity.manaPoints-=cost;
+        }
+        return true;
+    }
 
     public Spell() {
+        Spell spell;
     }
 }

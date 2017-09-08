@@ -6,6 +6,6 @@ import java.util.List;
 
 @MappedSuperclass
 public abstract class AbstractMagicalEntity extends AbstractEntity {
-	protected int manaPoints;
-	protected int manaRegeneration;
+	public int manaPoints;
+	public int manaRegeneration;
 }

@@ -2,6 +2,9 @@
 $(function () {
     $( "#addStr" ).click(function() {
         if(parseInt($("#points").text())>0){
+            if(parseInt($("#points").text())==1){
+                $("#confirm").show();
+            }
             $("#strength").val(function (i,oldVal) {
                 return parseInt(oldVal)+1;
             });
@@ -13,6 +16,9 @@ $(function () {
     });
     $( "#addCond" ).click(function() {
         if(parseInt($("#points").text())>0){
+            if(parseInt($("#points").text())==1){
+                $("#confirm").show();
+            }
             $("#condition").val(function (i,oldVal) {
                 return parseInt(oldVal)+1;
             });
@@ -24,6 +30,9 @@ $(function () {
     });
     $( "#addConc" ).click(function() {
         if(parseInt($("#points").text())>0){
+            if(parseInt($("#points").text())==1){
+                $("#confirm").show();
+            }
             $("#concentration").val(function (i,oldVal) {
                 return parseInt(oldVal)+1;
             });
@@ -35,6 +44,9 @@ $(function () {
     });
     $( "#addAgi" ).click(function() {
         if(parseInt($("#points").text())>0){
+            if(parseInt($("#points").text())==1){
+                $("#confirm").show();
+            }
             $("#agility").val(function (i,oldVal) {
                 return parseInt(oldVal)+1;
             });
@@ -45,6 +57,9 @@ $(function () {
     });
     $( "#addAcc" ).click(function() {
         if(parseInt($("#points").text())>0){
+            if(parseInt($("#points").text())==1){
+                $("#confirm").show();
+            }
             $("#accuracy").val(function (i,oldVal) {
                 return parseInt(oldVal)+1;
             });

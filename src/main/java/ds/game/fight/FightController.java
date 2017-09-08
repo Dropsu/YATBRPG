@@ -27,6 +27,12 @@ public class FightController {
         return "fight";
     }
 
+    @RequestMapping(value = "/fight-finish", method = RequestMethod.GET)
+    public String finishFight (){
+        fightService.finishFight();
+        return "home";
+    }
+
     @MessageMapping(value = "/fight-prepare")
     @SendToUser("/queue/notifications")
     public Fight prepareFight(String prepare){

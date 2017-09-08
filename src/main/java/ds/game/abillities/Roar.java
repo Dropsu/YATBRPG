@@ -23,8 +23,7 @@ public class Roar extends Ability {
     }
 
     @Override
-    public void causeEffect(AbstractEntity entity) {
-        entity.noWeaponDamage+=5;
-        entity.healthPoints+=1;
+    protected void causeEffect(AbstractEntity source, AbstractEntity target) {
+        target.healthPoints+=1;
     }
 }

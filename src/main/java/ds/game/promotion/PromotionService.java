@@ -31,18 +31,38 @@ public class PromotionService {
         }
     }
 
-    public Message distributePoints(DistributedPoints distributedPoints){
+    private void raiseMaxHealthPoints () {
+        int basicHealthPointsIncreasePerLevel = 10;
+        int additionalHealthPointsPerConditionPoint = 3;
+        session.mage.healthPoints+=basicHealthPointsIncreasePerLevel
+                +(session.mage.condition-10)*additionalHealthPointsPerConditionPoint;
+    }
+
+    private void raiseMaxManaPoints () {
+        int basicManaPointsIncreasePerLevel = 10;
+        int additionalManaPointsPerConcentrationPoint = 7;
+        session.mage.manaPoints+=basicManaPointsIncreasePerLevel
+                +(session.mage.concentration-10)*additionalManaPointsPerConcentrationPoint;
+    }
+
+    public Message receivePoints(DistributedPoints distributedPoints){
 
         if(correctNumberOfPointsIsAdded(distributedPoints)){
-            session.mage.strength=distributedPoints.getStrength();
-            session.mage.condition=distributedPoints.getCondition();
-            session.mage.agility=distributedPoints.getAgility();
-            session.mage.accuracy=distributedPoints.getAccuracy();
-            session.mage.concentration=distributedPoints.getConcentration();
-            session.mage.abilitiesPointsToSpare=0;
+            distributePoints(distributedPoints);
+            raiseMaxHealthPoints();
+            raiseMaxManaPoints();
             return new Message("Points spared");
         } else
         return new Message("Error during Point Sparing");
+    }
+
+    private void distributePoints(DistributedPoints distributedPoints) {
+        session.mage.strength=distributedPoints.getStrength();
+        session.mage.condition=distributedPoints.getCondition();
+        session.mage.agility=distributedPoints.getAgility();
+        session.mage.accuracy=distributedPoints.getAccuracy();
+        session.mage.concentration=distributedPoints.getConcentration();
+        session.mage.abilitiesPointsToSpare=0;
     }
 
     private boolean correctNumberOfPointsIsAdded(DistributedPoints distributedPoints){

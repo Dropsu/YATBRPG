@@ -17,6 +17,7 @@ function sendForNewFight() {
     stompClient.send("/app/fight-prepare", {}, "prepare");
 }
 
+
 function handleFightState(fight) {
     var fight = (JSON.parse(fight.body));
     var mage = fight.mage;
@@ -27,13 +28,16 @@ function handleFightState(fight) {
     fillMage(mage);
     fillOpponent(opponent);
     addToPageLog(log);
-    displayAbilities(abilities);
+    displayAbilities(abilities,mage);
+    checkIfFightFinished(opponent, mage);
 
 }
 
 function fillMage(mage) {
     $("#mage-name").text(mage.name);
+    $("#mage-level").text(mage.level);
     $("#mage-hp").text(mage.healthPoints);
+    $("#mage-mana").text(mage.manaPoints);
     $("#mage-accuracy").text(mage.accuracy);
     $("#mage-agility").text(mage.agility);
     $("#mage-strength").text(mage.strength);
@@ -63,19 +67,28 @@ function addToPageLog(log) {
     $("#log").append(innerLogDiv);
 }
 
-function displayAbilities(abilities) {
+function displayAbilities(abilities, mage) {
     $("#innerDiv").remove();
 
     var innerAbilitiesDiv = document.createElement("div");
     innerAbilitiesDiv.setAttribute("id","innerDiv");
 
     abilities.forEach(function (ability) {
-    var button = document.createElement("button");
-    button.innerHTML = ability.name;
-    button.setAttribute("onclick","send('"+ability.name+"');");
-    innerAbilitiesDiv.append(button);
+        if(ability.cost<=mage.manaPoints) {
+            var button = document.createElement("button");
+            button.innerHTML = ability.name;
+            button.setAttribute("onclick", "send('" + ability.name + "');");
+            innerAbilitiesDiv.append(button);
+        }
 });
     $("#abilities").append(innerAbilitiesDiv);
+}
+
+function checkIfFightFinished(opponent, mage) {
+    if (opponent.healthPoints <= 0 || mage.healthPoints <= 0) {
+        $("#finish").show();
+        $("#abilities").hide();
+    }
 }
 
 function send(abilityName) {

@@ -35,9 +35,9 @@ public class FightService {
         return session.fight;
     }
 
-    public Fight nextTurn(Source source, String abilityName){
+    public Fight nextTurn(Source sourceENUM, String abilityName){
 
-        handleAbility(source,abilityName);
+        handleAbility(sourceENUM,abilityName);
 
         if(checkIfOpponentAlive()) {
             doOpponentsTurn();
@@ -49,12 +49,12 @@ public class FightService {
         return session.fight.opponent.healthPoints>0;
     }
 
-    private void handleAbility(Source source, String abilityName){
-
-        Ability ability = determineAbilityFromItsName(source,abilityName);
-        AbstractEntity target = determineTarget(source, ability);
+    private void handleAbility(Source sourceENUM, String abilityName){
+        Ability ability = determineAbilityFromItsName(sourceENUM,abilityName);
+        AbstractEntity source = determineSource(sourceENUM);
+        AbstractEntity target = determineTarget(sourceENUM, ability);
         addToLog(source,ability,target);
-        causeAbilityEffect(ability, target);
+        causeAbilityEffect(source,ability, target);
     }
 
 
@@ -95,27 +95,42 @@ public class FightService {
         return target;
     }
 
-    private void addToLog(Source source, Ability ability, AbstractEntity target){
-        String sourceName = determineSourceName(source);
-        session.fight.log.add(sourceName+" has used "+ability.name+" on "+target.name+
+    private void addToLog(AbstractEntity source, Ability ability, AbstractEntity target){
+        session.fight.log.add(source.name+" has used "+ability.name+" on "+target.name+
         " ("+ability.name+": "+ability.description+")");
     }
 
-    private String determineSourceName(Source source) {
-        String sourceName;
+    private AbstractEntity determineSource(Source source) {
+        AbstractEntity sourceObject;
         if(source==Source.MAGE){
-            sourceName = session.fight.mage.name;
+            sourceObject = session.fight.mage;
         } else {
-            sourceName = session.fight.opponent.name;
+            sourceObject = session.fight.opponent;
         }
-        return sourceName;
+        return sourceObject;
     }
 
-    private void causeAbilityEffect(Ability ability, AbstractEntity target) {
-        ability.causeEffect(target);
+    private void causeAbilityEffect(AbstractEntity source, Ability ability, AbstractEntity target) {
+        ability.use(source, target);
     }
 
     private void doOpponentsTurn(){
         handleAbility(Source.OPPONENT,session.fight.opponent.abilities.get(0).name);
+    }
+
+    public void finishFight(){
+        boolean playerWon = session.fight.mage.healthPoints > 0;
+        if(playerWon){
+            rewardHero();
+        }
+        cleanUpAfterFight();
+    }
+
+    private void cleanUpAfterFight (){
+        session.fight=null;
+    }
+
+    private void rewardHero (){
+        session.mage.experiencePoints+=session.fight.opponent.experienceForDefeating;
     }
 }
