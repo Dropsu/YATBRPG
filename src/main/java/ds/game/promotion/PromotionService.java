@@ -25,24 +25,24 @@ public class PromotionService {
     }
 
     public void grantLevelAndAbilitiesPointsIfEnoughExp (){
-        while(session.mage.experiencePoints>=experienceTable[session.mage.level+1]){
-            session.mage.level++;
-            session.mage.abilitiesPointsToSpare+=abilitiesPointsPerLevel;
+        while(session.getMage().experiencePoints>=experienceTable[session.getMage().level+1]){
+            session.getMage().level++;
+            session.getMage().abilitiesPointsToSpare+=abilitiesPointsPerLevel;
         }
     }
 
     private void raiseMaxHealthPoints () {
         int basicHealthPointsIncreasePerLevel = 10;
         int additionalHealthPointsPerConditionPoint = 3;
-        session.mage.healthPoints+=basicHealthPointsIncreasePerLevel
-                +(session.mage.condition-10)*additionalHealthPointsPerConditionPoint;
+        session.getMage().healthPoints+=basicHealthPointsIncreasePerLevel
+                +(session.getMage().condition-10)*additionalHealthPointsPerConditionPoint;
     }
 
     private void raiseMaxManaPoints () {
         int basicManaPointsIncreasePerLevel = 10;
         int additionalManaPointsPerConcentrationPoint = 7;
-        session.mage.manaPoints+=basicManaPointsIncreasePerLevel
-                +(session.mage.concentration-10)*additionalManaPointsPerConcentrationPoint;
+        session.getMage().manaPoints+=basicManaPointsIncreasePerLevel
+                +(session.getMage().concentration-10)*additionalManaPointsPerConcentrationPoint;
     }
 
     public Message receivePoints(DistributedPoints distributedPoints){
@@ -57,16 +57,16 @@ public class PromotionService {
     }
 
     private void distributePoints(DistributedPoints distributedPoints) {
-        session.mage.strength=distributedPoints.getStrength();
-        session.mage.condition=distributedPoints.getCondition();
-        session.mage.agility=distributedPoints.getAgility();
-        session.mage.accuracy=distributedPoints.getAccuracy();
-        session.mage.concentration=distributedPoints.getConcentration();
-        session.mage.abilitiesPointsToSpare=0;
+        session.getMage().strength=distributedPoints.getStrength();
+        session.getMage().condition=distributedPoints.getCondition();
+        session.getMage().agility=distributedPoints.getAgility();
+        session.getMage().accuracy=distributedPoints.getAccuracy();
+        session.getMage().concentration=distributedPoints.getConcentration();
+        session.getMage().abilitiesPointsToSpare=0;
     }
 
     private boolean correctNumberOfPointsIsAdded(DistributedPoints distributedPoints){
-        if(distributedPoints.sumAbilitiesPoints()==session.mage.abilitiesPointsToSpare) {
+        if(distributedPoints.sumAbilitiesPoints()== session.getMage().abilitiesPointsToSpare) {
             return false;
         }
         else return true;

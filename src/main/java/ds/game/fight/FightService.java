@@ -29,10 +29,10 @@ public class FightService {
     }
 
     public Fight prepareFight(){
-        if(session.fight==null) {
-            session.fight = new Fight(new Mage(session.mage), new Wolf());
+        if(session.getFight() ==null) {
+            session.setFight(new Fight(new Mage(session.getMage()), new Wolf()));
         }
-        return session.fight;
+        return session.getFight();
     }
 
     public Fight nextTurn(Source sourceENUM, String abilityName){
@@ -42,11 +42,11 @@ public class FightService {
         if(checkIfOpponentAlive()) {
             doOpponentsTurn();
         }
-        return session.fight;
+        return session.getFight();
     }
 
     private boolean checkIfOpponentAlive() {
-        return session.fight.opponent.healthPoints>0;
+        return session.getFight().opponent.healthPoints>0;
     }
 
     private void handleAbility(Source sourceENUM, String abilityName){
@@ -69,9 +69,9 @@ public class FightService {
     private List<Ability> determineWhereToLookForAbility(Source source) {
         List<Ability> listToSearchIn;
         if(source == Source.MAGE){
-            listToSearchIn = session.fight.mage.abilities;
+            listToSearchIn = session.getFight().mage.abilities;
         } else {
-            listToSearchIn = session.fight.opponent.abilities;
+            listToSearchIn = session.getFight().opponent.abilities;
 
         }
         return listToSearchIn;
@@ -81,31 +81,31 @@ public class FightService {
         AbstractEntity target;
         if(source==Source.MAGE){
             if(ability.target== Target.SELF){
-                target = session.fight.mage;
+                target = session.getFight().mage;
             } else {
-                target= session.fight.opponent;
+                target= session.getFight().opponent;
             }
         } else {
             if(ability.target==Target.SELF){
-                target = session.fight.opponent;
+                target = session.getFight().opponent;
             } else {
-                target = session.fight.mage;
+                target = session.getFight().mage;
             }
         }
         return target;
     }
 
     private void addToLog(AbstractEntity source, Ability ability, AbstractEntity target){
-        session.fight.log.add(source.name+" has used "+ability.name+" on "+target.name+
+        session.getFight().log.add(source.name+" has used "+ability.name+" on "+target.name+
         " ("+ability.name+": "+ability.description+")");
     }
 
     private AbstractEntity determineSource(Source source) {
         AbstractEntity sourceObject;
         if(source==Source.MAGE){
-            sourceObject = session.fight.mage;
+            sourceObject = session.getFight().mage;
         } else {
-            sourceObject = session.fight.opponent;
+            sourceObject = session.getFight().opponent;
         }
         return sourceObject;
     }
@@ -115,11 +115,11 @@ public class FightService {
     }
 
     private void doOpponentsTurn(){
-        handleAbility(Source.OPPONENT,session.fight.opponent.abilities.get(0).name);
+        handleAbility(Source.OPPONENT, session.getFight().opponent.abilities.get(0).name);
     }
 
     public void finishFight(){
-        boolean playerWon = session.fight.mage.healthPoints > 0;
+        boolean playerWon = session.getFight().mage.healthPoints > 0;
         if(playerWon){
             rewardHero();
         }
@@ -127,10 +127,10 @@ public class FightService {
     }
 
     private void cleanUpAfterFight (){
-        session.fight=null;
+        session.setFight(null);
     }
 
     private void rewardHero (){
-        session.mage.experiencePoints+=session.fight.opponent.experienceForDefeating;
+        session.getMage().experiencePoints+= session.getFight().opponent.experienceForDefeating;
     }
 }

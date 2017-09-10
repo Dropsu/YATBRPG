@@ -10,6 +10,22 @@ import org.springframework.web.context.WebApplicationContext;
 @Component
     @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
     public class Session {
-        public Mage mage;
-        public Fight fight;
+        private Mage mage;
+        private Fight fight;
+
+    public Mage getMage() {
+        return mage;
     }
+
+    public void setMage(Mage mage) {
+        this.mage = mage;
+    }
+
+    public Fight getFight() {
+        return fight;
+    }
+
+    public void setFight(Fight fight) {
+        this.fight = fight;
+    }
+}
