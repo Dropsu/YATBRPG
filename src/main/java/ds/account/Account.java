@@ -40,8 +40,8 @@ public class Account {
         this.password = password;
     }
 
-    public void addHero(){
-        this.playersHero = new Mage();
+    public void addHero(String login){
+        this.playersHero = new Mage(login);
     }
 
     public String getPassword() {

@@ -20,7 +20,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public void registerAccount(Account account) {
-        account.addHero(); //TODO: move it somewhere else, change hero creation
+        account.addHero(account.getUsername()); //TODO: move it somewhere else, change hero creation
         accountRepository.save(account);
     }
 }

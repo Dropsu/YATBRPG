@@ -30,8 +30,11 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
 
     public int concentration;
 
-    public Mage () {
-        this.name = "Bartl";
+    public Mage() {
+    }
+
+    public Mage (String login) {
+        this.name = login + "'s hero";
         this.level = 1;
         this.experiencePoints = 0;
         this.abilitiesPointsToSpare = 4;

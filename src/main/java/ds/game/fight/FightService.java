@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class FightService {
 
-    Session session;
+    private Session session;
 
     @Autowired
     public FightService(Session session) {
