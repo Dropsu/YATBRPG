@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
-    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/js/fight.js"></script>
     <title>Fight</title>
 </head>
 <body>
-<p><a id="finish" th:href="@{/fight-finish}" hidden>Fight Finished!</a></p>
+<p><a id="finish" th:href="@{/fight/finish}" hidden>Fight Finished!</a></p>
 <p>Name: <span id="mage-name"></span></p>
 <p>Level: <span id="mage-level"></span></p>
 <p>Health Points: <span id="mage-hp"></span></p>
@@ -27,7 +25,6 @@
 
 
 <div id="abilities"></div>
-
 
 
 <p>Name: <span id="opponent-name"></span></p>

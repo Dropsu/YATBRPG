@@ -1,25 +1,11 @@
-var stompClient = null;
-
-
-function connect() {
-    var socket = new SockJS('/yatbrpg-websocket');
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
-        stompClient.subscribe('/user/queue/notifications', function (fight) {
-            handleFightState(fight);
-        });
-        sendForNewFight();
-    });
-}
-
 function sendForNewFight() {
-    stompClient.send("/app/fight-prepare", {}, "prepare");
+    $.post("/fight",function (fight) {
+        handleFightState(fight)
+    })
 }
 
 
 function handleFightState(fight) {
-    var fight = (JSON.parse(fight.body));
     var mage = fight.mage;
     var opponent = fight.opponent;
     var log = fight.log;
@@ -92,12 +78,14 @@ function checkIfFightFinished(opponent, mage) {
 }
 
 function send(abilityName) {
-    stompClient.send("/app/fight-ability", {}, abilityName);
+    $.post("/fight/next-turn",{"abilityName":abilityName},function (fight) {
+        handleFightState(fight)
+    })
 }
 
 
 
 
 $(function () {
-   connect();
+    sendForNewFight();
 });
