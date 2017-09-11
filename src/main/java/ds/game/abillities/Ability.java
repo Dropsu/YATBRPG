@@ -6,6 +6,7 @@ import ds.game.entities.Mage;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Entity
@@ -23,25 +24,11 @@ public abstract class Ability {
     public Ability() {
     }
 
-    public void use(AbstractEntity source, AbstractEntity target){
-        if(checkIfHit(source,target)) {
-            causeEffect(source, target);
-        }
+    public void use(AbstractEntity source, AbstractEntity target, List<String> log){
+            causeEffect(source, target, log);
     }
 
-    protected boolean checkIfHit(AbstractEntity source, AbstractEntity target) {
-        if (!this.missable) {
-            return true;
-        }
-        double hitChance = 0.7;
-        double hitChanceChangePerPointDifference = 0.05;
-        int pointsDifference = source.accuracy - target.agility;
-        hitChance+=pointsDifference*hitChanceChangePerPointDifference;
-        boolean abilityHit = ThreadLocalRandom.current().nextDouble() < hitChance;
-        return abilityHit;
-    }
-
-    protected abstract void causeEffect (AbstractEntity source, AbstractEntity target);
+    protected abstract void causeEffect (AbstractEntity source, AbstractEntity target, List<String> log);
 
 
     @Override

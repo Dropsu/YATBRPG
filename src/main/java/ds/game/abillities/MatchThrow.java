@@ -7,6 +7,7 @@ import ds.game.entities.Mage;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.List;
 
 /**
  * Created by Damian on 05.09.2017.
@@ -29,7 +30,8 @@ public class MatchThrow extends Spell {
     }
 
     @Override
-    protected void causeEffect(AbstractEntity source, AbstractEntity target) {
+    protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
+        log.add(source.name + " throws a match in " + target.name+" dealing "+damage+" damage");
         target.healthPoints -= damage;
     }
 }

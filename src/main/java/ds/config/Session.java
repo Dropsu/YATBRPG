@@ -2,6 +2,7 @@ package ds.config;
 
 import ds.game.entities.Mage;
 import ds.game.fight.Fight;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;

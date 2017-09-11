@@ -2,6 +2,8 @@ package ds.game.abillities;
 
 import ds.game.entities.AbstractEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.persistence.Entity;
@@ -26,17 +28,13 @@ public class PhysicalAttack extends Ability {
     }
 
     @Override
-    public void use(AbstractEntity source, AbstractEntity target) {
-        if(checkIfHit(source,target)) {
-            causeEffect(source, target);
-        }
-    }
-
-    protected void causeEffect(AbstractEntity source, AbstractEntity target) {
+    protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         int sourceMinDamage = source.noWeaponDamage.getMinDamage();
         int sourceMaxDamage = source.noWeaponDamage.getMaxDamage();
         int damage = ThreadLocalRandom.current().nextInt(sourceMinDamage, sourceMaxDamage + 1);
         damage += source.strength-10;
         target.healthPoints -= damage;
+        log.add(source.name+" has physically attacked "+target.name+" dealing "+damage+" damage");
     }
+
 }

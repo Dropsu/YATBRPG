@@ -6,6 +6,7 @@ import ds.game.entities.AbstractMagicalEntity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 public abstract class Spell extends Ability {
@@ -15,9 +16,9 @@ public abstract class Spell extends Ability {
     private long id;
 
     @Override
-    public void use(AbstractEntity source, AbstractEntity target) {
+    public void use(AbstractEntity source, AbstractEntity target, List<String>log) {
         if(payAbilityCost(source)) {
-            super.use(source, target);
+            super.use(source, target, log);
         }
     }
 
