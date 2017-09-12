@@ -1,6 +1,7 @@
-package ds.game.entities;
+package ds.game.entities.opponents;
 
 import ds.game.abillities.Roar;
+import ds.game.entities.AbstractEntity;
 import ds.game.equipment.Damage;
 
 /**
@@ -9,6 +10,7 @@ import ds.game.equipment.Damage;
 public class Wolf extends AbstractEntity {
 
     public Wolf() {
+        this.level=1;
         this.accuracy=10;
         this.agility=10;
         this.condition=10;

@@ -6,7 +6,7 @@ import ds.game.abillities.Source;
 import ds.game.abillities.Target;
 import ds.game.entities.AbstractEntity;
 import ds.game.entities.Mage;
-import ds.game.entities.Wolf;
+import ds.game.entities.opponents.Wolf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,16 +23,21 @@ import java.util.stream.Collectors;
 public class FightService {
 
     private Session session;
+    private RandomOpponentService randomOpponentService;
 
     @Autowired
-    public FightService(Session session) {
+    public FightService(Session session, RandomOpponentService randomOpponentService) {
         this.session = session;
+        this.randomOpponentService = randomOpponentService;
     }
 
     public Fight prepareFight(){
         if(session.getFight() ==null) {
-            session.setFight(new Fight(new Mage(session.getMage()), new Wolf()));
+            int mageLevel = session.getMage().level;
+            AbstractEntity opponent = randomOpponentService.getRandomOpponentForLevel(mageLevel);
+            session.setFight(new Fight(new Mage(session.getMage()), opponent));
         }
+        RandomOpponentService randomOpponentService = new RandomOpponentService();
         return session.getFight();
     }
 

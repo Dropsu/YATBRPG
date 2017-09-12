@@ -19,7 +19,6 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     @GeneratedValue
     private Long id;
 
-    public int level;
     public int experiencePoints;
     public int abilitiesPointsToSpare;
 
@@ -58,19 +57,8 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     }
 
     public Mage (Mage other){
-        this.name = other.name;
-        this.level = other.level;
-        this.healthPoints = other.healthPoints;
+        super(other);
         this.manaPoints = other.manaPoints;
-
         this.concentration = other.concentration;
-        this.condition = other.condition;
-        this.strength = other.strength;
-        this.accuracy = other.accuracy;
-        this.agility = other.agility;
-        this.noWeaponDamage = other.noWeaponDamage;
-
-        this.abilities = other.abilities;
-
     }
 }

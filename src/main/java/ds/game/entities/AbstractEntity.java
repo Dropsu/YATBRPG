@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 @MappedSuperclass
 public abstract class AbstractEntity {
-	
+
+	public int level;
 	public String name;
 	public int healthPoints;
 	public int healthRegen;
@@ -29,5 +30,18 @@ public abstract class AbstractEntity {
 
 	public AbstractEntity() {
 		this.abilities.add(new PhysicalAttack());
+	}
+
+	public AbstractEntity (AbstractEntity other){
+		this.name = other.name;
+		this.level = other.level;
+		this.healthPoints = other.healthPoints;
+		this.condition = other.condition;
+		this.strength = other.strength;
+		this.accuracy = other.accuracy;
+		this.agility = other.agility;
+		this.noWeaponDamage = other.noWeaponDamage;
+
+		this.abilities = other.abilities;
 	}
 }
