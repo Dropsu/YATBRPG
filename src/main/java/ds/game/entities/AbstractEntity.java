@@ -1,9 +1,12 @@
 package ds.game.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ds.game.abillities.Ability;
 import ds.game.abillities.PhysicalAttack;
 import ds.game.equipment.Damage;
+import ds.game.equipment.Equipment;
+import ds.game.equipment.Potions;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,6 +31,12 @@ public abstract class AbstractEntity {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public List<Ability> abilities = new ArrayList<>();
 
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public Equipment equipment;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public Potions potions = new Potions();
+
 	public AbstractEntity() {
 		this.abilities.add(new PhysicalAttack());
 	}
@@ -43,5 +52,7 @@ public abstract class AbstractEntity {
 		this.noWeaponDamage = other.noWeaponDamage;
 
 		this.abilities = other.abilities;
+
+		this.equipment = null;
 	}
 }

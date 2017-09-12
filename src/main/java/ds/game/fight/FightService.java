@@ -1,12 +1,9 @@
 package ds.game.fight;
 
 import ds.config.Session;
-import ds.game.abillities.Ability;
-import ds.game.abillities.Source;
-import ds.game.abillities.Target;
+import ds.game.abillities.*;
 import ds.game.entities.AbstractEntity;
 import ds.game.entities.Mage;
-import ds.game.entities.opponents.Wolf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,14 +32,26 @@ public class FightService {
         if(session.getFight() ==null) {
             int mageLevel = session.getMage().level;
             AbstractEntity opponent = randomOpponentService.getRandomOpponentForLevel(mageLevel);
-            session.setFight(new Fight(new Mage(session.getMage()), opponent));
+            Mage fightMage = new Mage(session.getMage());
+            if(session.getMage().potions.getHealthPotions()>0){
+                fightMage.abilities.add(new DrinkHealthPotion());
+            }
+            if(session.getMage().potions.getManaPotions()>0){
+                fightMage.abilities.add(new DrinkManaPotion());
+            }
+            if(fightMage.equipment!=null&&fightMage.equipment.getLeftHandRing()!=null){
+                fightMage.equipment.getLeftHandRing().battlePersistentEffect(fightMage);
+            }
+            session.setFight(new Fight(fightMage, opponent));
         }
         RandomOpponentService randomOpponentService = new RandomOpponentService();
         return session.getFight();
     }
 
     public Fight nextTurn(Source sourceENUM, String abilityName){ //TODO: Make it prettier
-
+        if(session.getFight().getMage().equipment!=null&&session.getFight().getMage().equipment.getLeftHandRing()!=null){
+            session.getFight().getMage().equipment.getLeftHandRing().everyTurnEffect(session.getFight().getMage());
+        }
         handleAbility(sourceENUM,abilityName);
 
         if(checkIfOpponentAlive()) {

@@ -14,6 +14,7 @@ public abstract class Spell extends Ability {
     @Id
     @GeneratedValue
     private long id;
+    private int spellLevel = 1;
 
     @Override
     public void use(AbstractEntity source, AbstractEntity target, List<String>log) {
@@ -32,5 +33,13 @@ public abstract class Spell extends Ability {
 
     public Spell() {
         Spell spell;
+    }
+
+    public int getSpellLevel() {
+        return spellLevel;
+    }
+
+    public void setSpellLevel(int spellLevel) {
+        this.spellLevel = spellLevel;
     }
 }

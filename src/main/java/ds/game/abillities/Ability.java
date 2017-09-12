@@ -17,7 +17,6 @@ public abstract class Ability {
     public String name;
     public Target target;
     public String description;
-    public int damage;
     public boolean missable = true;
     public int cost = 0;
 

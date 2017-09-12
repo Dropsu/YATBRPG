@@ -3,6 +3,7 @@ package ds.game.equipment;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Damian on 08.09.2017.
@@ -14,8 +15,8 @@ public class Damage {
     @GeneratedValue
     private long id;
 
-    private int minDamage;
-    private int maxDamage;
+    public int minDamage;
+    public int maxDamage;
 
     public Damage() {
     }
@@ -23,6 +24,10 @@ public class Damage {
     public Damage(int minDamage, int maxDamage) {
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
+    }
+
+    public int getRandomDamage(){
+        return ThreadLocalRandom.current().nextInt(minDamage, maxDamage + 1);
     }
 
     public int getMinDamage() {

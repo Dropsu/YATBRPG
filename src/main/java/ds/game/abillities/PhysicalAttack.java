@@ -1,6 +1,7 @@
 package ds.game.abillities;
 
 import ds.game.entities.AbstractEntity;
+import ds.game.equipment.Damage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -29,10 +30,19 @@ public class PhysicalAttack extends Ability {
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        int sourceMinDamage = source.noWeaponDamage.getMinDamage();
-        int sourceMaxDamage = source.noWeaponDamage.getMaxDamage();
-        int damage = ThreadLocalRandom.current().nextInt(sourceMinDamage, sourceMaxDamage + 1);
+        int damage;
+        if(source.equipment==null || source.equipment.getWeapon()==null){
+            damage = source.noWeaponDamage.getRandomDamage();
+        } else {
+            damage = source.equipment.getWeapon().getDamage().getRandomDamage();
+        }
         damage += source.strength-10;
+        if(!(target.equipment==null || target.equipment.getArmor()==null)){
+            damage -= target.equipment.getArmor().getDamageReduction();
+            if(damage<0){
+                damage=0;
+            }
+        }
         target.healthPoints -= damage;
         log.add(source.name+" has physically attacked "+target.name+" dealing "+damage+" damage");
     }

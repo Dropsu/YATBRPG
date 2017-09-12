@@ -8,10 +8,18 @@ import javax.persistence.Id;
  * Created by Damian on 31.08.2017.
  */
 @Entity
-public class Armor extends Item {
+public abstract class Armor extends Item {
 
-    public double damageReduction;
+    private int damageReduction;
 
     public Armor() {
+    }
+
+    public int getDamageReduction() {
+        return damageReduction;
+    }
+
+    public void setDamageReduction(int damageReduction) {
+        this.damageReduction = damageReduction;
     }
 }

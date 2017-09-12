@@ -1,5 +1,7 @@
 package ds.game.equipment;
 
+import ds.game.entities.AbstractEntity;
+
 import javax.persistence.Entity;
 
 /**
@@ -7,7 +9,11 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Ring extends Item {
+public abstract class Ring extends Item  {
     public Ring() {
     }
+
+    public abstract void battlePersistentEffect(AbstractEntity target);
+    public abstract void everyTurnEffect(AbstractEntity target);
+
 }

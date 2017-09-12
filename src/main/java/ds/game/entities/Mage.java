@@ -2,8 +2,7 @@ package ds.game.entities;
 
 import ds.game.abillities.MatchThrow;
 import ds.game.abillities.Spell;
-import ds.game.equipment.Damage;
-import ds.game.equipment.Equipment;
+import ds.game.equipment.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,9 +23,6 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
 
     public int gold;
 
-    @OneToOne
-    public Equipment equipment;
-
     public int concentration;
 
     public Mage() {
@@ -39,7 +35,6 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
         this.abilitiesPointsToSpare = 4;
 
         this.gold = 0;
-        this.equipment = null;
 
         this.concentration=10;
         this.strength = 10;
@@ -54,11 +49,22 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
         this.noWeaponDamage=new Damage(1,3);
 
         this.abilities.add(new MatchThrow());
+
+        this.equipment = new Equipment();
+        this.equipment.setWeapon(new WoodenLog());
+        this.equipment.setArmor(new WarmMageCoat());
+        this.equipment.setLeftHandRing(new HealingAndStrangthRing());
+        this.potions.setHealthPotions(2);
+        this.potions.setManaPotions(2);
+
+
     }
 
     public Mage (Mage other){
         super(other);
         this.manaPoints = other.manaPoints;
         this.concentration = other.concentration;
+        this.equipment = other.equipment;
+        this.potions = other.potions;
     }
 }

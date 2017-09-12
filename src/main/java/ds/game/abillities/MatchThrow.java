@@ -3,10 +3,9 @@ package ds.game.abillities;
 import ds.game.entities.AbstractEntity;
 import ds.game.entities.AbstractMagicalEntity;
 import ds.game.entities.Mage;
+import ds.game.equipment.Damage;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -19,11 +18,14 @@ public class MatchThrow extends Spell {
     @GeneratedValue
     private long id;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Damage damage;
+
 
     public MatchThrow() {
         this.name="Match Throw";
         this.target=Target.OTHER;
-        this.damage = 1;
+        this.damage = new Damage(1,4);
         this.description = "Throws a match in opponent's face - deal "+damage+" damage.";
         this.missable = true;
         this.cost = 15;
@@ -32,6 +34,6 @@ public class MatchThrow extends Spell {
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         log.add(source.name + " throws a match in " + target.name+" dealing "+damage+" damage");
-        target.healthPoints -= damage;
+        target.healthPoints -= (damage.getRandomDamage() + getSpellLevel()*2);
     }
 }

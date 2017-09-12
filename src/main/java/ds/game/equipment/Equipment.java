@@ -1,6 +1,10 @@
 package ds.game.equipment;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,20 +17,21 @@ public class Equipment {
     @GeneratedValue
     private long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Weapon weapon;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Armor armor;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Ring leftHandRing;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Ring rightHandRing;
 
-    @OneToMany
-    private List<Item> inBackpack;
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Item> inBackpack = new ArrayList<>();
 
     public Equipment() {
     }
