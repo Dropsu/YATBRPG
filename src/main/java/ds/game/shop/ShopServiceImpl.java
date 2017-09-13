@@ -1,8 +1,7 @@
 package ds.game.shop;
 
 import ds.config.Session;
-import ds.game.entities.Mage;
-import ds.game.equipment.Equipment;
+import ds.game.equipment.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +12,45 @@ import org.springframework.stereotype.Service;
 public class ShopServiceImpl implements ShopService {
 
     private Session session;
+    private ShopItems shopItems;
 
     @Autowired
-    public ShopServiceImpl(Session session) {
+    public ShopServiceImpl(Session session, ShopItems shopItems) {
         this.session = session;
+        this.shopItems = shopItems;
     }
 
     @Override
-    public void buyItem() {
-
+    public Equipment buyItem(String itemName, String itemType) {
+        Equipment mageEquipment = session.getMage().equipment;
+        int gold = mageEquipment.getGold();
+        Item item = shopItems.findItemByName(itemName);
+        if(item.getValue()>gold){
+            return mageEquipment;
+        }
+        if(itemType.equals("weapon")){
+            if(mageEquipment.getWeapon()==null){
+                Weapon weapon = (Weapon) item;
+                mageEquipment.setWeapon(weapon);
+                mageEquipment.setGold(gold-weapon.getValue());
+            }
+        } else if(itemType.equals("armor")){
+            if(mageEquipment.getArmor()==null){
+                Armor armor = (Armor) item;
+                mageEquipment.setArmor(armor);
+                mageEquipment.setGold(gold-armor.getValue());
+            }
+        } else if(itemType.equals("ring")){
+            Ring ring = (Ring) item;
+            if(mageEquipment.getLeftHandRing()==null){
+                mageEquipment.setLeftHandRing(ring);
+                mageEquipment.setGold(gold-ring.getValue());
+            } else if(mageEquipment.getRightHandRing()==null){
+                mageEquipment.setRightHandRing(ring);
+                mageEquipment.setGold(gold-ring.getValue());
+            }
+        }
+        return mageEquipment;
     }
 
     @Override
@@ -44,7 +73,12 @@ public class ShopServiceImpl implements ShopService {
         return magesEquipment;
     }
 
-    public Equipment serveItems() {
+    public Equipment serveItemsForMage() {
         return session.getMage().equipment;
+    }
+
+    @Override
+    public ShopItems serveItemFromShop() {
+        return shopItems;
     }
 }

@@ -8,6 +8,9 @@ import ds.game.equipment.Equipment;
 
 public interface ShopController {
     String equipmentPage();
-    void buyItem();
+    Equipment buyItem(String itemName, String itemType);
     Equipment sellItem(String itemType);
+    ShopItems serveItemFromShop();
+
+
 }

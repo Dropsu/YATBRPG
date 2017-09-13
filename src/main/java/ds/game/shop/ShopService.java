@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface ShopService {
-    void buyItem();
+    Equipment buyItem(String itemName, String itemType);
     Equipment sellItem(String itemType);
-    Equipment serveItems();
+    Equipment serveItemsForMage();
+    ShopItems serveItemFromShop();
 }

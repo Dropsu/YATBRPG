@@ -28,13 +28,14 @@ public class ShopControllerImpl implements ShopController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody Equipment serveItems() {
-        return shopService.serveItems();
+    public @ResponseBody Equipment serveItemsForMage() {
+        return shopService.serveItemsForMage();
     }
 
     @Override
-    public void buyItem() {
-
+    @RequestMapping("/buy")
+    public @ResponseBody Equipment buyItem(String itemName, String itemType) {
+        return shopService.buyItem(itemName,itemType);
     }
 
     @Override
@@ -42,5 +43,11 @@ public class ShopControllerImpl implements ShopController {
     public @ResponseBody
     Equipment sellItem(String itemType) {
         return shopService.sellItem(itemType);
+    }
+
+    @Override
+    @RequestMapping("/shop")
+    public @ResponseBody ShopItems serveItemFromShop() {
+        return shopService.serveItemFromShop();
     }
 }
