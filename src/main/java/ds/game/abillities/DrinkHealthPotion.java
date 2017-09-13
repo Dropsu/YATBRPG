@@ -24,9 +24,9 @@ public class DrinkHealthPotion extends Ability {
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        if(source.potions.getHealthPotions()>0){
+        if(source.equipment.getPotions().getHealthPotions()>0){
             target.healthPoints+=30;
-            source.potions.setHealthPotions(source.potions.getHealthPotions()-1);
+            source.equipment.getPotions().setHealthPotions(source.equipment.getPotions().getHealthPotions()-1);
             log.add("Health Potion drunk");
         }
     }

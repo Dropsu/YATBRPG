@@ -23,8 +23,8 @@ function fillMage(mage) {
     $("#mage-name").text(mage.name);
     $("#mage-level").text(mage.level);
     $("#mage-hp").text(mage.healthPoints);
-    $("#hp-potions").text(mage.potions.healthPotions);
-    $("#mana-potions").text(mage.potions.manaPotions);
+    $("#hp-potions").text(mage.equipment.potions.healthPotions);
+    $("#mana-potions").text(mage.equipment.potions.manaPotions);
     $("#mage-mana").text(mage.manaPoints);
     $("#mage-accuracy").text(mage.accuracy);
     $("#mage-agility").text(mage.agility);
@@ -62,9 +62,9 @@ function displayAbilities(abilities, mage) {
     innerAbilitiesDiv.setAttribute("id","innerDiv");
 
     abilities.forEach(function (ability) {
-        if(ability.name=="Drink Health Potion"&&mage.potions.healthPotions==0){
+        if(ability.name=="Drink Health Potion"&&mage.equipment.potions.healthPotions==0){
 
-        } else if(ability.name=="Drink Mana Potion"&&mage.potions.manaPotions==0){
+        } else if(ability.name=="Drink Mana Potion"&&mage.equipment.potions.manaPotions==0){
 
         } else
         if(ability.cost<=mage.manaPoints) {

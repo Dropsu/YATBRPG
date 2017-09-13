@@ -11,8 +11,8 @@ import javax.persistence.Id;
 public class WarmMageCoat extends Armor {
 
     public WarmMageCoat() {
-        this.name="Wooden Log";
+        this.name="Warm Mage Coat";
         this.setDamageReduction(20);
-        this.setValue(1);
+        this.setValue(10);
     }
 }

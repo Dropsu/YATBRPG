@@ -14,6 +14,10 @@ public class Potions {
     @GeneratedValue
     private long id;
 
+    public static final int HEALTH_POTION_GOLD_VALUE = 30;
+    public static final int MANA_POTION_GOLD_VALUE = 30;
+
+
     private int healthPotions;
     private int manaPotions;
 

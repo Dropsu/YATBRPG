@@ -26,10 +26,10 @@ public class DrinkManaPotion extends Ability {
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        if(source.potions.getManaPotions()>0){
+        if(source.equipment.getPotions().getManaPotions()>0){
             AbstractMagicalEntity abstractMagicalEntity = (AbstractMagicalEntity) source;
             abstractMagicalEntity.manaPoints+=30;
-            source.potions.setManaPotions(source.potions.getManaPotions()-1);
+            source.equipment.getPotions().setManaPotions(source.equipment.getPotions().getManaPotions()-1);
             log.add("Mana Potion drunk");
         }
     }

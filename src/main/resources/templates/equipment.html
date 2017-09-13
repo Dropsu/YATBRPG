@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipment</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/js/equipment.js"></script>
+</head>
+<body>
+<p>Name: <span id="name"th:text="${@session.mage.name}"></span></p>
+<p>Gold:<p id="gold" readonly></p></p>
+<p><span>Weapon:<input class="input" name="weapon" id="weapon"readonly><button type="button" name="weapon"  class="sell">Sell</button>value:</span><span class="val" id="weaponval"></span></p>
+<p><span>Armor:<input class="input" name="armor" id="armor" readonly><button type="button" name="armor"  class="sell">Sell</button>value:</span><span class="val" id="armorval"></span></p>
+<p><span>Left Hand Ring:<input class="input" name="leftHandRing" id="lring" readonly><button type="button" name="leftHandRing" class="sell" >Sell</button>value:</span><span class="val" id="lringval"></span></p>
+<p><span>Right Hand Ring:<input class="input" name="rightHandRing" id="rring" readonly><button type="button" name="rightHandRing" class="sell">Sell</button>value:</span><span class="val" id="rringval"></span></p>
+
+
+</body>
+</html>

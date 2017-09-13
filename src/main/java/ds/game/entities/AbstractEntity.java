@@ -34,9 +34,6 @@ public abstract class AbstractEntity {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Equipment equipment;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public Potions potions = new Potions();
-
 	public AbstractEntity() {
 		this.abilities.add(new PhysicalAttack());
 	}

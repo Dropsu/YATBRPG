@@ -17,6 +17,8 @@ public class Equipment {
     @GeneratedValue
     private long id;
 
+    private int gold = 0;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Weapon weapon;
 
@@ -29,11 +31,31 @@ public class Equipment {
     @OneToOne(cascade = CascadeType.ALL)
     private Ring rightHandRing;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public Potions potions = new Potions();
+
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Item> inBackpack = new ArrayList<>();
 
     public Equipment() {
+    }
+
+    public int equipmentWorth() {
+        int sum=0;
+        if(this.weapon!=null){
+            sum+=weapon.value;
+        }
+        if(this.armor!=null){
+            sum+=armor.value;
+        }
+        if(this.leftHandRing!=null){
+            sum+=leftHandRing.value;
+        }
+        if(this.rightHandRing!=null){
+            sum+=rightHandRing.value;
+        }
+        return sum;
     }
 
     public Weapon getWeapon() {
@@ -74,5 +96,21 @@ public class Equipment {
 
     public void setInBackpack(List<Item> inBackpack) {
         this.inBackpack = inBackpack;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public Potions getPotions() {
+        return potions;
+    }
+
+    public void setPotions(Potions potions) {
+        this.potions = potions;
     }
 }

@@ -1,5 +1,7 @@
 package ds.game.entities;
 
+import ds.game.abillities.DrinkHealthPotion;
+import ds.game.abillities.DrinkManaPotion;
 import ds.game.abillities.MatchThrow;
 import ds.game.abillities.Spell;
 import ds.game.equipment.*;
@@ -21,8 +23,6 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     public int experiencePoints;
     public int abilitiesPointsToSpare;
 
-    public int gold;
-
     public int concentration;
 
     public Mage() {
@@ -33,8 +33,6 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
         this.level = 1;
         this.experiencePoints = 0;
         this.abilitiesPointsToSpare = 4;
-
-        this.gold = 0;
 
         this.concentration=10;
         this.strength = 10;
@@ -49,13 +47,16 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
         this.noWeaponDamage=new Damage(1,3);
 
         this.abilities.add(new MatchThrow());
+        this.abilities.add(new DrinkHealthPotion());
+        this.abilities.add(new DrinkManaPotion());
 
         this.equipment = new Equipment();
+        this.equipment.setGold(0);
         this.equipment.setWeapon(new WoodenLog());
         this.equipment.setArmor(new WarmMageCoat());
         this.equipment.setLeftHandRing(new HealingAndStrangthRing());
-        this.potions.setHealthPotions(2);
-        this.potions.setManaPotions(2);
+        this.equipment.potions.setHealthPotions(2);
+        this.equipment.potions.setManaPotions(2);
 
 
     }
@@ -65,6 +66,6 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
         this.manaPoints = other.manaPoints;
         this.concentration = other.concentration;
         this.equipment = other.equipment;
-        this.potions = other.potions;
+        this.equipment.potions = other.equipment.potions;
     }
 }
