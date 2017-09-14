@@ -50,4 +50,11 @@ public class ShopControllerImpl implements ShopController {
     public @ResponseBody ShopItems serveItemFromShop() {
         return shopService.serveItemFromShop();
     }
+
+    @Override
+    @RequestMapping(value = "/buyPotions",method = RequestMethod.POST)
+    public @ResponseBody
+    Equipment buyPotions(int number, String type) {
+        return shopService.buyPotions(number,type);
+    }
 }

@@ -2,12 +2,10 @@
  * Created by Damian on 13.09.2017.
  */
 
-
-
-
 function sendForItems() {
     $.post("/equipment",function (equipment) {
         fillItems(equipment)
+        fillPotions(equipment.potions);
     });
 
     $.post("/equipment/shop",function (shopItems) {
@@ -54,6 +52,14 @@ function buy(itemName,itemType) {
     })
 }
 
+function fillPotions(potions) {
+    $("#hp-potions").text(potions.healthPotions);
+    $("#hp-potion-cost").text(potions.healthPotionGoldValue);
+    $("#mana-potions").text(potions.manaPotions);
+    $("#mana-potion-cost").text(potions.manaPotionGoldValue);
+
+}
+
 function fillItems(equipment) {
     $(".input").val("");
     $(".val").text("");
@@ -77,10 +83,25 @@ function fillItems(equipment) {
 
 }
 
+function buyPotion(number, type) {
+    $.post("/equipment/buyPotions",{"number":number,"type":type},function (equipment) {
+        fillItems(equipment);
+        fillPotions(equipment.potions);
+    })
+}
+
 $(function () {
     sendForItems();
     $(".sell").click(function () {
         sell(this.name);
+    })
+    $("#buyHealthPotion").click(function () {
+        var number = $("#hp-potions-number").val();
+        buyPotion(number,this.name);
+    })
+    $("#buyManaPotion").click(function () {
+        var number = $("#mana-potions-number").val();
+        buyPotion(number,this.name);
     })
 });
 

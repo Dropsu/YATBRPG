@@ -13,4 +13,5 @@ public interface ShopService {
     Equipment sellItem(String itemType);
     Equipment serveItemsForMage();
     ShopItems serveItemFromShop();
+    Equipment buyPotions(int number, String type);
 }

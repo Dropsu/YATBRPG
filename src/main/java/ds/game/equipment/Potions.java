@@ -14,14 +14,18 @@ public class Potions {
     @GeneratedValue
     private long id;
 
-    public static final int HEALTH_POTION_GOLD_VALUE = 30;
-    public static final int MANA_POTION_GOLD_VALUE = 30;
+    private int healthPotionGoldValue = 30;
+    private int manaPotionGoldValue = 30;
 
 
     private int healthPotions;
     private int manaPotions;
 
     public Potions() {
+    }
+
+    public int getHealthPotionGoldValue() {
+        return healthPotionGoldValue;
     }
 
     public int getHealthPotions() {
@@ -38,5 +42,13 @@ public class Potions {
 
     public void setManaPotions(int manaPotions) {
         this.manaPotions = manaPotions;
+    }
+
+    public int getManaPotionGoldValue() {
+        return manaPotionGoldValue;
+    }
+
+    public void setManaPotionGoldValue(int manaPotionGoldValue) {
+        this.manaPotionGoldValue = manaPotionGoldValue;
     }
 }

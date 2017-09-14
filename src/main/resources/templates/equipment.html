@@ -10,22 +10,27 @@
 </head>
 <body>
 <p>Name: <span id="name"th:text="${@session.mage.name}"></span></p>
-<p>Gold:<p id="gold" readonly></p></p>
+<p>Gold:<span id="gold" readonly></span></p>
+<p>Health Potions:<span id="hp-potions" readonly></span></p>
+<p><input value="0" id="hp-potions-number"><button id="buyHealthPotion" type="button" name="healthPotion">Buy Health Potions</button>Cost:<span id="hp-potion-cost"></span></p>
+<p>Mana Potions:<span id="mana-potions" readonly></span></p>
+<p><input value="0" id="mana-potions-number"><button id="buyManaPotion" type="button" name="manaPotion">Buy Mana Potions</button>Cost:<span id="mana-potion-cost"></span></p>
+<br>
 <p><span>Weapon:<input class="input" name="weapon" id="weapon"readonly><button type="button" name="weapon"  class="sell">Sell</button>value:</span><span class="val" id="weaponval"></span></p>
 <p><span>Armor:<input class="input" name="armor" id="armor" readonly><button type="button" name="armor"  class="sell">Sell</button>value:</span><span class="val" id="armorval"></span></p>
 <p><span>Left Hand Ring:<input class="input" name="leftHandRing" id="lring" readonly><button type="button" name="leftHandRing" class="sell" >Sell</button>value:</span><span class="val" id="lringval"></span></p>
 <p><span>Right Hand Ring:<input class="input" name="rightHandRing" id="rring" readonly><button type="button" name="rightHandRing" class="sell">Sell</button>value:</span><span class="val" id="rringval"></span></p>
 
 <p>Shop:</p>
-<p>Weapons</p>
+<p>Weapons:</p>
 <table id="weapons">
 </table>
-<p>Armors</p>
+<p>Armors:</p>
 <table id="armors">
 </table>
-<p>Rings</p>
+<p>Rings:</p>
 <table id="rings">
 </table>
-
+<p><a class="btn btn-primary" role="button" th:href="@{/}">Back</a></p>
 </body>
 </html>

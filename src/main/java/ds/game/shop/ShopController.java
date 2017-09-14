@@ -11,6 +11,7 @@ public interface ShopController {
     Equipment buyItem(String itemName, String itemType);
     Equipment sellItem(String itemType);
     ShopItems serveItemFromShop();
+    Equipment buyPotions(int number,String type);
 
 
 }

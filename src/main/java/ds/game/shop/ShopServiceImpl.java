@@ -81,4 +81,19 @@ public class ShopServiceImpl implements ShopService {
     public ShopItems serveItemFromShop() {
         return shopItems;
     }
+
+    @Override
+    public Equipment buyPotions(int number, String type) {
+        int gold = session.getMage().equipment.getGold();
+        Equipment mageEquipment = session.getMage().equipment;
+        if(type.equals("healthPotion")&&gold>= number* mageEquipment.potions.getHealthPotionGoldValue()){
+            mageEquipment.potions.setHealthPotions(mageEquipment.potions.getHealthPotions()+number);
+            mageEquipment.setGold(gold - number * mageEquipment.potions.getHealthPotionGoldValue());
+        }
+        if(type.equals("manaPotion")&&gold>= number* mageEquipment.potions.getManaPotionGoldValue()){
+            mageEquipment.potions.setManaPotions(mageEquipment.potions.getManaPotions()+number);
+            mageEquipment.setGold(gold - number* mageEquipment.potions.getManaPotionGoldValue());
+        }
+        return mageEquipment;
+    }
 }
