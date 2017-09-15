@@ -1,6 +1,6 @@
 package ds.game.shop;
 
-import ds.game.equipment.Equipment;
+import ds.game.equipment.basic.Equipment;
 import org.springframework.stereotype.Service;
 
 /**

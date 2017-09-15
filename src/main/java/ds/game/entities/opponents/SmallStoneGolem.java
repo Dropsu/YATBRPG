@@ -1,8 +1,7 @@
 package ds.game.entities.opponents;
 
-import ds.game.abillities.Roar;
-import ds.game.entities.AbstractEntity;
-import ds.game.equipment.Damage;
+import ds.game.entities.basic.AbstractEntity;
+import ds.game.equipment.basic.Damage;
 
 /**
  * Created by Damian on 05.09.2017.

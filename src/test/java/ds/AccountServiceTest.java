@@ -3,7 +3,6 @@ package ds;
 import ds.account.Account;
 import ds.account.AccountRepository;
 import ds.account.AccountServiceImpl;
-import ds.game.hero.MageRepository;
 import org.junit.Before;
 import org.junit.Test;
 

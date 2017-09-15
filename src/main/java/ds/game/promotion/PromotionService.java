@@ -1,7 +1,6 @@
 package ds.game.promotion;
 
-import ds.config.Session;
-import ds.messaging.Message;
+import ds.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,15 +44,13 @@ public class PromotionService {
                 +(session.getMage().concentration-10)*additionalManaPointsPerConcentrationPoint;
     }
 
-    public Message receivePoints(DistributedPoints distributedPoints){
+    public void receivePoints(DistributedPoints distributedPoints){
 
         if(correctNumberOfPointsIsAdded(distributedPoints)){
             distributePoints(distributedPoints);
             raiseMaxHealthPoints();
             raiseMaxManaPoints();
-            return new Message("Points spared");
-        } else
-        return new Message("Error during Point Sparing");
+        }
     }
 
     private void distributePoints(DistributedPoints distributedPoints) {

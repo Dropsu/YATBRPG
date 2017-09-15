@@ -1,6 +1,5 @@
 package ds.account;
 
-import ds.game.hero.MageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

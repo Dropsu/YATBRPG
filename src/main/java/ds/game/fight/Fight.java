@@ -1,7 +1,7 @@
 package ds.game.fight;
 
-import ds.game.entities.AbstractEntity;
-import ds.game.entities.Mage;
+import ds.game.entities.basic.AbstractEntity;
+import ds.game.entities.basic.Mage;
 
 import java.util.ArrayList;
 import java.util.List;

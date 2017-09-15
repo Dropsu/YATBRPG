@@ -1,14 +1,11 @@
 package ds.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import ds.game.entities.Mage;
-import ds.game.entities.PlayersHero;
+import ds.game.entities.basic.Mage;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity

@@ -1,6 +1,15 @@
 package ds.game.shop;
 
-import ds.game.equipment.*;
+import ds.game.equipment.armors.PlateArmor;
+import ds.game.equipment.armors.WarmMageCoat;
+import ds.game.equipment.basic.Armor;
+import ds.game.equipment.basic.Item;
+import ds.game.equipment.basic.Ring;
+import ds.game.equipment.basic.Weapon;
+import ds.game.equipment.rings.AgilityRing;
+import ds.game.equipment.rings.HealingAndStrangthRing;
+import ds.game.equipment.weapons.SuperSword;
+import ds.game.equipment.weapons.WoodenLog;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

@@ -1,9 +1,11 @@
 package ds.game.fight;
 
-import ds.config.Session;
-import ds.game.abillities.*;
-import ds.game.entities.AbstractEntity;
-import ds.game.entities.Mage;
+import ds.game.abillities.basic.Ability;
+import ds.game.abillities.basic.Source;
+import ds.game.abillities.basic.Target;
+import ds.session.Session;
+import ds.game.entities.basic.AbstractEntity;
+import ds.game.entities.basic.Mage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

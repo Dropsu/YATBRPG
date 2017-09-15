@@ -1,7 +1,7 @@
 package ds.game.shop;
 
-import ds.config.Session;
-import ds.game.equipment.*;
+import ds.game.equipment.basic.*;
+import ds.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package ds.listeners;
 
-import ds.config.Session;
-import ds.game.hero.MageRepository;
+import ds.session.Session;
+import ds.account.repositories.MageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

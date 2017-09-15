@@ -2,8 +2,8 @@ package ds.listeners;
 
 import ds.account.Account;
 import ds.account.AccountRepository;
-import ds.config.Session;
-import ds.game.entities.Mage;
+import ds.session.Session;
+import ds.game.entities.basic.Mage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.InteractiveAuthenticationSuccessEvent;

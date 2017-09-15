@@ -1,6 +1,6 @@
 package ds.game.fight;
 
-import ds.game.entities.AbstractEntity;
+import ds.game.entities.basic.AbstractEntity;
 import ds.game.entities.opponents.SmallStoneGolem;
 import ds.game.entities.opponents.Wolf;
 import org.springframework.stereotype.Component;
