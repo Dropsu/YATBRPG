@@ -14,10 +14,10 @@ public abstract class Item {
 
     @Id
     @GeneratedValue
-    protected long id;
+    private long id;
 
-    protected String name;
-    protected int value;
+    private String name;
+    private int value;
 
     public Item() {
     }
@@ -36,5 +36,13 @@ public abstract class Item {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

@@ -18,17 +18,17 @@ public class HealingAndStrangthRing extends Ring {
     private long id;
 
     public HealingAndStrangthRing() {
-        this.name="Healing and strength Ring";
+        this.setName("Healing and strength Ring");
         this.setValue(100);
     }
 
     @Override
     public void battlePersistentEffect(AbstractEntity target) {
-        target.strength+=10;
+        target.setStrength(target.getStrength() + 10);
     }
 
     @Override
     public void everyTurnEffect(AbstractEntity target) {
-        target.healthPoints+=10;
+        target.setHealthPoints(target.getHealthPoints() + 10);
     }
 }

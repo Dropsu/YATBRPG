@@ -18,16 +18,16 @@ public class DrinkHealthPotion extends Ability {
     private long id;
 
     public DrinkHealthPotion() {
-        this.name="Drink Health Potion";
-        this.target = Target.SELF;
-        this.missable = false;
+        this.setName("Drink Health Potion");
+        this.setTarget(Target.SELF);
+        this.setMissable(false);
     }
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        if(source.equipment.getPotions().getHealthPotions()>0){
-            target.healthPoints+=30;
-            source.equipment.getPotions().setHealthPotions(source.equipment.getPotions().getHealthPotions()-1);
+        if(source.getEquipment().getPotions().getHealthPotions()>0){
+            target.setHealthPoints(target.getHealthPoints() + 30);
+            source.getEquipment().getPotions().setHealthPotions(source.getEquipment().getPotions().getHealthPotions()-1);
             log.add("Health Potion drunk");
         }
     }

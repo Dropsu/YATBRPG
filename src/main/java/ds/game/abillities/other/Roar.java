@@ -20,14 +20,14 @@ public class Roar extends Ability {
     private long id;
 
     public Roar() {
-        this.name="Roar";
-        this.target= Target.SELF;
-        this.description = "Wrrr";
+        this.setName("Roar");
+        this.setTarget(Target.SELF);
+        this.setDescription("Wrrr");
     }
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        target.healthPoints+=1;
+        target.setHealthPoints(target.getHealthPoints() + 1);
         log.add("healed");
     }
 }

@@ -37,10 +37,6 @@ public class Account {
         this.password = password;
     }
 
-    public void addHero(String login){
-        this.playersHero = new Mage(login);
-    }
-
     public String getPassword() {
         return password;
     }

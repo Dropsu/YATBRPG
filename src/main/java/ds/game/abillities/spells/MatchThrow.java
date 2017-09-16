@@ -23,17 +23,17 @@ public class MatchThrow extends Spell {
 
 
     public MatchThrow() {
-        this.name="Match Throw";
-        this.target= Target.OTHER;
+        this.setName("Match Throw");
+        this.setTarget(Target.OTHER);
         this.damage = new Damage(1,4);
-        this.description = "Throws a match in opponents's face - deal "+damage+" damage.";
-        this.missable = true;
-        this.cost = 15;
+        this.setDescription("Throws a match in opponents's face - deal "+damage+" damage.");
+        this.setMissable(true);
+        this.setCost(15);
     }
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        log.add(source.name + " throws a match in " + target.name+" dealing "+damage+" damage");
-        target.healthPoints -= (damage.getRandomDamage() + getSpellLevel()*2);
+        log.add(source.getName() + " throws a match in " + target.getName() +" dealing "+damage+" damage");
+        target.setHealthPoints(target.getHealthPoints() - (damage.getRandomDamage()));
     }
 }

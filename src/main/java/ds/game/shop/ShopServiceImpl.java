@@ -22,41 +22,65 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Equipment buyItem(String itemName, String itemType) {
-        Equipment mageEquipment = session.getMage().equipment;
-        int gold = mageEquipment.getGold();
+        Equipment mageEquipment = getMageEquipment();
+        int gold = getMageGold(mageEquipment);
         Item item = shopItems.findItemByName(itemName);
-        if(item.getValue()>gold){
+        if(!isItemAffordable(gold, item)){
             return mageEquipment;
         }
+        if(placeItemInRightSpot(itemType, mageEquipment, item)){
+            payItemCost(gold, item);
+        }
+        return mageEquipment;
+    }
+
+    private void payItemCost(int gold, Item item) {
+        session.getMage().getEquipment().setGold(gold-item.getValue());
+    }
+
+    private boolean placeItemInRightSpot(String itemType, Equipment mageEquipment, Item item) {
+        boolean isItemPlaced = false;
         if(itemType.equals("weapon")){
             if(mageEquipment.getWeapon()==null){
                 Weapon weapon = (Weapon) item;
                 mageEquipment.setWeapon(weapon);
-                mageEquipment.setGold(gold-weapon.getValue());
+                isItemPlaced = true;
             }
         } else if(itemType.equals("armor")){
             if(mageEquipment.getArmor()==null){
                 Armor armor = (Armor) item;
                 mageEquipment.setArmor(armor);
-                mageEquipment.setGold(gold-armor.getValue());
+                isItemPlaced = true;
             }
         } else if(itemType.equals("ring")){
             Ring ring = (Ring) item;
             if(mageEquipment.getLeftHandRing()==null){
                 mageEquipment.setLeftHandRing(ring);
-                mageEquipment.setGold(gold-ring.getValue());
+                isItemPlaced = true;
             } else if(mageEquipment.getRightHandRing()==null){
                 mageEquipment.setRightHandRing(ring);
-                mageEquipment.setGold(gold-ring.getValue());
+                isItemPlaced = true;
             }
         }
-        return mageEquipment;
+        return isItemPlaced;
+    }
+
+    private Equipment getMageEquipment() {
+        return session.getMage().getEquipment();
+    }
+
+    private int getMageGold(Equipment mageEquipment) {
+        return mageEquipment.getGold();
+    }
+
+    private boolean isItemAffordable(int gold, Item item) {
+        return item.getValue()>gold;
     }
 
     @Override
     public Equipment sellItem(String itemType) {
-        Equipment magesEquipment = session.getMage().equipment;
-        int gold = magesEquipment.getGold();
+        Equipment magesEquipment = getMageEquipment();
+        int gold = getMageGold(magesEquipment);
         if(itemType.equals("weapon")&&magesEquipment.getWeapon()!=null){
             magesEquipment.setGold(gold+magesEquipment.getWeapon().getValue());
             magesEquipment.setWeapon(null);
@@ -74,7 +98,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     public Equipment serveItemsForMage() {
-        return session.getMage().equipment;
+        return getMageEquipment();
     }
 
     @Override
@@ -84,16 +108,32 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Equipment buyPotions(int number, String type) {
-        int gold = session.getMage().equipment.getGold();
-        Equipment mageEquipment = session.getMage().equipment;
-        if(type.equals("healthPotion")&&gold>= number* mageEquipment.potions.getHealthPotionGoldValue()){
+        int gold = getMageGold(getMageEquipment());
+        Equipment mageEquipment = getMageEquipment();
+        if(type.equals("healthPotion")&& areHealthPotionsAffordable(number, gold, mageEquipment)){
             mageEquipment.potions.setHealthPotions(mageEquipment.potions.getHealthPotions()+number);
-            mageEquipment.setGold(gold - number * mageEquipment.potions.getHealthPotionGoldValue());
+            payHealthPotionsCost(number, gold, mageEquipment);
         }
-        if(type.equals("manaPotion")&&gold>= number* mageEquipment.potions.getManaPotionGoldValue()){
+        if(type.equals("manaPotion")&& areManaPotionsAffordable(number, gold, mageEquipment)){
             mageEquipment.potions.setManaPotions(mageEquipment.potions.getManaPotions()+number);
-            mageEquipment.setGold(gold - number* mageEquipment.potions.getManaPotionGoldValue());
+            payManaPotionsCost(number, gold, mageEquipment);
         }
         return mageEquipment;
+    }
+
+    private void payManaPotionsCost(int number, int gold, Equipment mageEquipment) {
+        mageEquipment.setGold(gold - number* mageEquipment.potions.getManaPotionGoldValue());
+    }
+
+    private void payHealthPotionsCost(int number, int gold, Equipment mageEquipment) {
+        mageEquipment.setGold(gold - number * mageEquipment.potions.getHealthPotionGoldValue());
+    }
+
+    private boolean areManaPotionsAffordable(int number, int gold, Equipment mageEquipment) {
+        return gold>= number* mageEquipment.potions.getManaPotionGoldValue();
+    }
+
+    private boolean areHealthPotionsAffordable(int number, int gold, Equipment mageEquipment) {
+        return gold>= number* mageEquipment.potions.getHealthPotionGoldValue();
     }
 }

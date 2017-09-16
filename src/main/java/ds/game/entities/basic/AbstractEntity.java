@@ -12,42 +12,147 @@ import java.util.List;
 @MappedSuperclass
 public abstract class AbstractEntity {
 
-	public int level;
-	public String name;
-	public int healthPoints;
-	public int healthRegen;
+	private int level;
+	private String name;
+	private int healthPoints;
+	private int healthRegen;
 	
-	public int strength;
-	public int accuracy;
-	public int agility;
-	public int condition;
-	public int experienceForDefeating;
+	private int strength;
+	private int accuracy;
+	private int agility;
+	private int condition;
+	private int experienceForDefeating;
+	private int goldForDefeating;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public Damage noWeaponDamage;
+	private Damage noWeaponDamage;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public List<Ability> abilities = new ArrayList<>();
+	private List<Ability> abilities = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public Equipment equipment;
+	private Equipment equipment;
 
 	public AbstractEntity() {
-		this.abilities.add(new PhysicalAttack());
+		this.getAbilities().add(new PhysicalAttack());
 	}
 
 	public AbstractEntity (AbstractEntity other){
-		this.name = other.name;
-		this.level = other.level;
-		this.healthPoints = other.healthPoints;
-		this.condition = other.condition;
-		this.strength = other.strength;
-		this.accuracy = other.accuracy;
-		this.agility = other.agility;
-		this.noWeaponDamage = other.noWeaponDamage;
+		this.setName(other.getName());
+		this.setLevel(other.getLevel());
+		this.setHealthPoints(other.getHealthPoints());
+		this.setCondition(other.getCondition());
+		this.setStrength(other.getStrength());
+		this.setAccuracy(other.getAccuracy());
+		this.setAgility(other.getAgility());
+		this.setNoWeaponDamage(other.getNoWeaponDamage());
 
-		this.abilities = other.abilities;
+		this.setAbilities(other.getAbilities());
 
-		this.equipment = null;
+		this.setEquipment(null);
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getHealthPoints() {
+		return healthPoints;
+	}
+
+	public void setHealthPoints(int healthPoints) {
+		this.healthPoints = healthPoints;
+	}
+
+	public int getHealthRegen() {
+		return healthRegen;
+	}
+
+	public void setHealthRegen(int healthRegen) {
+		this.healthRegen = healthRegen;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public int getAccuracy() {
+		return accuracy;
+	}
+
+	public void setAccuracy(int accuracy) {
+		this.accuracy = accuracy;
+	}
+
+	public int getAgility() {
+		return agility;
+	}
+
+	public void setAgility(int agility) {
+		this.agility = agility;
+	}
+
+	public int getCondition() {
+		return condition;
+	}
+
+	public void setCondition(int condition) {
+		this.condition = condition;
+	}
+
+	public int getExperienceForDefeating() {
+		return experienceForDefeating;
+	}
+
+	public void setExperienceForDefeating(int experienceForDefeating) {
+		this.experienceForDefeating = experienceForDefeating;
+	}
+
+	public Damage getNoWeaponDamage() {
+		return noWeaponDamage;
+	}
+
+	public void setNoWeaponDamage(Damage noWeaponDamage) {
+		this.noWeaponDamage = noWeaponDamage;
+	}
+
+	public List<Ability> getAbilities() {
+		return abilities;
+	}
+
+	public void setAbilities(List<Ability> abilities) {
+		this.abilities = abilities;
+	}
+
+	public Equipment getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(Equipment equipment) {
+		this.equipment = equipment;
+	}
+
+	public int getGoldForDefeating() {
+		return goldForDefeating;
+	}
+
+	public void setGoldForDefeating(int goldForDefeating) {
+		this.goldForDefeating = goldForDefeating;
 	}
 }

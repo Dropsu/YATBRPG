@@ -18,7 +18,7 @@ public class SuperSword extends Weapon {
     private long id;
 
     public SuperSword() {
-        this.name="Super Sword";
+        this.setName("Super Sword");
         this.setDamage(new Damage(500,1000));
         this.setValue(15);
     }

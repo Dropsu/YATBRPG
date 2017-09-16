@@ -10,15 +10,16 @@ import ds.game.equipment.basic.Damage;
 public class Wolf extends AbstractEntity {
 
     public Wolf() {
-        this.level=1;
-        this.accuracy=10;
-        this.agility=10;
-        this.condition=10;
-        this.strength=10;
-        this.noWeaponDamage=new Damage(1,6);
-        this.healthPoints=10;
-        this.name="Angry Wolf";
-        this.abilities.add(new Roar());
-        this.experienceForDefeating = 15;
+        this.setLevel(1);
+        this.setAccuracy(10);
+        this.setAgility(10);
+        this.setCondition(10);
+        this.setStrength(10);
+        this.setNoWeaponDamage(new Damage(1,6));
+        this.setHealthPoints(10);
+        this.setName("Angry Wolf");
+        this.getAbilities().add(new Roar());
+        this.setExperienceForDefeating(15);
+        this.setGoldForDefeating(15);
     }
 }

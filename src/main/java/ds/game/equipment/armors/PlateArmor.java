@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 public class PlateArmor extends Armor {
 
     public PlateArmor() {
-        this.name="Plate Armor";
+        this.setName("Plate Armor");
         this.setDamageReduction(5);
         this.setValue(25);
     }

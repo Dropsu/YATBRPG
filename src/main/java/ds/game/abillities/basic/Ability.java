@@ -12,11 +12,11 @@ public abstract class Ability {
     @Id
     @GeneratedValue
     private long id;
-    public String name;
-    public Target target;
-    public String description;
-    public boolean missable = true;
-    public int cost = 0;
+    private String name;
+    private Target target;
+    private String description;
+    private boolean missable = true;
+    private int cost = 0;
 
     public Ability() {
     }
@@ -35,7 +35,55 @@ public abstract class Ability {
 
         Ability ability = (Ability) o;
 
-        return name.equals(ability.name);
+        return getName().equals(ability.getName());
 
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Target getTarget() {
+        return target;
+    }
+
+    public void setTarget(Target target) {
+        this.target = target;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isMissable() {
+        return missable;
+    }
+
+    public void setMissable(boolean missable) {
+        this.missable = missable;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 }

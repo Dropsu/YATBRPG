@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 public class WarmMageCoat extends Armor {
 
     public WarmMageCoat() {
-        this.name="Warm Mage Coat";
+        this.setName("Warm Mage Coat");
         this.setDamageReduction(1);
         this.setValue(10);
     }

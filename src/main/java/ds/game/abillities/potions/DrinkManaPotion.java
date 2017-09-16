@@ -21,17 +21,17 @@ public class DrinkManaPotion extends Ability {
     private long id;
 
     public DrinkManaPotion() {
-        this.name="Drink Mana Potion";
-        this.target = Target.SELF;
-        this.missable = false;
+        this.setName("Drink Mana Potion");
+        this.setTarget(Target.SELF);
+        this.setMissable(false);
     }
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        if(source.equipment.getPotions().getManaPotions()>0){
+        if(source.getEquipment().getPotions().getManaPotions()>0){
             AbstractMagicalEntity abstractMagicalEntity = (AbstractMagicalEntity) source;
-            abstractMagicalEntity.manaPoints+=30;
-            source.equipment.getPotions().setManaPotions(source.equipment.getPotions().getManaPotions()-1);
+            abstractMagicalEntity.setManaPoints(abstractMagicalEntity.getManaPoints() + 30);
+            source.getEquipment().getPotions().setManaPotions(source.getEquipment().getPotions().getManaPotions()-1);
             log.add("Mana Potion drunk");
         }
     }

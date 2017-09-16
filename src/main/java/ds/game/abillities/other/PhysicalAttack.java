@@ -21,29 +21,29 @@ public class PhysicalAttack extends Ability {
     private long id;
 
     public PhysicalAttack() {
-        this.name="Physical Attack";
-        this.target= Target.OTHER;
-        this.description="Attack with weapon in hand, or with no weapon";
-        this.missable = true;
+        this.setName("Physical Attack");
+        this.setTarget(Target.OTHER);
+        this.setDescription("Attack with weapon in hand, or with no weapon");
+        this.setMissable(true);
     }
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         int damage;
-        if(source.equipment==null || source.equipment.getWeapon()==null){
-            damage = source.noWeaponDamage.getRandomDamage();
+        if(source.getEquipment() ==null || source.getEquipment().getWeapon()==null){
+            damage = source.getNoWeaponDamage().getRandomDamage();
         } else {
-            damage = source.equipment.getWeapon().getDamage().getRandomDamage();
+            damage = source.getEquipment().getWeapon().getDamage().getRandomDamage();
         }
-        damage += source.strength-10;
-        if(!(target.equipment==null || target.equipment.getArmor()==null)){
-            damage -= target.equipment.getArmor().getDamageReduction();
+        damage += source.getStrength() -10;
+        if(!(target.getEquipment() ==null || target.getEquipment().getArmor()==null)){
+            damage -= target.getEquipment().getArmor().getDamageReduction();
             if(damage<0){
                 damage=0;
             }
         }
-        target.healthPoints -= damage;
-        log.add(source.name+" has physically attacked "+target.name+" dealing "+damage+" damage");
+        target.setHealthPoints(target.getHealthPoints() - damage);
+        log.add(source.getName() +" has physically attacked "+ target.getName() +" dealing "+damage+" damage");
     }
 
 }

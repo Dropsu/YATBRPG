@@ -12,14 +12,16 @@ public class AccountServiceImpl implements AccountService {
 
 
     private AccountRepository accountRepository;
+    private MageCreator mageCreator;
 
     @Autowired
-    public AccountServiceImpl(AccountRepository accountRepository) {
+    public AccountServiceImpl(AccountRepository accountRepository, MageCreator mageCreator) {
         this.accountRepository = accountRepository;
+        this.mageCreator = mageCreator;
     }
 
     public void registerAccount(Account account) {
-        account.addHero(account.getUsername()); //TODO: move it somewhere else, change hero creation
+        account.setPlayersHero(mageCreator.buildMageForNewAccount(account.getUsername()));
         accountRepository.save(account);
     }
 }

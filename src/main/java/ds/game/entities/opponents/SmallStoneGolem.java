@@ -9,14 +9,15 @@ import ds.game.equipment.basic.Damage;
 public class SmallStoneGolem extends AbstractEntity {
 
     public SmallStoneGolem() {
-        this.level=1;
-        this.accuracy=10;
-        this.agility=8;
-        this.condition=10;
-        this.strength=16;
-        this.noWeaponDamage=new Damage(1,5);
-        this.healthPoints=15;
-        this.name="Small Stone Golem";
-        this.experienceForDefeating = 15;
+        this.setLevel(1);
+        this.setAccuracy(10);
+        this.setAgility(8);
+        this.setCondition(10);
+        this.setStrength(16);
+        this.setNoWeaponDamage(new Damage(1,5));
+        this.setHealthPoints(15);
+        this.setName("Small Stone Golem");
+        this.setExperienceForDefeating(15);
+        this.setGoldForDefeating(10);
     }
 }

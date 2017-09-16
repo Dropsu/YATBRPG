@@ -1,6 +1,7 @@
 package ds.game.fight;
 
 import ds.game.abillities.basic.Source;
+import ds.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FightController {
 
     private FightService fightService;
+    private Session session;
 
     @Autowired
-    public FightController(FightService fightService) {
+    public FightController(FightService fightService, Session session) {
         this.fightService = fightService;
+        this.session = session;
     }
+
+
+
 
 
     @RequestMapping(method = RequestMethod.GET)
@@ -29,7 +35,8 @@ public class FightController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody Fight prepareFight(){
-        return fightService.prepareFight();
+        fightService.prepareFight();
+        return session.getFight();
     }
 
     @RequestMapping(value = "/finish", method = RequestMethod.GET)
@@ -41,6 +48,7 @@ public class FightController {
 
     @RequestMapping(value = "/next-turn", method = RequestMethod.POST)
     public @ResponseBody Fight  nextTurn (String abilityName){
-        return fightService.nextTurn(Source.MAGE,abilityName);
+        fightService.processTurn(Source.MAGE,abilityName);
+        return session.getFight();
     }
 }

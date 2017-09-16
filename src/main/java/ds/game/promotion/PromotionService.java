@@ -24,29 +24,29 @@ public class PromotionService {
     }
 
     public void grantLevelAndAbilitiesPointsIfEnoughExp (){
-        while(session.getMage().experiencePoints>=experienceTable[session.getMage().level+1]){
-            session.getMage().level++;
-            session.getMage().abilitiesPointsToSpare+=abilitiesPointsPerLevel;
+        while(session.getMage().getExperiencePoints() >=experienceTable[session.getMage().getLevel() +1]){
+            session.getMage().setLevel(session.getMage().getLevel() + 1);
+            session.getMage().setAbilitiesPointsToSpare(session.getMage().getAbilitiesPointsToSpare() + abilitiesPointsPerLevel);
         }
     }
 
     private void raiseMaxHealthPoints () {
         int basicHealthPointsIncreasePerLevel = 10;
         int additionalHealthPointsPerConditionPoint = 3;
-        session.getMage().healthPoints+=basicHealthPointsIncreasePerLevel
-                +(session.getMage().condition-10)*additionalHealthPointsPerConditionPoint;
+        session.getMage().setHealthPoints(session.getMage().getHealthPoints() + basicHealthPointsIncreasePerLevel
+                +(session.getMage().getCondition() -10)*additionalHealthPointsPerConditionPoint);
     }
 
     private void raiseMaxManaPoints () {
         int basicManaPointsIncreasePerLevel = 10;
         int additionalManaPointsPerConcentrationPoint = 7;
-        session.getMage().manaPoints+=basicManaPointsIncreasePerLevel
-                +(session.getMage().concentration-10)*additionalManaPointsPerConcentrationPoint;
+        session.getMage().setManaPoints(session.getMage().getManaPoints() + basicManaPointsIncreasePerLevel
+                +(session.getMage().getConcentration() -10)*additionalManaPointsPerConcentrationPoint);
     }
 
     public void receivePoints(DistributedPoints distributedPoints){
 
-        if(correctNumberOfPointsIsAdded(distributedPoints)){
+        if(isCorrectNumberOfPointsAdded(distributedPoints)){
             distributePoints(distributedPoints);
             raiseMaxHealthPoints();
             raiseMaxManaPoints();
@@ -54,16 +54,16 @@ public class PromotionService {
     }
 
     private void distributePoints(DistributedPoints distributedPoints) {
-        session.getMage().strength=distributedPoints.getStrength();
-        session.getMage().condition=distributedPoints.getCondition();
-        session.getMage().agility=distributedPoints.getAgility();
-        session.getMage().accuracy=distributedPoints.getAccuracy();
-        session.getMage().concentration=distributedPoints.getConcentration();
-        session.getMage().abilitiesPointsToSpare=0;
+        session.getMage().setStrength(distributedPoints.getStrength());
+        session.getMage().setCondition(distributedPoints.getCondition());
+        session.getMage().setAgility(distributedPoints.getAgility());
+        session.getMage().setAccuracy(distributedPoints.getAccuracy());
+        session.getMage().setConcentration(distributedPoints.getConcentration());
+        session.getMage().setAbilitiesPointsToSpare(0);
     }
 
-    private boolean correctNumberOfPointsIsAdded(DistributedPoints distributedPoints){
-        if(distributedPoints.sumAbilitiesPoints()== session.getMage().abilitiesPointsToSpare) {
+    private boolean isCorrectNumberOfPointsAdded(DistributedPoints distributedPoints){
+        if(distributedPoints.sumAbilitiesPoints()== session.getMage().getAbilitiesPointsToSpare()) {
             return false;
         }
         else return true;

@@ -3,6 +3,7 @@ package ds;
 import ds.account.Account;
 import ds.account.AccountRepository;
 import ds.account.AccountServiceImpl;
+import ds.account.MageCreator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,12 +16,14 @@ import static org.mockito.Mockito.verify;
  */
 public class AccountServiceTest {
     private AccountRepository mockAccountRepository;
+    private MageCreator mockMageCreator;
     private AccountServiceImpl service;
 
     @Before
     public void setUpMocksAndService (){
         mockAccountRepository = mock(AccountRepository.class);
-        service = new AccountServiceImpl(mockAccountRepository);
+        mockMageCreator = mock(MageCreator.class);
+        service = new AccountServiceImpl(mockAccountRepository, mockMageCreator);
     }
 
     @Test

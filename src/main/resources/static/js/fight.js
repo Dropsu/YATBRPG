@@ -34,12 +34,12 @@ function fillMage(mage) {
 }
 
 function fillOpponent(opponent) {
-    $("#opponents-name").text(opponent.name);
-    $("#opponents-hp").text(opponent.healthPoints);
-    $("#opponents-accuracy").text(opponent.accuracy);
-    $("#opponents-agility").text(opponent.agility);
-    $("#opponents-strength").text(opponent.strength);
-    $("#opponents-condition").text(opponent.condition);
+    $("#opponent-name").text(opponent.name);
+    $("#opponent-hp").text(opponent.healthPoints);
+    $("#opponent-accuracy").text(opponent.accuracy);
+    $("#opponent-agility").text(opponent.agility);
+    $("#opponent-strength").text(opponent.strength);
+    $("#opponent-condition").text(opponent.condition);
 }
 function addToPageLog(log) {
     $("#innerLogDiv").remove();
