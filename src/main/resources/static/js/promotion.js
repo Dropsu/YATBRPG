@@ -72,7 +72,6 @@ $(function () {
 
     $("#reset").click(function () {
         location.reload();
-    })
-
+    });
 
 });

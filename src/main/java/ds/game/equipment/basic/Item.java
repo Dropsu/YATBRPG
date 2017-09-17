@@ -18,6 +18,7 @@ public abstract class Item {
 
     private String name;
     private int value;
+    private String description ="";
 
     public Item() {
     }
@@ -44,5 +45,13 @@ public abstract class Item {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -16,19 +16,20 @@
 <p>Mana Potions:<span id="mana-potions" readonly></span></p>
 <p><input value="0" id="mana-potions-number"><button id="buyManaPotion" type="button" name="manaPotion">Buy Mana Potions</button>Cost:<span id="mana-potion-cost"></span></p>
 <br>
-<p><span>Weapon:<input class="input" name="weapon" id="weapon"readonly><button type="button" name="weapon"  class="sell">Sell</button>value:</span><span class="val" id="weaponval"></span></p>
-<p><span>Armor:<input class="input" name="armor" id="armor" readonly><button type="button" name="armor"  class="sell">Sell</button>value:</span><span class="val" id="armorval"></span></p>
-<p><span>Left Hand Ring:<input class="input" name="leftHandRing" id="lring" readonly><button type="button" name="leftHandRing" class="sell" >Sell</button>value:</span><span class="val" id="lringval"></span></p>
-<p><span>Right Hand Ring:<input class="input" name="rightHandRing" id="rring" readonly><button type="button" name="rightHandRing" class="sell">Sell</button>value:</span><span class="val" id="rringval"></span></p>
+<h4>Equipment:</h4>
+<p class="item" id="weapon_p"><span>Weapon:<span id="weapon" name="weapon"></span>  Damage: <span id="damage"></span><button type="button" name="weapon"  class="sell">Sell</button>value:<span class="val" id="weaponval"></span></span></p>
+<p class="item" id="armor_p"><span>Armor:<span name="armor" id="armor"></span>  Damage Reduction: <span id="damageReduction"></span><button type="button" name="armor"  class="sell">Sell</button>value:</span><span class="val" id="armorval"></span></p>
+<p class="item" id="lring_p"><span>Left Hand Ring:<span name="leftHandRing" id="lring" ></span><button type="button" name="leftHandRing" class="sell" >Sell</button>value:</span><span class="val" id="lringval"></span>    <span id="lringdesc"></span></p>
+<p class="item" id="rring_p"><span>Right Hand Ring:<span name="rightHandRing" id="rring"></span><button type="button" name="rightHandRing" class="sell">Sell</button>value:</span><span class="val" id="rringval"></span>   <span id="rringdesc"></span></p>
 
-<p>Shop:</p>
-<p>Weapons:</p>
+<h4>Shop:</h4>
+<h5>Weapons:</h5>
 <table id="weapons">
 </table>
-<p>Armors:</p>
+<h5>Armors:</h5>
 <table id="armors">
 </table>
-<p>Rings:</p>
+<h5>Rings:</h5>
 <table id="rings">
 </table>
 <p><a class="btn btn-primary" role="button" th:href="@{/}">Back</a></p>

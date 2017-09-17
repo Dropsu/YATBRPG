@@ -29,10 +29,11 @@ public class DrinkManaPotion extends Ability {
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         if(source.getEquipment().getPotions().getManaPotions()>0){
+            int manaRegain = source.getEquipment().getPotions().getManaPotionHealingValue();
             AbstractMagicalEntity abstractMagicalEntity = (AbstractMagicalEntity) source;
-            abstractMagicalEntity.setManaPoints(abstractMagicalEntity.getManaPoints() + 30);
+            abstractMagicalEntity.setManaPoints(abstractMagicalEntity.getManaPoints() + manaRegain);
             source.getEquipment().getPotions().setManaPotions(source.getEquipment().getPotions().getManaPotions()-1);
-            log.add("Mana Potion drunk");
+            log.add(target.getName()+" used mana potion and regain "+manaRegain+" mana");
         }
     }
 }

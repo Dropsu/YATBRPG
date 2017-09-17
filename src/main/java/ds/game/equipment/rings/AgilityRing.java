@@ -20,6 +20,7 @@ public class AgilityRing extends Ring {
     public AgilityRing() {
         this.setName("Agility Ring");
         this.setValue(50);
+        this.setDescription("Super Agile");
     }
 
     @Override

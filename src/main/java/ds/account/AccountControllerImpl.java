@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Damian on 21.08.2017.
@@ -20,8 +21,8 @@ public class AccountControllerImpl implements AccountContoller {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String registerAccount(Account account) {
-        accountService.registerAccount(account);
-        return "login";
+    public @ResponseBody String registerAccount(Account account) {
+        String message = accountService.registerAccount(account);
+        return message;
     }
 }

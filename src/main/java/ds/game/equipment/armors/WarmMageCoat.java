@@ -14,5 +14,6 @@ public class WarmMageCoat extends Armor {
         this.setName("Warm Mage Coat");
         this.setDamageReduction(1);
         this.setValue(10);
+        this.setDescription("Comfy");
     }
 }

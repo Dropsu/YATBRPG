@@ -17,6 +17,9 @@ public class Potions {
     private int healthPotionGoldValue = 30;
     private int manaPotionGoldValue = 30;
 
+    private int healthPotionHealingValue = 10;
+    private int manaPotionHealingValue = 10;
+
 
     private int healthPotions;
     private int manaPotions;
@@ -50,5 +53,21 @@ public class Potions {
 
     public void setManaPotionGoldValue(int manaPotionGoldValue) {
         this.manaPotionGoldValue = manaPotionGoldValue;
+    }
+
+    public int getHealthPotionHealingValue() {
+        return healthPotionHealingValue;
+    }
+
+    public void setHealthPotionHealingValue(int healthPotionHealingValue) {
+        this.healthPotionHealingValue = healthPotionHealingValue;
+    }
+
+    public int getManaPotionHealingValue() {
+        return manaPotionHealingValue;
+    }
+
+    public void setManaPotionHealingValue(int manaPotionHealingValue) {
+        this.manaPotionHealingValue = manaPotionHealingValue;
     }
 }

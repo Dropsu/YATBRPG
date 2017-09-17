@@ -33,7 +33,8 @@ public class MatchThrow extends Spell {
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        log.add(source.getName() + " throws a match in " + target.getName() +" dealing "+damage+" damage");
-        target.setHealthPoints(target.getHealthPoints() - (damage.getRandomDamage()));
+        int damageDealt = damage.getRandomDamage();
+        log.add(source.getName() + " throws a match in " + target.getName() +" dealing "+damageDealt+" damage");
+        target.setHealthPoints(target.getHealthPoints() - (damageDealt));
     }
 }

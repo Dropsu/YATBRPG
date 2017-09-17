@@ -24,10 +24,6 @@ public class FightController {
         this.session = session;
     }
 
-
-
-
-
     @RequestMapping(method = RequestMethod.GET)
     public String returnFightPageAndPrepareFight (){
         return "fight";
@@ -42,7 +38,7 @@ public class FightController {
     @RequestMapping(value = "/finish", method = RequestMethod.GET)
     public String finishFight (){
         fightService.finishFight();
-        return "home";
+        return "redirect:/";
     }
 
 

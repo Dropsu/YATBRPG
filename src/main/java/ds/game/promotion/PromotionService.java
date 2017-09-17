@@ -38,8 +38,8 @@ public class PromotionService {
     }
 
     private void raiseMaxManaPoints () {
-        int basicManaPointsIncreasePerLevel = 10;
-        int additionalManaPointsPerConcentrationPoint = 7;
+        int basicManaPointsIncreasePerLevel = 15;
+        int additionalManaPointsPerConcentrationPoint = 5;
         session.getMage().setManaPoints(session.getMage().getManaPoints() + basicManaPointsIncreasePerLevel
                 +(session.getMage().getConcentration() -10)*additionalManaPointsPerConcentrationPoint);
     }

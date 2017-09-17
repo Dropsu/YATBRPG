@@ -21,5 +21,6 @@ public class WoodenLog extends Weapon {
         this.setName("Wooden Log");
         this.setDamage(new Damage(10,20));
         this.setValue(1);
+        this.setDescription("Quite Heavy");
     }
 }

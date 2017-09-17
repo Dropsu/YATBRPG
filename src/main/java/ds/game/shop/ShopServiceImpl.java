@@ -74,7 +74,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     private boolean isItemAffordable(int gold, Item item) {
-        return item.getValue()>gold;
+        return item.getValue()<=gold;
     }
 
     @Override

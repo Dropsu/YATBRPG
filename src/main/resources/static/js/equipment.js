@@ -16,22 +16,66 @@ function sendForItems() {
 function fillShop(shopItems) {
 
     shopItems.weapons.forEach(function (weapon) {
+        var p = document.createElement("p");
+        var itemName = document.createElement("span");
+        var itemCost = document.createElement("span");
         var button = document.createElement("button");
-        button.innerHTML = weapon.name;
+        var damage = document.createElement("span");
+        var description = document.createElement("span");
+        button.innerHTML = "Buy";
+        itemName.innerHTML=weapon.name;
+        itemCost.innerHTML="Price: "+weapon.value;
+        damage.innerHTML="  Damage:"+weapon.damage.minDamage+"-"+weapon.damage.maxDamage;
+        description.innerHTML="     "+weapon.description;
         button.setAttribute("onclick", "buy('" + weapon.name + "','weapon');");
-        $("#weapons").append(button);
+        p.append(itemName);
+        p.append(damage);
+        p.append(button);
+        p.append(itemCost);
+        p.append(description);
+        $("#weapons").append(p);
     });
     shopItems.armors.forEach(function (armor) {
+        var p = document.createElement("p");
+        var itemName = document.createElement("span");
+        var itemCost = document.createElement("span");
+        var damageReduction = document.createElement("span");
         var button = document.createElement("button");
-        button.innerHTML = armor.name;
+        var description = document.createElement("description");
+
+        button.innerHTML = "Buy";
+        itemName.innerHTML=armor.name;
+        itemCost.innerHTML="Price: "+armor.value;
+        damageReduction.innerHTML=" Damage Reduction: "+armor.damageReduction;
+        description.innerHTML="     "+armor.description;
         button.setAttribute("onclick", "buy('" + armor.name + "','armor');");
-        $("#armors").append(button);
+        p.append(itemName);
+        p.append(damageReduction);
+        p.append(button);
+        p.append(itemCost);
+        p.append(description);
+        $("#armors").append(p);
     });
     shopItems.rings.forEach(function (ring) {
+        var p = document.createElement("p");
+        var itemName = document.createElement("span");
+        var itemCost = document.createElement("span");
         var button = document.createElement("button");
-        button.innerHTML = ring.name;
+        var description = document.createElement("description");
+        var button = document.createElement("button");
+
+        button.innerHTML = "Buy";
+        itemName.innerHTML=ring.name;
+        itemCost.innerHTML="Price: "+ring.value;
+        description.innerHTML="     "+ring.description;
         button.setAttribute("onclick", "buy('" + ring.name + "','ring');");
-        $("#rings").append(button);
+
+        p.append(itemName);
+        p.append(button);
+        p.append(itemCost);
+        p.append(description);
+
+        $("#rings").append(p);
     })
 
 }
@@ -62,22 +106,31 @@ function fillPotions(potions) {
 
 function fillItems(equipment) {
     $(".input").val("");
+    $(".item").hide();
     $(".val").text("");
     $("#gold").text(equipment.gold);
     if(equipment.weapon!=null) {
-        $("#weapon").val(equipment.weapon.name);
+        $("#weapon_p").show();
+        $("#weapon").text(equipment.weapon.name);
+        $("#damage").text(equipment.weapon.damage.minDamage+"-"+equipment.weapon.damage.maxDamage);
         $("#weaponval").text(equipment.weapon.value);
     }
     if(equipment.armor!=null) {
-        $("#armor").val(equipment.armor.name);
+        $("#armor_p").show();
+        $("#armor").text(equipment.armor.name);
+        $("#damageReduction").text(equipment.armor.damageReduction);
         $("#armorval").text(equipment.armor.value);
     }
     if(equipment.leftHandRing!=null) {
-        $("#lring").val(equipment.leftHandRing.name);
+        $("#lring_p").show();
+        $("#lring").text(equipment.leftHandRing.name);
+        $("#lringdesc").text(equipment.leftHandRing.description)
         $("#lringval").text(equipment.leftHandRing.value);
     }
     if(equipment.rightHandRing!=null) {
-        $("#rring").val(equipment.rightHandRing.name);
+        $("#rring_p").show();
+        $("#rring").text(equipment.rightHandRing.name);
+        $("#rringdesc").text(equipment.rightHandRing.description)
         $("#rringval").text(equipment.rightHandRing.value);
     }
 

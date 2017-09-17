@@ -99,6 +99,9 @@ public class AbilityHandler {
         double hitChanceChangePerPointDifference = 0.05;
         int pointsDifference = source.getAccuracy() - target.getAgility();
         hitChance+=pointsDifference*hitChanceChangePerPointDifference;
+        if(hitChance<0.4){
+            hitChance=0.4;
+        }
         boolean abilityHit = ThreadLocalRandom.current().nextDouble() < hitChance;
         return abilityHit;
     }
