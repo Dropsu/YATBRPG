@@ -68,10 +68,18 @@ function displayAbilities(abilities, mage) {
 
         } else
         if(ability.cost<=mage.manaPoints) {
+            var p = document.createElement("p");
+            var description  = document.createElement("span");
             var button = document.createElement("button");
+
             button.innerHTML = ability.name;
+            description.innerHTML = ability.description;
             button.setAttribute("onclick", "send('" + ability.name + "');");
-            innerAbilitiesDiv.append(button);
+
+            p.append(button);
+            p.append(description);
+
+            innerAbilitiesDiv.append(p);
         }
 });
     $("#abilities").append(innerAbilitiesDiv);

@@ -38,9 +38,9 @@ public class PhysicalAttack extends Ability {
         damage += source.getStrength() -10;
         if(!(target.getEquipment() ==null || target.getEquipment().getArmor()==null)){
             damage -= target.getEquipment().getArmor().getDamageReduction();
-            if(damage<0){
-                damage=0;
-            }
+        }
+        if(damage<0){
+            damage=0;
         }
         target.setHealthPoints(target.getHealthPoints() - damage);
         log.add(source.getName() +" has physically attacked "+ target.getName() +" dealing "+damage+" damage");

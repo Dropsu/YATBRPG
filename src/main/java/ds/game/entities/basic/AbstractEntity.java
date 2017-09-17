@@ -89,7 +89,11 @@ public abstract class AbstractEntity {
 	}
 
 	public void setStrength(int strength) {
-		this.strength = strength;
+		if (strength<0){
+			this.strength=0;
+		} else {
+			this.strength = strength;
+		}
 	}
 
 	public int getAccuracy() {
@@ -97,7 +101,11 @@ public abstract class AbstractEntity {
 	}
 
 	public void setAccuracy(int accuracy) {
-		this.accuracy = accuracy;
+		if(accuracy<0){
+			this.accuracy=0;
+		} else {
+			this.accuracy = accuracy;
+		}
 	}
 
 	public int getAgility() {
@@ -105,7 +113,11 @@ public abstract class AbstractEntity {
 	}
 
 	public void setAgility(int agility) {
-		this.agility = agility;
+		if(agility<0){
+			this.agility=0;
+		} else {
+			this.agility = agility;
+		}
 	}
 
 	public int getCondition() {
@@ -113,7 +125,11 @@ public abstract class AbstractEntity {
 	}
 
 	public void setCondition(int condition) {
-		this.condition = condition;
+		if(condition<0){
+			this.condition=0;
+		} else {
+			this.condition = condition;
+		}
 	}
 
 	public int getExperienceForDefeating() {

@@ -9,14 +9,6 @@
     <title>Fight</title>
 </head>
 <body>
-<div style="position: absolute;
-right: 10px";>
-<table>
-    <tbody id="log">
-    </tbody>
-</table>
-<a class="btn btn-primary" role="button" id="finish" style="display: none" th:href="@{/fight/finish}">Fight Finished!</a>
-</div>
 <h2>Hero</h2>
 <p>Name: <span id="mage-name"></span></p>
 <p>Level: <span id="mage-level"></span></p>
@@ -34,7 +26,14 @@ right: 10px";>
 <p>Condition: <span name="condition" id="mage-condition"></span></p>
 <p>Concentration:<span name="concentration" id="mage-concentration"></span></p>
 
-
+<div style="position: absolute;
+right: 10px";>
+    <table>
+        <tbody id="log">
+        </tbody>
+    </table>
+    <a class="btn btn-primary" role="button" id="finish" style="display: none" th:href="@{/fight/finish}">Fight Finished!</a>
+</div>
 
 <div id="abilities"></div>
 

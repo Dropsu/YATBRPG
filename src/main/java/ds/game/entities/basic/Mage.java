@@ -57,6 +57,10 @@ public class Mage extends AbstractMagicalEntity implements PlayersHero {
     }
 
     public void setConcentration(int concentration) {
-        this.concentration = concentration;
+        if(concentration<0){
+            this.concentration=0;
+        } else {
+            this.concentration = concentration;
+        }
     }
 }
