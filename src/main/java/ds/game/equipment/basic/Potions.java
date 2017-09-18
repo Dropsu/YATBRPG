@@ -18,7 +18,7 @@ public class Potions {
     private int manaPotionGoldValue = 30;
 
     private int healthPotionHealingValue = 10;
-    private int manaPotionHealingValue = 10;
+    private int manaPotionHealingValue = 15;
 
 
     private int healthPotions;

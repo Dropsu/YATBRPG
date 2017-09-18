@@ -16,13 +16,12 @@ public class DrinkHealthPotion extends Ability {
     @Id
     @GeneratedValue
     private long id;
-    private int healingFor;
 
     public DrinkHealthPotion() {
         this.setName("Drink Health Potion");
         this.setTarget(Target.SELF);
         this.setMissable(false);
-        this.setDescription("Drink one of your health potions");
+        this.setDescription("Drink one of your health potions(healing for 10)");
     }
 
     @Override

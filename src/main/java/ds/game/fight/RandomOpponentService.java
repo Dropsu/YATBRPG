@@ -26,7 +26,7 @@ public class RandomOpponentService {
         opponents.add(new BigPoisonousFlower());
     }
 
-    public AbstractEntity getRandomOpponentForLevel(int level) { //TODO: would be sufficient to store class
+    public AbstractEntity getRandomOpponentForLevel(int level) {
         List<AbstractEntity> resultForLevel;
         resultForLevel = opponents.stream().filter(opponent -> opponent.getLevel() ==level)
                 .collect(Collectors.toList());

@@ -32,6 +32,6 @@ public class PoisonousPowder extends Ability {
         target.setStrength(target.getStrength()-strengthTaken);
         target.setCondition(target.getCondition()-conditionTaken);
         log.add(source.getName()+" released poisonous powder, "+target.getName()+" took big unhealthy breath of it,"+
-        target.getName()+" losses "+conditionTaken+" condition and"+strengthTaken+" strength.");
+        target.getName()+" losses "+conditionTaken+" condition and "+strengthTaken+" strength.");
     }
 }

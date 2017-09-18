@@ -24,7 +24,7 @@ public class DrinkManaPotion extends Ability {
         this.setName("Drink Mana Potion");
         this.setTarget(Target.SELF);
         this.setMissable(false);
-        this.setDescription("Drink one of your mana potions");
+        this.setDescription("Drink one of your mana potions(healing for 15)");
     }
 
     @Override

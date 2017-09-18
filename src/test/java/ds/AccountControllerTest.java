@@ -12,6 +12,8 @@ import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
@@ -41,12 +43,5 @@ public class AccountControllerTest {
         Account expectedAccCreated = new Account("John","superKick");
 
         verify(mockService, atLeastOnce()).registerAccount(expectedAccCreated);
-    }
-
-    @Test
-    public void OnRegisteringNewAccountShouldReturnHomeView () throws Exception {
-        mockMvc.perform(post("/account/register")
-                .param("username","whatever")
-                .param("password","some")).andExpect(view().name("login"));
     }
 }

@@ -29,7 +29,7 @@ public class PlayerTurnHandler {
             abilityHandler.handleAbility(sourceENUM,abilityName);
         if(isPlayerLosingHealthDueToLowCondition()){
             int damage = dealDamageForLowCondition();
-            fightLogger.addToLog(session.getFight().getMage().getName()+" has taken "+damage+" due to low condition");
+            fightLogger.addToLog(session.getFight().getMage().getName()+" has taken "+damage+" damage due to low condition");
         }
 
         return session.getFight();

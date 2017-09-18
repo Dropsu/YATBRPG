@@ -4,11 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/js/fight.js"></script>
     <title>Fight</title>
 </head>
 <body>
+<div style="position: absolute;
+right: 10px";>
+    <table>
+        <tbody id="log">
+        </tbody>
+    </table>
+    <a class="btn btn-primary" role="button" id="finish" style="display: none" th:href="@{/fight/finish}">Fight Finished!</a>
+</div>
 <h2>Hero</h2>
 <p>Name: <span id="mage-name"></span></p>
 <p>Level: <span id="mage-level"></span></p>
@@ -25,15 +34,6 @@
 <p>Accuracy:<span name="accuracy" id="mage-accuracy"></span></p>
 <p>Condition: <span name="condition" id="mage-condition"></span></p>
 <p>Concentration:<span name="concentration" id="mage-concentration"></span></p>
-
-<div style="position: absolute;
-right: 10px";>
-    <table>
-        <tbody id="log">
-        </tbody>
-    </table>
-    <a class="btn btn-primary" role="button" id="finish" style="display: none" th:href="@{/fight/finish}">Fight Finished!</a>
-</div>
 
 <div id="abilities"></div>
 
