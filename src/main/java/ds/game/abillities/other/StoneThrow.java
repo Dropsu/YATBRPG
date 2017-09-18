@@ -29,10 +29,12 @@ public class StoneThrow extends Ability {
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         int damageDealt = source.getNoWeaponDamage().getRandomDamage();
-        int agilityTaken = 2;
+        int agilityTaken = 3;
         String messageToLog=source.getName()+" throws a stone at "+target.getName()+" dealing "+
                 damageDealt+" damage. "+target.getName()+" is dazed -"+
                 agilityTaken+" agility\n";
+        target.setHealthPoints(target.getHealthRegen()-damageDealt);
+        target.setAccuracy(target.getAgility()-agilityTaken);
 
         if(target instanceof Mage){
             int concentrationTaken = 2;
