@@ -20,6 +20,7 @@ public class HealingAndStrangthRing extends Ring {
     public HealingAndStrangthRing() {
         this.setName("Healing and strength Ring");
         this.setValue(100);
+        this.setDescription("Health and strength");
     }
 
     @Override

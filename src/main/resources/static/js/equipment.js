@@ -23,16 +23,16 @@ function fillShop(shopItems) {
         var damage = document.createElement("span");
         var description = document.createElement("span");
         button.innerHTML = "Buy";
-        itemName.innerHTML=weapon.name;
-        itemCost.innerHTML="Price: "+weapon.value;
-        damage.innerHTML="  Damage:"+weapon.damage.minDamage+"-"+weapon.damage.maxDamage;
-        description.innerHTML="     "+weapon.description;
+        itemName.innerHTML=weapon.name+" | ";
+        itemCost.innerHTML="Price: "+weapon.value+" | ";
+        damage.innerHTML="  Damage:"+weapon.damage.minDamage+"-"+weapon.damage.maxDamage+" | ";
+        description.innerHTML="     "+weapon.description+" | ";
         button.setAttribute("onclick", "buy('" + weapon.name + "','weapon');");
         p.append(itemName);
         p.append(damage);
-        p.append(button);
         p.append(itemCost);
         p.append(description);
+        p.append(button);
         $("#weapons").append(p);
     });
     shopItems.armors.forEach(function (armor) {
@@ -44,16 +44,16 @@ function fillShop(shopItems) {
         var description = document.createElement("description");
 
         button.innerHTML = "Buy";
-        itemName.innerHTML=armor.name;
-        itemCost.innerHTML="Price: "+armor.value;
-        damageReduction.innerHTML=" Damage Reduction: "+armor.damageReduction;
-        description.innerHTML="     "+armor.description;
+        itemName.innerHTML=armor.name+" | ";
+        itemCost.innerHTML="Price: "+armor.value+" | ";
+        damageReduction.innerHTML=" Damage Reduction: "+armor.damageReduction+" | ";
+        description.innerHTML="     "+armor.description+" | ";
         button.setAttribute("onclick", "buy('" + armor.name + "','armor');");
         p.append(itemName);
         p.append(damageReduction);
-        p.append(button);
         p.append(itemCost);
         p.append(description);
+        p.append(button);
         $("#armors").append(p);
     });
     shopItems.rings.forEach(function (ring) {
@@ -65,15 +65,15 @@ function fillShop(shopItems) {
         var button = document.createElement("button");
 
         button.innerHTML = "Buy";
-        itemName.innerHTML=ring.name;
-        itemCost.innerHTML="Price: "+ring.value;
-        description.innerHTML="     "+ring.description;
+        itemName.innerHTML=ring.name+" | ";
+        itemCost.innerHTML="Price: "+ring.value+" | ";
+        description.innerHTML="     "+ring.description+" | ";
         button.setAttribute("onclick", "buy('" + ring.name + "','ring');");
 
         p.append(itemName);
-        p.append(button);
         p.append(itemCost);
         p.append(description);
+        p.append(button);
 
         $("#rings").append(p);
     })
@@ -114,12 +114,14 @@ function fillItems(equipment) {
         $("#weapon").text(equipment.weapon.name);
         $("#damage").text(equipment.weapon.damage.minDamage+"-"+equipment.weapon.damage.maxDamage);
         $("#weaponval").text(equipment.weapon.value);
+        $("#weapondesc").text(equipment.weapon.description)
     }
     if(equipment.armor!=null) {
         $("#armor_p").show();
         $("#armor").text(equipment.armor.name);
         $("#damageReduction").text(equipment.armor.damageReduction);
         $("#armorval").text(equipment.armor.value);
+        $("#armordesc").text(equipment.armor.description)
     }
     if(equipment.leftHandRing!=null) {
         $("#lring_p").show();
