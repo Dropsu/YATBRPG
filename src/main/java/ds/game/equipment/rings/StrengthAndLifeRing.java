@@ -11,25 +11,25 @@ import javax.persistence.Id;
  * Created by Damian on 12.09.2017.
  */
 @Entity
-public class HealingAndStrangthRing extends Ring {
+public class StrengthAndLifeRing extends Ring {
 
     @Id
     @GeneratedValue
     private long id;
 
-    public HealingAndStrangthRing() {
-        this.setName("Healing and strength Ring");
+    public StrengthAndLifeRing() {
+        this.setName("Strength and Life Ring");
         this.setValue(100);
-        this.setDescription("Health and strength");
+        this.setDescription("Add 2 strength during fight and heals for 3 Health Points every turn");
     }
 
     @Override
     public void battlePersistentEffect(AbstractEntity target) {
-        target.setStrength(target.getStrength() + 10);
+        target.setStrength(target.getStrength() + 2);
     }
 
     @Override
     public void everyTurnEffect(AbstractEntity target) {
-        target.setHealthPoints(target.getHealthPoints() + 10);
+        target.setHealthPoints(target.getHealthPoints() + 3);
     }
 }

@@ -16,7 +16,7 @@ public class Wolf extends AbstractEntity {
         this.setCondition(10);
         this.setStrength(12);
         this.setNoWeaponDamage(new Damage(1,6));
-        this.setHealthPoints(10);
+        this.setHealthPoints(34);
         this.setName("Angry Wolf");
         this.getAbilities().add(new ExhaustingAttack());
         this.setExperienceForDefeating(15);

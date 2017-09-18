@@ -7,7 +7,7 @@ import ds.game.equipment.basic.Item;
 import ds.game.equipment.basic.Ring;
 import ds.game.equipment.basic.Weapon;
 import ds.game.equipment.rings.AgilityRing;
-import ds.game.equipment.rings.HealingAndStrangthRing;
+import ds.game.equipment.rings.StrengthAndLifeRing;
 import ds.game.equipment.weapons.SuperSword;
 import ds.game.equipment.weapons.WoodenLog;
 import org.springframework.stereotype.Component;
@@ -33,7 +33,7 @@ public class ShopItems {
         armors.add(new WarmMageCoat());
         armors.add(new PlateArmor());
 
-        rings.add(new HealingAndStrangthRing());
+        rings.add(new StrengthAndLifeRing());
         rings.add(new AgilityRing());
     }
 

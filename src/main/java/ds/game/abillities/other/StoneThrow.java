@@ -30,16 +30,16 @@ public class StoneThrow extends Ability {
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         int damageDealt = source.getNoWeaponDamage().getRandomDamage();
         int agilityTaken = 2;
-        String messageToLog=source.getName()+" throws a stone at "+target.getName()+" dealing"+
-                damageDealt+" damage and making him a little dazed, "+target.getName()+" looses also "+
-                agilityTaken+" points of agility";
+        String messageToLog=source.getName()+" throws a stone at "+target.getName()+" dealing "+
+                damageDealt+" damage. "+target.getName()+" is dazed -"+
+                agilityTaken+" agility\n";
 
         if(target instanceof Mage){
             int concentrationTaken = 2;
             Mage mage = (Mage)target;
             mage.setConcentration(mage.getConcentration()-concentrationTaken);
-            messageToLog+=" and "+concentrationTaken+"points of concentration";
+            messageToLog+=",-"+concentrationTaken+" concentration";
         }
-
+        log.add(messageToLog);
     }
 }

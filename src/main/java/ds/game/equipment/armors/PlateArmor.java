@@ -1,5 +1,7 @@
 package ds.game.equipment.armors;
 
+import ds.game.entities.basic.AbstractEntity;
+import ds.game.entities.basic.Mage;
 import ds.game.equipment.basic.Armor;
 
 import javax.persistence.Entity;
@@ -12,7 +14,17 @@ public class PlateArmor extends Armor {
 
     public PlateArmor() {
         this.setName("Plate Armor");
-        this.setDamageReduction(5);
-        this.setValue(25);
+        this.setDamageReduction(3);
+        this.setValue(50);
+        this.setDescription("Sorry it takes 3 agility and 2 concentration");
+    }
+
+    @Override
+    public void battlePersistentEffect(AbstractEntity target) {
+        target.setAgility(target.getAgility()-3);
+        if(target instanceof Mage){
+            Mage mage = (Mage) target;
+            mage.setConcentration(mage.getConcentration()-2);
+        }
     }
 }

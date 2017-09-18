@@ -25,11 +25,11 @@ public class MatchThrow extends Spell {
     public MatchThrow() {
         this.setName("Match Throw");
         this.setTarget(Target.OTHER);
-        this.damage = new Damage(1,4);
+        this.damage = new Damage(9,13);
         this.setDescription("Throws a match in opponents's face - dealing "+damage.getMinDamage()
                 +"-"+damage.getMaxDamage()+" damage.");
         this.setMissable(true);
-        this.setCost(15);
+        this.setCost(20);
     }
 
     @Override

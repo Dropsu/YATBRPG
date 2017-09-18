@@ -1,11 +1,10 @@
 package ds.game.fight;
 
 import ds.game.abillities.basic.Source;
+import ds.game.entities.basic.Mage;
 import ds.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Damian on 16.09.2017.
@@ -26,7 +25,7 @@ public class PlayerTurnHandler {
     }
 
     public Fight processPlayersTurn(Source sourceENUM, String abilityName){
-        applyEveryTurnRingsEffects();
+        applyEveryTurnEquipmentEffects(session.getFight().getMage());
             abilityHandler.handleAbility(sourceENUM,abilityName);
         if(isPlayerLosingHealthDueToLowCondition()){
             int damage = dealDamageForLowCondition();
@@ -47,12 +46,20 @@ public class PlayerTurnHandler {
         return damage;
     }
 
-    private void applyEveryTurnRingsEffects() {
-        if(session.getFight().getMage().getEquipment() !=null && session.getFight().getMage().getEquipment().getLeftHandRing()!=null){
-            session.getFight().getMage().getEquipment().getLeftHandRing().everyTurnEffect(session.getFight().getMage());
-        }
-        if(session.getFight().getMage().getEquipment() !=null && session.getFight().getMage().getEquipment().getRightHandRing()!=null){
-            session.getFight().getMage().getEquipment().getRightHandRing().everyTurnEffect(session.getFight().getMage());
+    private void applyEveryTurnEquipmentEffects(Mage fightMage) {
+        if(fightMage.getEquipment()!=null){
+            if(fightMage.getEquipment().getWeapon()!= null){
+                fightMage.getEquipment().getWeapon().everyTurnEffect(fightMage);
+            }
+            if(fightMage.getEquipment().getArmor()!= null){
+                fightMage.getEquipment().getArmor().everyTurnEffect(fightMage);
+            }
+            if(fightMage.getEquipment().getLeftHandRing()!= null){
+                fightMage.getEquipment().getLeftHandRing().everyTurnEffect(fightMage);
+            }
+            if(fightMage.getEquipment().getRightHandRing()!= null){
+                fightMage.getEquipment().getRightHandRing().everyTurnEffect(fightMage);
+            }
         }
     }
 }

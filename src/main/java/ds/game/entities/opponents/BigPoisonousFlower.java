@@ -17,9 +17,8 @@ public class BigPoisonousFlower extends AbstractEntity {
         this.setCondition(14);
         this.setStrength(13);
         this.setNoWeaponDamage(new Damage(1,6));
-        this.setHealthPoints(10);
-        this.setName("Angry Wolf");
-        this.getAbilities().add(new ExhaustingAttack());
+        this.setHealthPoints(32);
+        this.setName("Big poisonous Flower");
         this.setExperienceForDefeating(15);
         this.setGoldForDefeating(15);
         this.getAbilities().add(new PoisonousPowder());

@@ -1,5 +1,7 @@
 package ds.game.equipment.basic;
 
+import ds.game.entities.basic.AbstractEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +23,13 @@ public abstract class Item {
     private String description ="";
 
     public Item() {
+    }
+
+    public void battlePersistentEffect(AbstractEntity target){
+
+    }
+    public void everyTurnEffect(AbstractEntity target){
+
     }
 
     public String getName() {

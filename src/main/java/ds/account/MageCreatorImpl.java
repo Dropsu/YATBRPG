@@ -2,12 +2,14 @@ package ds.account;
 
 import ds.game.abillities.potions.DrinkHealthPotion;
 import ds.game.abillities.potions.DrinkManaPotion;
+import ds.game.abillities.spells.LightHealSpell;
 import ds.game.abillities.spells.MatchThrow;
+import ds.game.abillities.spells.WindSpeedSpell;
 import ds.game.entities.basic.Mage;
 import ds.game.equipment.armors.WarmMageCoat;
 import ds.game.equipment.basic.Damage;
 import ds.game.equipment.basic.Equipment;
-import ds.game.equipment.rings.HealingAndStrangthRing;
+import ds.game.equipment.rings.StrengthAndLifeRing;
 import ds.game.equipment.weapons.WoodenLog;
 import org.springframework.stereotype.Component;
 
@@ -38,14 +40,13 @@ public class MageCreatorImpl implements MageCreator {
         mage.setNoWeaponDamage(new Damage(1,3));
 
         mage.getAbilities().add(new MatchThrow());
+        mage.getAbilities().add(new WindSpeedSpell());
+        mage.getAbilities().add(new LightHealSpell());
         mage.getAbilities().add(new DrinkHealthPotion());
         mage.getAbilities().add(new DrinkManaPotion());
 
         mage.setEquipment(new Equipment());
         mage.getEquipment().setGold(0);
-        mage.getEquipment().setWeapon(new WoodenLog());
-        mage.getEquipment().setArmor(new WarmMageCoat());
-        mage.getEquipment().setLeftHandRing(new HealingAndStrangthRing());
         mage.getEquipment().potions.setHealthPotions(2);
         mage.getEquipment().potions.setManaPotions(2);
 

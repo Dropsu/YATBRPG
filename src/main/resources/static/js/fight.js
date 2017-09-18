@@ -66,27 +66,28 @@ function displayAbilities(abilities, mage) {
 
         } else if(ability.name=="Drink Mana Potion"&&mage.equipment.potions.manaPotions==0){
 
-        } else
+        } else {
             var p = document.createElement("p");
-            var description  = document.createElement("span");
+            var description = document.createElement("span");
             var cost = document.createElement("span");
             var notEnoughMana = document.createElement("span");
             var button = document.createElement("button");
 
             button.innerHTML = ability.name;
             description.innerHTML = ability.description;
-            cost.innerHTML="Mana cost: "+ability.cost+" | ";
-            notEnoughMana.innerHTML= "(not Enough mana) | " +ability.name+" | ";
+            cost.innerHTML = "Mana cost: " + ability.cost + " | ";
+            notEnoughMana.innerHTML = "(not Enough mana) | " + ability.name + " | ";
             button.setAttribute("onclick", "send('" + ability.name + "');");
 
-        if(ability.cost<=mage.manaPoints) {
-            p.append(button);
-        } else{
-            p.append(notEnoughMana);
-        }
+            if (ability.cost <= mage.manaPoints) {
+                p.append(button);
+            } else {
+                p.append(notEnoughMana);
+            }
             p.append(cost);
             p.append(description);
             innerAbilitiesDiv.append(p);
+        }
 
 });
     $("#abilities").append(innerAbilitiesDiv);

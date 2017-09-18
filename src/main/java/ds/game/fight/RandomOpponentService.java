@@ -1,6 +1,7 @@
 package ds.game.fight;
 
 import ds.game.entities.basic.AbstractEntity;
+import ds.game.entities.opponents.BigPoisonousFlower;
 import ds.game.entities.opponents.SmallStoneGolem;
 import ds.game.entities.opponents.Wolf;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ public class RandomOpponentService {
     public RandomOpponentService() {
         opponents.add(new Wolf());
         opponents.add(new SmallStoneGolem());
+        opponents.add(new BigPoisonousFlower());
     }
 
     public AbstractEntity getRandomOpponentForLevel(int level) { //TODO: would be sufficient to store class

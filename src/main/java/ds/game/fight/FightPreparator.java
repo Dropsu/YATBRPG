@@ -26,7 +26,7 @@ public class FightPreparator {
             AbstractEntity opponent = getRandomOpponentForMageLevel();
             Mage fightMage = new Mage(session.getMage());
             Fight fight = new Fight(fightMage, opponent);
-            applyRingsEffectsToMage(fightMage);
+            applyEquipmentEffects(fightMage);
             setNewFightToSession(fight);
         }
         return session.getFight();
@@ -36,12 +36,20 @@ public class FightPreparator {
         session.setFight(fight);
     }
 
-    private void applyRingsEffectsToMage(Mage fightMage) {
-        if(fightMage.getEquipment() != null&& fightMage.getEquipment().getLeftHandRing()!= null){
-            fightMage.getEquipment().getLeftHandRing().battlePersistentEffect(fightMage);
-        }
-        if(fightMage.getEquipment() != null&& fightMage.getEquipment().getRightHandRing()!= null){
-            fightMage.getEquipment().getRightHandRing().battlePersistentEffect(fightMage);
+    private void applyEquipmentEffects(Mage fightMage) {
+        if(fightMage.getEquipment()!=null){
+            if(fightMage.getEquipment().getWeapon()!= null){
+                fightMage.getEquipment().getWeapon().battlePersistentEffect(fightMage);
+            }
+            if(fightMage.getEquipment().getArmor()!= null){
+                fightMage.getEquipment().getArmor().battlePersistentEffect(fightMage);
+            }
+            if(fightMage.getEquipment().getLeftHandRing()!= null){
+                fightMage.getEquipment().getLeftHandRing().battlePersistentEffect(fightMage);
+            }
+            if(fightMage.getEquipment().getRightHandRing()!= null){
+                fightMage.getEquipment().getRightHandRing().battlePersistentEffect(fightMage);
+            }
         }
     }
 

@@ -13,7 +13,4 @@ public abstract class Ring extends Item  {
     public Ring() {
     }
 
-    public abstract void battlePersistentEffect(AbstractEntity target);
-    public abstract void everyTurnEffect(AbstractEntity target);
-
 }
