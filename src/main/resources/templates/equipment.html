@@ -12,9 +12,9 @@
 <p>Name: <span id="name"th:text="${@session.mage.name}"></span></p>
 <h4>Gold:<span id="gold" readonly></span></h4>
 <p>Health Potions:<span id="hp-potions" readonly></span></p>
-<p><input value="0" id="hp-potions-number"><button id="buyHealthPotion" type="button" name="healthPotion">Buy Health Potions</button>Cost:<span id="hp-potion-cost"></span></p>
+<p><input type="number" min="0" value="0" id="hp-potions-number"><button id="buyHealthPotion" type="button" name="healthPotion">Buy Health Potions</button>Cost:<span id="hp-potion-cost"></span></p>
 <p>Mana Potions:<span id="mana-potions" readonly></span></p>
-<p><input value="0" id="mana-potions-number"><button id="buyManaPotion" type="button" name="manaPotion">Buy Mana Potions</button>Cost:<span id="mana-potion-cost"></span></p>
+<p><input type="number" min="0" value="0" id="mana-potions-number"><button id="buyManaPotion" type="button" name="manaPotion">Buy Mana Potions</button>Cost:<span id="mana-potion-cost"></span></p>
 <br>
 <h4>Equipment:</h4>
 <p class="item" id="weapon_p"><span>Weapon: <span id="weapon" name="weapon"></span> | Damage: <span id="damage"></span></span> | <span id="weapondesc"></span> | value:<span class="val" id="weaponval"></span> | <button type="button" name="weapon"  class="sell">Sell</button></p>

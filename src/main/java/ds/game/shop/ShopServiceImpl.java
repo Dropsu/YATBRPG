@@ -108,8 +108,11 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Equipment buyPotions(int number, String type) {
-        int gold = getMageGold(getMageEquipment());
         Equipment mageEquipment = getMageEquipment();
+        if(number<=0){
+            return mageEquipment;
+        }
+        int gold = getMageGold(getMageEquipment());
         if(type.equals("healthPotion")&& areHealthPotionsAffordable(number, gold, mageEquipment)){
             mageEquipment.potions.setHealthPotions(mageEquipment.potions.getHealthPotions()+number);
             payHealthPotionsCost(number, gold, mageEquipment);

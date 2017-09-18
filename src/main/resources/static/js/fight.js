@@ -35,6 +35,7 @@ function fillMage(mage) {
 
 function fillOpponent(opponent) {
     $("#opponent-name").text(opponent.name);
+    $("#opponent-level").text(opponent.level);
     $("#opponent-hp").text(opponent.healthPoints);
     $("#opponent-accuracy").text(opponent.accuracy);
     $("#opponent-agility").text(opponent.agility);
