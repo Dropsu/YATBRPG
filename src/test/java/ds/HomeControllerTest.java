@@ -26,12 +26,4 @@ public class HomeControllerTest {
         MockMvc mockMvc = standaloneSetup(controller).build();
         mockMvc.perform(get("/")).andExpect(view().name("home"));
     }
-
-    /*@Test
-    public void homeControllerOnGetToLoginPageShouldReturnLoginPage () throws Exception {
-       //TODO: Circular path problem with view resolver... to resolve
-        HomeController controller = new HomeController();
-        MockMvc mockMvc = standaloneSetup(controller).build();
-        mockMvc.perform(get("/login")).andExpect(view().name("login"));
-    }*/
 }

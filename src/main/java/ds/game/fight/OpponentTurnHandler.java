@@ -1,9 +1,13 @@
 package ds.game.fight;
 
+import ds.game.abillities.basic.Ability;
 import ds.game.abillities.basic.Source;
 import ds.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Damian on 16.09.2017.
@@ -45,6 +49,9 @@ public class OpponentTurnHandler {
     }
 
     private void doOpponentsTurn(){
-        abilityHandler.handleAbility(Source.OPPONENT, session.getFight().getOpponent().getAbilities().get(0).getName());
+        List<Ability> abilities = session.getFight().getOpponent().getAbilities();
+        int abilityNumber = ThreadLocalRandom.current().nextInt(0,abilities.size());
+        abilityHandler.handleAbility(Source.OPPONENT, abilities.get(abilityNumber).getName());
     }
 }
+
