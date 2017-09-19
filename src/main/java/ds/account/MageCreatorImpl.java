@@ -10,6 +10,7 @@ import ds.game.equipment.armors.WarmMageCoat;
 import ds.game.equipment.basic.Damage;
 import ds.game.equipment.basic.Equipment;
 import ds.game.equipment.rings.StrengthAndLifeRing;
+import ds.game.equipment.weapons.WhiteMageStaff;
 import ds.game.equipment.weapons.WoodenLog;
 import org.springframework.stereotype.Component;
 
@@ -46,6 +47,7 @@ public class MageCreatorImpl implements MageCreator {
         mage.getAbilities().add(new DrinkManaPotion());
 
         mage.setEquipment(new Equipment());
+        mage.getEquipment().setWeapon(new WhiteMageStaff());
         mage.getEquipment().setGold(0);
         mage.getEquipment().potions.setHealthPotions(2);
         mage.getEquipment().potions.setManaPotions(2);

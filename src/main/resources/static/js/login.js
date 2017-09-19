@@ -3,8 +3,13 @@
  */
 $(function () {
    $("#register").click(function () {
-       $.post("/account/register",{"username":$("#username").val(),"password":$("#password").val()},function (message) {
-           $("#registration-message").text(message);
-       })
+       if($("#password").val()===$("#repeated-password").val()){
+           $.post("/account/register",{"username":$("#username").val(),"password":$("#password").val()},function (message) {
+               $("#registration-message").text(message);
+           })
+       } else {
+           $("#registration-message").text("Passwords are not identical");
+       }
+
    })
 });

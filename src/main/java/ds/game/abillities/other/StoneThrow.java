@@ -33,7 +33,7 @@ public class StoneThrow extends Ability {
         String messageToLog=source.getName()+" throws a stone at "+target.getName()+" dealing "+
                 damageDealt+" damage. "+target.getName()+" is dazed -"+
                 agilityTaken+" agility\n";
-        target.setHealthPoints(target.getHealthRegen()-damageDealt);
+        target.setHealthPoints(target.getHealthPoints()-damageDealt);
         target.setAccuracy(target.getAgility()-agilityTaken);
 
         if(target instanceof Mage){

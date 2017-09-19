@@ -16,16 +16,17 @@ public class AgilityRing extends Ring {
     @Id
     @GeneratedValue
     private long id;
+    private int agilityGain = 4;
 
     public AgilityRing() {
         this.setName("Agility Ring");
         this.setValue(50);
-        this.setDescription("Super Agile, easy to miss");
+        this.setDescription("Super Agile, easy to miss, adds "+agilityGain+ " agility");
     }
 
     @Override
     public void battlePersistentEffect(AbstractEntity target) {
-        target.setAgility(target.getAgility() + 4);
+        target.setAgility(target.getAgility() + agilityGain);
     }
 
     @Override

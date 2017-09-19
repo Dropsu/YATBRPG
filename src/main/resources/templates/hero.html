@@ -17,11 +17,12 @@
 <p>HealthPoints: <span id="hp"th:text="${@session.mage.healthPoints}"></span></p>
 <p>ManaPoints: <span id="mana"th:text="${@session.mage.manaPoints}"></span></p>
 <p>Experience Points: <span id="exp"th:text="${@session.mage.experiencePoints}"></p>
+<p>Experience Points for next level: <span th:text="${(@session.mage.level+1)*100}"></span></p>
 
 <h3>Atributes</h3>
 
 <form method="POST" th:action="@{/hero}">
-    <span> Strenght determines power of your <b>Physical Attacks</b>. Every point above 10 adds 1 point of damage to <b>Physical Attacks</b> base value.</span>
+    <span> Strenght determines power of your <b>Physical Attacks</b>. Every point above 10 adds 1 point of damage to <b>Physical Attacks</b> base value. Every point below 10 subtract 1 point from your damage.</span>
     <p><span>Strength:<input name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button type="button" id="addStr">Add</button></span></p>
     <span> Every point of difference between attackers Accuracy and defenders Agility changes <b>Chances of hit</b> by 5%. Base <b>Chances of hit</b>: 70%, minimum: 40%.</span>
     <p><span>Accuracy:<input name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button type="button" id="addAcc">Add</button></span></p>

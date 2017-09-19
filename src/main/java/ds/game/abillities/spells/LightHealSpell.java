@@ -32,6 +32,6 @@ public class LightHealSpell extends Spell {
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         log.add(source.getName()+"uses "+this.getName()+" and gains "+this.healthPointsGain+" health Points");
-        target.setHealthPoints(target.getHealthRegen()+healthPointsGain);
+        target.setHealthPoints(target.getHealthPoints()+healthPointsGain);
     }
 }
