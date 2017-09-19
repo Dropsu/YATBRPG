@@ -30,7 +30,12 @@ function fillMage(mage) {
     $("#mage-agility").text(mage.agility);
     $("#mage-strength").text(mage.strength);
     $("#mage-concentration").text(mage.concentration);
-    $("#mage-condition").text(mage.condition)
+    $("#mage-condition").text(mage.condition);
+    if(mage.equipment.weapon!=null){
+        $("#mage-damage").text(mage.equipment.weapon.damage.minDamage+"-"+mage.equipment.weapon.damage.maxDamage);
+    } else {
+        $("#mage-damage").text(mage.noWeaponDamage.minDamage + "-" + mage.noWeaponDamage.maxDamage);
+    }
 }
 
 function fillOpponent(opponent) {
@@ -41,6 +46,12 @@ function fillOpponent(opponent) {
     $("#opponent-agility").text(opponent.agility);
     $("#opponent-strength").text(opponent.strength);
     $("#opponent-condition").text(opponent.condition);
+    if(opponent.equipment!=null&&opponent.equipment.weapon!=null){
+        $("#opponent-damage").text(opponent.equipment.weapon.damage.minDamage+"-"+opponent.equipment.weapon.damage.maxDamage);
+    } else {
+        $("#opponent-damage").text(opponent.noWeaponDamage.minDamage+"-"+opponent.noWeaponDamage.maxDamage);
+    }
+
 }
 function addToPageLog(log) {
     $("#innerLogDiv").remove();

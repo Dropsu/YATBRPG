@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Damian on 05.09.2017.
  */
 @Entity
-public class MatchThrow extends Spell {
+public class MatchThrowSpell extends Spell {
 
     @Id
     @GeneratedValue
@@ -22,11 +22,11 @@ public class MatchThrow extends Spell {
     private Damage damage;
 
 
-    public MatchThrow() {
-        this.setName("Match Throw");
+    public MatchThrowSpell() {
+        this.setName("Match Throw Spell");
         this.setTarget(Target.OTHER);
         this.damage = new Damage(9,13);
-        this.setDescription("Throws a match in opponents's face - dealing "+damage.getMinDamage()
+        this.setDescription("Throws a magical match in opponents's face - dealing "+damage.getMinDamage()
                 +"-"+damage.getMaxDamage()+" damage.");
         this.setMissable(true);
         this.setCost(20);

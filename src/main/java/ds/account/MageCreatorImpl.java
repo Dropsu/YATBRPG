@@ -3,15 +3,12 @@ package ds.account;
 import ds.game.abillities.potions.DrinkHealthPotion;
 import ds.game.abillities.potions.DrinkManaPotion;
 import ds.game.abillities.spells.LightHealSpell;
-import ds.game.abillities.spells.MatchThrow;
+import ds.game.abillities.spells.MatchThrowSpell;
 import ds.game.abillities.spells.WindSpeedSpell;
 import ds.game.entities.basic.Mage;
-import ds.game.equipment.armors.WarmMageCoat;
 import ds.game.equipment.basic.Damage;
 import ds.game.equipment.basic.Equipment;
-import ds.game.equipment.rings.StrengthAndLifeRing;
 import ds.game.equipment.weapons.WhiteMageStaff;
-import ds.game.equipment.weapons.WoodenLog;
 import org.springframework.stereotype.Component;
 
 /**
@@ -40,7 +37,7 @@ public class MageCreatorImpl implements MageCreator {
         mage.setManaRegeneration(0);
         mage.setNoWeaponDamage(new Damage(1,3));
 
-        mage.getAbilities().add(new MatchThrow());
+        mage.getAbilities().add(new MatchThrowSpell());
         mage.getAbilities().add(new WindSpeedSpell());
         mage.getAbilities().add(new LightHealSpell());
         mage.getAbilities().add(new DrinkHealthPotion());

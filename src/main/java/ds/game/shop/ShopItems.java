@@ -9,6 +9,7 @@ import ds.game.equipment.basic.Weapon;
 import ds.game.equipment.rings.AgilityRing;
 import ds.game.equipment.rings.StrengthAndLifeRing;
 import ds.game.equipment.weapons.SuperSword;
+import ds.game.equipment.weapons.WhiteMageStaff;
 import ds.game.equipment.weapons.WoodenLog;
 import org.springframework.stereotype.Component;
 
@@ -27,14 +28,15 @@ public class ShopItems {
 
 
     public ShopItems() {
+        weapons.add(new WhiteMageStaff());
         weapons.add(new WoodenLog());
         weapons.add(new SuperSword());
 
         armors.add(new WarmMageCoat());
         armors.add(new PlateArmor());
 
-        rings.add(new StrengthAndLifeRing());
         rings.add(new AgilityRing());
+        rings.add(new StrengthAndLifeRing());
     }
 
     public Item findItemByName(String name) {

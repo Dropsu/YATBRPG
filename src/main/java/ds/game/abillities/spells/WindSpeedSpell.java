@@ -32,7 +32,7 @@ public class WindSpeedSpell extends Spell {
 
     @Override
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
-        log.add(source.getName()+"uses "+this.getName()+" and gains "+accuracyGain+" accuracy" +
+        log.add(source.getName()+" uses "+this.getName()+" and gains "+accuracyGain+" accuracy " +
                 " and "+agilityGain+" agility.");
         target.setAgility(target.getAgility()+agilityGain);
         target.setAccuracy(target.getAccuracy()+accuracyGain);
