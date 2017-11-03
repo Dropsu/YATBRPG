@@ -74,4 +74,45 @@ $(function () {
         location.reload();
     });
 
+    $('#strength_span').hover(
+        function () {
+            $('#s_des').show();
+        },
+        function () {
+            $('#s_des').hide();
+        }
+    );
+    $('#agi_span').hover(
+        function () {
+            $('#a_des').show();
+        },
+        function () {
+            $('#a_des').hide();
+        }
+    );
+    $('#acc_span').hover(
+        function () {
+            $('#a_des').show();
+        },
+        function () {
+            $('#a_des').hide();
+        }
+    );
+    $('#conc_span').hover(
+        function () {
+            $('#conc_des').show();
+        },
+        function () {
+            $('#conc_des').hide();
+        }
+    );
+    $('#cond_span').hover(
+        function () {
+            $('#cond_des').show();
+        },
+        function () {
+            $('#cond_des').hide();
+        }
+    );
+
 });

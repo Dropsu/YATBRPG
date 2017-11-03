@@ -124,3 +124,10 @@ function send(abilityName) {
 $(function () {
     sendForNewFight();
 });
+
+
+// Promisy
+// Constant i let
+// Arrow function
+// innerHtml
+// === in place of ==

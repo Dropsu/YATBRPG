@@ -3,40 +3,48 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Promotion</title>
+    <title>Hero Page</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/js/promotion.js"></script>
 </head>
-<body>
+<body background="images/escheresque.png">
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>Name: <span id="name"th:text="${@session.mage.name}"></span></p>
+            <p>Level: <span id="level"th:text="${@session.mage.level}"></span></p>
+            <p>HealthPoints: <span id="hp"th:text="${@session.mage.healthPoints}"></span></p>
+            <p>ManaPoints: <span id="mana"th:text="${@session.mage.manaPoints}"></span></p>
+            <p>Experience Points: <span id="exp"th:text="${@session.mage.experiencePoints}"></span>/<span th:text="${(@session.mage.level+1)*(@session.mage.level)*100}"></span></p>
+        </div>
 
-<p>Name: <span id="name"th:text="${@session.mage.name}"></span></p>
-<p>Level: <span id="level"th:text="${@session.mage.level}"></span></p>
-<p>HealthPoints: <span id="hp"th:text="${@session.mage.healthPoints}"></span></p>
-<p>ManaPoints: <span id="mana"th:text="${@session.mage.manaPoints}"></span></p>
-<p>Experience Points: <span id="exp"th:text="${@session.mage.experiencePoints}"></p>
-<p>Experience Points for next level: <span th:text="${(@session.mage.level+1)*100}"></span></p>
+        <div class="col">
+            <h4>Points: <span id="points"th:text="${@session.mage.abilitiesPointsToSpare}"></span></h4>
 
-<h3>Atributes</h3>
+            <form method="POST" th:action="@{/hero}">
+                <p><span id="strength_span"><strong>Strength: </strong><input class="form-control" name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button class="btn btn-primary" type="button" id="addStr">Add</button></span></p>
+                <p><span id="acc_span"><strong>Accuracy: </strong><input class="form-control" name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button class="btn btn-primary" type="button" id="addAcc">Add</button></span></p>
+                <p><span id="agi_span"><strong>Agility: </strong><input class="form-control" name="agility" id="agility"th:value="${@session.mage.agility}" readonly><button class="btn btn-primary" type="button" id="addAgi">Add</button></span></p>
+                <p><span id="cond_span"><strong>Condition: </strong> <input class="form-control" name="condition" id="condition"th:value="${@session.mage.condition}" readonly><button class="btn btn-primary" type="button" id="addCond">Add</button></span></p>
+                <p><span id="conc_span"><strong>Concentration: </strong><input class="form-control" name="concentration" id="concentration"th:value="${@session.mage.concentration}" readonly><button class="btn btn-primary" type="button" id="addConc">Add</button></span></p>
+                <input role="button" class="btn btn-success" id="confirm" th:type="submit" value="confirm" style="display: none">
+            </form>
 
-<form method="POST" th:action="@{/hero}">
-    <span> Strenght determines power of your <b>Physical Attacks</b>. Every point above 10 adds 1 point of damage to <b>Physical Attacks</b> base value. Every point below 10 subtract 1 point from your damage.</span>
-    <p><span>Strength:<input name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button type="button" id="addStr">Add</button></span></p>
-    <span> Every point of difference between attackers Accuracy and defenders Agility changes <b>Chances of hit</b> by 5%. Base <b>Chances of hit</b>: 70%, minimum: 40%.</span>
-    <p><span>Accuracy:<input name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button type="button" id="addAcc">Add</button></span></p>
-    <p><span>Agility:<input name="agility" id="agility"th:value="${@session.mage.agility}" readonly><button type="button" id="addAgi">Add</button></span></p>
-    <span> Every point of condition above 10 adds 3 additional <b>Health Points</b> on every promotion(base increase:10). For every point below 10 you will take 1 damage per turn during fight.</span>
-    <p><span>Condition: <input name="condition" id="condition"th:value="${@session.mage.condition}" readonly><button type="button" id="addCond">Add</button></span></p>
-    <span> Every point of concentration above 10 adds 5 additional <b>Mana Points</b> on every promotion(base increase:15). For every point below 10 you get 5% chance of failure on throwing <b>Spell</b>. Base chance: 0%</span>
-    <p><span>Concentration:<input name="concentration" id="concentration"th:value="${@session.mage.concentration}" readonly><button type="button" id="addConc">Add</button></span></p>
-    <input role="button" class="btn btn-primary" id="confirm" th:type="submit" value="confirm" style="display: none" hidden>
-</form>
-<h4>Points to spare: <span id="points"th:text="${@session.mage.abilitiesPointsToSpare}"></span></h4>
+            <p><button id="reset" class="btn btn-warning" role="button">Reset</button></p>
+            <p><a class="btn btn-primary" role="button" th:href="@{/}">Back</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <span id="s_des" style="display:none;"> Strength determines power of your <b>Physical Attacks</b>. Every point above 10 adds 1 point of damage to <b>Physical Attacks</b> base value. Every point below 10 subtract 1 point from your damage.</span>
+        <span id="a_des" style="display:none;"> Every point of difference between attackers Accuracy and defenders Agility changes <b>Chances of hit</b> by 5%. Base <b>Chances of hit</b>: 70%, minimum: 40%.</span>
+        <span id="cond_des" style="display:none;"> Every point of condition above 10 adds 3 additional <b>Health Points</b> on every promotion(base increase:10). For every point below 10 you will take 1 damage per turn during fight.</span>
+        <span id="conc_des" style="display:none;"> Every point of concentration above 10 adds 5 additional <b>Mana Points</b> on every promotion(base increase:15). For every point below 10 you get 5% chance of failure on throwing <b>Spell</b>. Base chance: 0%</span>
+    </div>
+</div>
 
-<p><a id="reset" class="btn btn-primary" role="button">Reset</a></p>
-<p><a class="btn btn-primary" role="button" th:href="@{/}">Back</a></p>
 
 </body>
 </html>

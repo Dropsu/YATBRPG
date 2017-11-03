@@ -28,7 +28,7 @@ public class RandomOpponentService {
 
     public AbstractEntity getRandomOpponentForLevel(int level) {
         List<AbstractEntity> resultForLevel;
-        resultForLevel = opponents.stream().filter(opponent -> opponent.getLevel() ==level)
+        resultForLevel = opponents.stream().filter(opponent -> opponent.getLevel() ==1)// NOT LEVEL SCALING FOR NOW
                 .collect(Collectors.toList());
         int randomIndex = ThreadLocalRandom.current().nextInt(0,resultForLevel.size());
         Class classOfOpponent = resultForLevel.get(randomIndex).getClass();

@@ -5,6 +5,7 @@ $(function () {
    $("#register").click(function () {
        if($("#password").val()===$("#repeated-password").val()){
            $.post("/account/register",{"username":$("#username").val(),"password":$("#password").val()},function (message) {
+               $("#registration-message").removeClass('d-none');
                $("#registration-message").text(message);
            })
        } else {

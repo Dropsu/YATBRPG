@@ -18,7 +18,7 @@ public class SmallStoneGolem extends AbstractEntity {
         this.setNoWeaponDamage(new Damage(1,5));
         this.setHealthPoints(40);
         this.setName("Small Stone Golem");
-        this.setExperienceForDefeating(15);
+        this.setExperienceForDefeating(50);
         this.setGoldForDefeating(10);
         this.getAbilities().add(new StoneThrow());
     }

@@ -19,7 +19,8 @@ public class PromotionService {
     public PromotionService(Session session) {
         this.session = session;
         for (int level = 0; level < 20 ; level++) {
-            experienceTable[level]=level*100;
+            experienceTable[level]=level*(level-1)*100;
+            experienceTable[1]=0;
         }
     }
 

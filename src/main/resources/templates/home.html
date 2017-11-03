@@ -4,26 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <title>In Game</title>
-</head>
-<body>
-<h1>Logged In!</h1>
-<!DOCTYPE html>
-<html>
-<head>
     <title>Hello WebSocket</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
 </head>
-<body>
+<body background="images/escheresque.png">
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
     enabled. Please enable
     Javascript and reload this page!</h2></noscript>
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col">
+            <h1 class="text-center">Main Panel</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card-deck">
+                <div class="card bg-light">
+                    <img class="card-img-top img-responsive" src="/images/user-silhouette.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">Promote your hero and check current statistics.</p>
+                        <a class="btn btn-primary" role="button" th:href="@{/hero}">Hero Page</a>
+                    </div>
+                </div>
+                <div class="card bg-light">
+                    <img class="card-img-top" src="/images/shield.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">Manage and buy equipment.</p>
+                        <a class="btn btn-primary" role="button" th:href="@{/equipment}">Equipment</a>
+                    </div>
+                </div>
+                <div class="card bg-light">
+                    <img class="card-img-top" src="/images/sword.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">Fight with dangerous opponents.</p>
+                        <a class="btn btn-primary" role="button" th:href="@{/fight}">Look for trouble</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<p><a class="btn btn-primary" role="button" th:href="@{/hero}">Hero Page</a></p>
-<p><a class="btn btn-primary" role="button" th:href="@{/equipment}">Equipment</a></p>
-<p><a class="btn btn-primary" role="button" th:href="@{/fight}">Look for trouble</a></p>
-<p><a class="btn btn-primary" role="button" th:href="@{/logout}">Log out</a></p>
-</body>
-</html>
+    </div>
+    <div class="row justify-content-end" style="margin-top: 20px">
+        <div class="col-3">
+            <div class="card bg-light">
+                <img class="card-img-top" src="/images/exit.png" alt="Card image cap">
+                <div class="card-body">
+                    <a class="btn btn-primary" role="button" th:href="@{/logout}">Log out</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<p></p>
+<p></p>
+<p></p>
 </body>
 </html>
