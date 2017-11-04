@@ -8,30 +8,43 @@
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/js/equipment.js"></script>
 </head>
-<body>
-<p>Name: <span id="name"th:text="${@session.mage.name}"></span></p>
-<h4>Gold:<span id="gold" readonly></span></h4>
-<p>Health Potions:<span id="hp-potions" readonly></span></p>
-<p><input type="number" min="0" value="0" id="hp-potions-number"><button id="buyHealthPotion" type="button" name="healthPotion">Buy Health Potions</button>Cost:<span id="hp-potion-cost"></span></p>
-<p>Mana Potions:<span id="mana-potions" readonly></span></p>
-<p><input type="number" min="0" value="0" id="mana-potions-number"><button id="buyManaPotion" type="button" name="manaPotion">Buy Mana Potions</button>Cost:<span id="mana-potion-cost"></span></p>
-<br>
-<h4>Equipment:</h4>
-<p class="item" id="weapon_p"><span>Weapon: <span id="weapon" name="weapon"></span> | Damage: <span id="damage"></span></span> | <span id="weapondesc"></span> | value:<span class="val" id="weaponval"></span> | <button type="button" name="weapon"  class="sell">Sell</button></p>
-<p class="item" id="armor_p"><span>Armor: <span name="armor" id="armor"></span> | Damage Reduction: <span id="damageReduction"></span> | value:</span><span class="val" id="armorval"></span> | <span id="armordesc"></span> | <button type="button" name="armor"  class="sell">Sell</button></p>
-<p class="item" id="lring_p"><span>Left Hand Ring: <span name="leftHandRing" id="lring" ></span> | value:</span><span class="val" id="lringval"></span> | <span id="lringdesc"></span> | <button type="button" name="leftHandRing" class="sell" >Sell</button></p>
-<p class="item" id="rring_p"><span>Right Hand Ring: <span name="rightHandRing" id="rring"></span> | value:</span><span class="val" id="rringval"></span> | <span id="rringdesc"></span> | <button type="button" name="rightHandRing" class="sell">Sell</button></p>
+<body background="images/escheresque.png">
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4><span id="name"th:text="${@session.mage.name}">:</span></h4>
+            <h1>Gold:<span id="gold" readonly></span></h1>
+            <h4>Equipment:</h4>
+            <p class="item" id="weapon_p"><span>Weapon: <span id="weapon" name="weapon"></span> | Damage: <span id="damage"></span></span> | <span id="weapondesc"></span> | value:<span class="val" id="weaponval"></span> | <button class="sell" type="button" name="weapon">Sell</button></p>
+            <p class="item" id="armor_p"><span>Armor: <span name="armor" id="armor"></span> | Damage Reduction: <span id="damageReduction"></span> | value:</span><span class="val" id="armorval"></span> | <span id="armordesc"></span> | <button class="btn btn-primary" type="button" name="armor"  class="sell">Sell</button></p>
+            <p class="item" id="lring_p"><span>Left Hand Ring: <span name="leftHandRing" id="lring" ></span> | value:</span><span class="val" id="lringval"></span> | <span id="lringdesc"></span> | <button class="btn btn-primary" type="button" name="leftHandRing" class="sell" >Sell</button></p>
+            <p class="item" id="rring_p"><span>Right Hand Ring: <span name="rightHandRing" id="rring"></span> | value:</span><span class="val" id="rringval"></span> | <span id="rringdesc"></span> | <button class="btn btn-primary" type="button" name="rightHandRing" class="sell">Sell</button></p>
+            <p>Health Potions:<span id="hp-potions" readonly></span></p>
+            <p><input class="form-control" type="number" min="0" value="0" id="hp-potions-number"><button  id="buyHealthPotion" type="button" name="healthPotion">Buy Health Potions</button>Cost:<span id="hp-potion-cost"></span></p>
+            <p>Mana Potions:<span id="mana-potions" readonly></span></p>
+            <p><input class="form-control" type="number" min="0" value="0" id="mana-potions-number"><button  id="buyManaPotion" type="button" name="manaPotion">Buy Mana Potions</button>Cost:<span id="mana-potion-cost"></span></p>
+            <br>
 
-<h4>Shop:</h4>
-<h5>Weapons:</h5>
-<table id="weapons">
-</table>
-<h5>Armors:</h5>
-<table id="armors">
-</table>
-<h5>Rings:</h5>
-<table id="rings">
-</table>
-<p><a class="btn btn-primary" role="button" th:href="@{/}">Back</a></p>
+        </div>
+        <div class="col">
+            <h4>Shop:</h4>
+            <h5>Weapons:</h5>
+            <table id="weapons">
+            </table>
+            <h5>Armors:</h5>
+            <table id="armors">
+            </table>
+            <h5>Rings:</h5>
+            <table id="rings">
+            </table>
+            <p><a class="btn btn-primary" role="button" th:href="@{/}">Back</a></p>
+        </div>
+
+    </div>
+
+</div>
+
+
+
 </body>
 </html>

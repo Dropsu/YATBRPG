@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/js/fight.js"></script>
+    <title>Fight</title>
+</head>
+<body>
+<div style="position: absolute;
+right: 10px";>
+    <table>
+        <tbody id="log">
+        </tbody>
+    </table>
+    <a class="btn btn-primary" role="button" id="finish" style="display: none" th:href="@{/fight/finish}">Fight Finished!</a>
+</div>
+<h2>Hero</h2>
+<h3 style="color: #0ddc15">Name: <span id="mage-name"></span></h3>
+<h3 style="color: #0ddc15">Level: <span id="mage-level"></span></h3>
+<h4 style="color: red">Health Points: <span id="mage-hp"></span></h4>
+<h4 style="color: cornflowerblue">Mana Points: <span id="mage-mana"></span></h4>
+<p>Health Potions: <span id="hp-potions"></span></p>
+<p>Mana Potions: <span id="mana-potions"></span></p>
+<p>Physical Damage: <span id="mage-damage"></span></p>
+
+
+
+
+<h3>Attributes</h3>
+<p>Strength:<span name="strength" id="mage-strength"></span></p>
+<p>Agility:<span name="agility" id="mage-agility"></span></p>
+<p>Accuracy:<span name="accuracy" id="mage-accuracy"></span></p>
+<p>Condition: <span name="condition" id="mage-condition"></span></p>
+<p>Concentration:<span name="concentration" id="mage-concentration"></span></p>
+
+<h3>Choose your action:</h3>
+<div id="abilities"></div>
+
+<h2>Opponent</h2>
+<h3 style="color: red">Name: <span id="opponent-name"></span></h3>
+<h3 style="color: red">Level: <span id="opponent-level"></span></h3>
+<h4 style="color: red">Health Points: <span id="opponent-hp"></span></h4>
+
+<h3>Attributes</h3>
+<p>Strength:<span name="strength" id="opponent-strength"></span></p>
+<p>Agility:<span name="agility" id="opponent-agility"></span></p>
+<p>Accuracy:<span name="accuracy" id="opponent-accuracy"></span></p>
+<p>Condition: <span name="condition" id="opponent-condition"></span></p>
+<p>Physical Damage: <span id="opponent-damage"></span></p>
+
+
+</body>
+</html>

@@ -89,6 +89,7 @@ function displayAbilities(abilities, mage) {
             description.innerHTML = ability.description;
             cost.innerHTML = "Mana cost: " + ability.cost + " | ";
             notEnoughMana.innerHTML = "(not Enough mana) | " + ability.name + " | ";
+            notEnoughMana.style.backgroundColor = "cornflowerblue";
             button.setAttribute("onclick", "send('" + ability.name + "');");
 
             if (ability.cost <= mage.manaPoints) {

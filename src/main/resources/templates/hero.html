@@ -25,11 +25,11 @@
             <h4>Points: <span id="points"th:text="${@session.mage.abilitiesPointsToSpare}"></span></h4>
 
             <form method="POST" th:action="@{/hero}">
-                <p><span id="strength_span"><strong>Strength: </strong><input class="form-control" name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button class="btn btn-primary" type="button" id="addStr">Add</button></span></p>
-                <p><span id="acc_span"><strong>Accuracy: </strong><input class="form-control" name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button class="btn btn-primary" type="button" id="addAcc">Add</button></span></p>
-                <p><span id="agi_span"><strong>Agility: </strong><input class="form-control" name="agility" id="agility"th:value="${@session.mage.agility}" readonly><button class="btn btn-primary" type="button" id="addAgi">Add</button></span></p>
-                <p><span id="cond_span"><strong>Condition: </strong> <input class="form-control" name="condition" id="condition"th:value="${@session.mage.condition}" readonly><button class="btn btn-primary" type="button" id="addCond">Add</button></span></p>
-                <p><span id="conc_span"><strong>Concentration: </strong><input class="form-control" name="concentration" id="concentration"th:value="${@session.mage.concentration}" readonly><button class="btn btn-primary" type="button" id="addConc">Add</button></span></p>
+                <p><span id="strength_span"><strong>Strength: </strong><input class="form-control" name="strength" id="strength"th:value="${@session.mage.strength}" readonly><button  type="button" id="addStr">Add</button></span></p>
+                <p><span id="acc_span"><strong>Accuracy: </strong><input class="form-control" name="accuracy" id="accuracy"th:value="${@session.mage.accuracy}" readonly><button  type="button" id="addAcc">Add</button></span></p>
+                <p><span id="agi_span"><strong>Agility: </strong><input class="form-control" name="agility" id="agility"th:value="${@session.mage.agility}" readonly><button  type="button" id="addAgi">Add</button></span></p>
+                <p><span id="cond_span"><strong>Condition: </strong> <input class="form-control" name="condition" id="condition"th:value="${@session.mage.condition}" readonly><button  type="button" id="addCond">Add</button></span></p>
+                <p><span id="conc_span"><strong>Concentration: </strong><input class="form-control" name="concentration" id="concentration"th:value="${@session.mage.concentration}" readonly><button  type="button" id="addConc">Add</button></span></p>
                 <input role="button" class="btn btn-success" id="confirm" th:type="submit" value="confirm" style="display: none">
             </form>
 
