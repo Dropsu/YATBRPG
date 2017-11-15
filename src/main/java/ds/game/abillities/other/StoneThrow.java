@@ -23,7 +23,7 @@ public class StoneThrow extends Ability {
     public StoneThrow() {
         this.setName("Poisonous Powder Strike");
         this.setTarget(Target.OTHER);
-        this.setDescription("Attacks opponent with poisonous powder decreasing his condition");
+        this.setDescription("Throws a stone in your opponent, decreases his agility and concentration");
     }
 
     @Override
@@ -34,7 +34,7 @@ public class StoneThrow extends Ability {
                 damageDealt+" damage. "+target.getName()+" is dazed -"+
                 agilityTaken+" agility\n";
         target.setHealthPoints(target.getHealthPoints()-damageDealt);
-        target.setAccuracy(target.getAgility()-agilityTaken);
+        target.setAgility(target.getAgility()-agilityTaken);
 
         if(target instanceof Mage){
             int concentrationTaken = 2;

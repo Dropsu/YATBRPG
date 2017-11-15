@@ -34,7 +34,7 @@ public class DrinkManaPotion extends Ability {
             AbstractMagicalEntity abstractMagicalEntity = (AbstractMagicalEntity) source;
             abstractMagicalEntity.setManaPoints(abstractMagicalEntity.getManaPoints() + manaRegain);
             source.getEquipment().getPotions().setManaPotions(source.getEquipment().getPotions().getManaPotions()-1);
-            log.add(target.getName()+" used mana potion and regain "+manaRegain+" mana");
+            log.add(target.getName()+" used mana potion and regained "+manaRegain+" mana");
         }
     }
 }
