@@ -2,6 +2,7 @@ package ds.security;
 
 import ds.account.AccountRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.
 configuration.WebSecurityConfigurerAdapter;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
@@ -22,6 +25,9 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     AccountRepository accountRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
@@ -45,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             throws Exception {
         auth
                 .jdbcAuthentication()
-                .dataSource(dataSource())
+                .dataSource(dataSource()).passwordEncoder(passwordEncoder)
                 .usersByUsernameQuery(
                         "select username, password, true " +
                                 "from account where username=?")
@@ -57,6 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @ConfigurationProperties("spring.datasource")
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 

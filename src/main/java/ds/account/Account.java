@@ -2,6 +2,7 @@ package ds.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ds.game.entities.basic.Mage;
+import ds.game.entities.basic.PlayersHero;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,7 +18,7 @@ public class Account {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 6,max = 25)
+    @Size(min = 6,max = 61)
     private String password;
     @NotNull
     @Size(min = 4,max = 16)
@@ -25,7 +26,7 @@ public class Account {
     private String username;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Mage playersHero;
+    private PlayersHero playersHero;
 
 
 
@@ -53,7 +54,7 @@ public class Account {
         this.username = username;
     }
 
-    public Mage getPlayersHero() {
+    public PlayersHero getPlayersHero() {
         return playersHero;
     }
 
