@@ -41,23 +41,6 @@ public class Equipment {
     public Equipment() {
     }
 
-    public int equipmentWorth() {
-        int sum=0;
-        if(this.weapon!=null){
-            sum+= weapon.getValue();
-        }
-        if(this.armor!=null){
-            sum+= armor.getValue();
-        }
-        if(this.leftHandRing!=null){
-            sum+= leftHandRing.getValue();
-        }
-        if(this.rightHandRing!=null){
-            sum+= rightHandRing.getValue();
-        }
-        return sum;
-    }
-
     public Weapon getWeapon() {
         return weapon;
     }

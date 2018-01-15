@@ -41,8 +41,8 @@ public class PromotionService {
     private void raiseMaxManaPoints () {
         int basicManaPointsIncreasePerLevel = 15;
         int additionalManaPointsPerConcentrationPoint = 5;
-        session.getMage().setManaPoints(session.getMage().getManaPoints() + basicManaPointsIncreasePerLevel
-                +(session.getMage().getConcentration() -10)*additionalManaPointsPerConcentrationPoint);
+        session.getMage().getMagicalAbilities().setManaPoints(session.getMage().getMagicalAbilities().getManaPoints() + basicManaPointsIncreasePerLevel
+                +(session.getMage().getMagicalAbilities().getConcentration() -10)*additionalManaPointsPerConcentrationPoint);
     }
 
     public void receivePoints(DistributedPoints distributedPoints){
@@ -59,7 +59,7 @@ public class PromotionService {
         session.getMage().setCondition(distributedPoints.getCondition());
         session.getMage().setAgility(distributedPoints.getAgility());
         session.getMage().setAccuracy(distributedPoints.getAccuracy());
-        session.getMage().setConcentration(distributedPoints.getConcentration());
+        session.getMage().getMagicalAbilities().setConcentration(distributedPoints.getConcentration());
         session.getMage().setAbilitiesPointsToSpare(0);
     }
 

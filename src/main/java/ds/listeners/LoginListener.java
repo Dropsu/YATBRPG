@@ -2,8 +2,8 @@ package ds.listeners;
 
 import ds.account.Account;
 import ds.account.AccountRepository;
+import ds.game.entities.basic.PlayersHero;
 import ds.session.Session;
-import ds.game.entities.basic.Mage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.InteractiveAuthenticationSuccessEvent;
@@ -26,17 +26,17 @@ public class LoginListener implements ApplicationListener<InteractiveAuthenticat
     @Override
     public void onApplicationEvent(InteractiveAuthenticationSuccessEvent event)
     {
-        Mage playersHero = getPlayersHeroForLoggedUser(event);
+        PlayersHero playersHero = getPlayersHeroForLoggedUser(event);
         AddPlayerHeroToSession(playersHero);
     }
 
-    private Mage getPlayersHeroForLoggedUser(InteractiveAuthenticationSuccessEvent event) {
+    private PlayersHero getPlayersHeroForLoggedUser(InteractiveAuthenticationSuccessEvent event) {
         UserDetails userDetails = (UserDetails) event.getAuthentication().getPrincipal();
         Account playersAccount = accountRepository.findByusername(userDetails.getUsername()).get(0);
         return playersAccount.getPlayersHero();
     }
 
-    private void AddPlayerHeroToSession(Mage playersHero) {
+    private void AddPlayerHeroToSession(PlayersHero playersHero) {
         session.setMage(playersHero);
     }
 

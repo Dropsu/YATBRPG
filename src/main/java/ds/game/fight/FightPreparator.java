@@ -2,6 +2,7 @@ package ds.game.fight;
 
 import ds.game.entities.basic.AbstractEntity;
 import ds.game.entities.basic.Mage;
+import ds.game.entities.basic.PlayersHero;
 import ds.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class FightPreparator {
     Fight prepareFight(){
         if(!isActiveFightInSession()) {
             AbstractEntity opponent = getRandomOpponentForMageLevel();
-            Mage fightMage = new Mage(session.getMage());
+            PlayersHero fightMage = session.getMage().copy(); // watch out witch method will be used
             Fight fight = new Fight(fightMage, opponent);
             applyEquipmentEffects(fightMage);
             setNewFightToSession(fight);
@@ -36,7 +37,7 @@ public class FightPreparator {
         session.setFight(fight);
     }
 
-    private void applyEquipmentEffects(Mage fightMage) {
+    private void applyEquipmentEffects(PlayersHero fightMage) {
         if(fightMage.getEquipment()!=null){
             if(fightMage.getEquipment().getWeapon()!= null){
                 fightMage.getEquipment().getWeapon().battlePersistentEffect(fightMage);

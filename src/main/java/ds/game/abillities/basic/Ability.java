@@ -22,7 +22,7 @@ public abstract class Ability {
     }
 
     public void use(AbstractEntity source, AbstractEntity target, List<String> log){
-            causeEffect(source, target, log);
+        causeEffect(source, target, log);
     }
 
     protected abstract void causeEffect (AbstractEntity source, AbstractEntity target, List<String> log);

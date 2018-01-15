@@ -25,6 +25,9 @@ public abstract class AbstractEntity {
 	private int goldForDefeating;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private MagicalAbilities magicalAbilities;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Damage noWeaponDamage;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -170,5 +173,13 @@ public abstract class AbstractEntity {
 
 	public void setGoldForDefeating(int goldForDefeating) {
 		this.goldForDefeating = goldForDefeating;
+	}
+
+	public MagicalAbilities getMagicalAbilities() {
+		return magicalAbilities;
+	}
+
+	public void setMagicalAbilities(MagicalAbilities magicalAbilities) {
+		this.magicalAbilities = magicalAbilities;
 	}
 }

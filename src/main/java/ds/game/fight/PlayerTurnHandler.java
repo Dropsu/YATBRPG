@@ -1,7 +1,7 @@
 package ds.game.fight;
 
 import ds.game.abillities.basic.Source;
-import ds.game.entities.basic.Mage;
+import ds.game.entities.basic.PlayersHero;
 import ds.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +46,7 @@ public class PlayerTurnHandler {
         return damage;
     }
 
-    private void applyEveryTurnEquipmentEffects(Mage fightMage) {
+    private void applyEveryTurnEquipmentEffects(PlayersHero fightMage) {
         if(fightMage.getEquipment()!=null){
             if(fightMage.getEquipment().getWeapon()!= null){
                 fightMage.getEquipment().getWeapon().everyTurnEffect(fightMage);

@@ -21,9 +21,6 @@ public class WarmMageCoat extends Armor {
 
     @Override
     public void battlePersistentEffect(AbstractEntity target) {
-        if(target instanceof Mage){
-            Mage mage = (Mage) target;
-            mage.setConcentration(mage.getConcentration()+1);
-        }
+        target.getMagicalAbilities().setConcentration(target.getMagicalAbilities().getConcentration()+1);
     }
 }

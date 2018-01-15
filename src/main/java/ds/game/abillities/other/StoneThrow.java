@@ -39,7 +39,7 @@ public class StoneThrow extends Ability {
         if(target instanceof Mage){
             int concentrationTaken = 2;
             Mage mage = (Mage)target;
-            mage.setConcentration(mage.getConcentration()-concentrationTaken);
+            mage.getMagicalAbilities().decreaseConcentration(concentrationTaken);
             messageToLog+=",-"+concentrationTaken+" concentration";
         }
         log.add(messageToLog);

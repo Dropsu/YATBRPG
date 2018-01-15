@@ -6,6 +6,7 @@ import ds.account.AccountServiceImpl;
 import ds.account.MageCreator;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
@@ -18,12 +19,13 @@ public class AccountServiceTest {
     private AccountRepository mockAccountRepository;
     private MageCreator mockMageCreator;
     private AccountServiceImpl service;
+    private PasswordEncoder passwordEncoder;
 
     @Before
     public void setUpMocksAndService (){
         mockAccountRepository = mock(AccountRepository.class);
         mockMageCreator = mock(MageCreator.class);
-        service = new AccountServiceImpl(mockAccountRepository, mockMageCreator);
+        service = new AccountServiceImpl(mockAccountRepository, mockMageCreator,passwordEncoder);
     }
 
     @Test

@@ -1,8 +1,8 @@
 package ds.game.abillities.basic;
 
 import ds.game.entities.basic.AbstractEntity;
-import ds.game.entities.basic.AbstractMagicalEntity;
 import ds.game.entities.basic.Mage;
+import ds.game.entities.basic.PlayersHero;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,9 +29,8 @@ public abstract class Spell extends Ability {
     }
 
     private boolean isConcentrationAllowingPlayerToCastSpell(AbstractEntity source) {
-        Mage mage = (Mage)source;
-        if(mage.getConcentration()<10){
-            double spellSuccessChance = 1-((10-mage.getConcentration())*0.05);
+        if(source.getMagicalAbilities().getConcentration()<10){
+            double spellSuccessChance = 1-((10-source.getMagicalAbilities().getConcentration())*0.05);
             if(ThreadLocalRandom.current().nextDouble()>spellSuccessChance){
                 return false;
             }else {
@@ -43,10 +42,8 @@ public abstract class Spell extends Ability {
     }
 
     protected boolean payAbilityCost (AbstractEntity source){
-        if(source instanceof AbstractMagicalEntity){
-            AbstractMagicalEntity magicalEntity = (AbstractMagicalEntity) source;
-            magicalEntity.setManaPoints(magicalEntity.getManaPoints() - getCost());
-        }
+            source.getMagicalAbilities().setManaPoints(source.getMagicalAbilities().getManaPoints() - getCost());
+
         return true;
     }
 

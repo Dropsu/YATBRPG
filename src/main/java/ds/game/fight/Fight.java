@@ -2,6 +2,7 @@ package ds.game.fight;
 
 import ds.game.entities.basic.AbstractEntity;
 import ds.game.entities.basic.Mage;
+import ds.game.entities.basic.PlayersHero;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,21 +12,21 @@ import java.util.List;
  */
 public class Fight {
 
-    private Mage mage;
+    private PlayersHero mage;
     private AbstractEntity opponent;
     private List<String>log=new ArrayList<>();
 
 
-    public Fight(Mage mage, AbstractEntity opponent) {
+    public Fight(PlayersHero mage, AbstractEntity opponent) {
         this.setMage(mage);
         this.setOpponent(opponent);
     }
 
-    public Mage getMage() {
+    public PlayersHero getMage() {
         return mage;
     }
 
-    public void setMage(Mage mage) {
+    public void setMage(PlayersHero mage) {
         this.mage = mage;
     }
 

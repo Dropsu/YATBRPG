@@ -3,7 +3,6 @@ package ds.game.abillities.potions;
 import ds.game.abillities.basic.Ability;
 import ds.game.abillities.basic.Target;
 import ds.game.entities.basic.AbstractEntity;
-import ds.game.entities.basic.AbstractMagicalEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,8 +30,7 @@ public class DrinkManaPotion extends Ability {
     protected void causeEffect(AbstractEntity source, AbstractEntity target, List<String> log) {
         if(source.getEquipment().getPotions().getManaPotions()>0){
             int manaRegain = source.getEquipment().getPotions().getManaPotionHealingValue();
-            AbstractMagicalEntity abstractMagicalEntity = (AbstractMagicalEntity) source;
-            abstractMagicalEntity.setManaPoints(abstractMagicalEntity.getManaPoints() + manaRegain);
+            source.getMagicalAbilities().setManaPoints(source.getMagicalAbilities().getManaPoints() + manaRegain);
             source.getEquipment().getPotions().setManaPotions(source.getEquipment().getPotions().getManaPotions()-1);
             log.add(target.getName()+" used mana potion and regained "+manaRegain+" mana");
         }

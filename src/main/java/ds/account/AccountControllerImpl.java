@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/account/register")
 public class AccountControllerImpl implements AccountContoller {
 
-    private AccountServiceImpl accountService;
+    private AccountService accountService;
 
     @Autowired
     public AccountControllerImpl(AccountServiceImpl accountService) {

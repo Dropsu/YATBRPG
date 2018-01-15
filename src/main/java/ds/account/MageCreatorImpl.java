@@ -6,6 +6,7 @@ import ds.game.abillities.spells.LightHealSpell;
 import ds.game.abillities.spells.MatchThrowSpell;
 import ds.game.abillities.spells.WindSpeedSpell;
 import ds.game.entities.basic.Mage;
+import ds.game.entities.basic.MagicallyAble;
 import ds.game.equipment.basic.Damage;
 import ds.game.equipment.basic.Equipment;
 import ds.game.equipment.weapons.WhiteMageStaff;
@@ -24,8 +25,10 @@ public class MageCreatorImpl implements MageCreator {
         mage.setLevel(1);
         mage.setExperiencePoints(0);
         mage.setAbilitiesPointsToSpare(4);
+        mage.setMagicalAbilities(new MagicallyAble());
 
-        mage.setConcentration(10);
+
+        mage.getMagicalAbilities().setConcentration(10);
         mage.setStrength(10);
         mage.setAccuracy(10);
         mage.setAgility(10);
@@ -33,8 +36,7 @@ public class MageCreatorImpl implements MageCreator {
 
         mage.setHealthPoints(10);
         mage.setHealthRegen(0);
-        mage.setManaPoints(40);
-        mage.setManaRegeneration(0);
+        mage.getMagicalAbilities().setManaPoints(40);
         mage.setNoWeaponDamage(new Damage(1,3));
 
         mage.getAbilities().add(new MatchThrowSpell());

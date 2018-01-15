@@ -25,11 +25,11 @@ function fillMage(mage) {
     $("#mage-hp").text(mage.healthPoints);
     $("#hp-potions").text(mage.equipment.potions.healthPotions);
     $("#mana-potions").text(mage.equipment.potions.manaPotions);
-    $("#mage-mana").text(mage.manaPoints);
+    $("#mage-mana").text(mage.magicalAbilities.manaPoints);
     $("#mage-accuracy").text(mage.accuracy);
     $("#mage-agility").text(mage.agility);
     $("#mage-strength").text(mage.strength);
-    $("#mage-concentration").text(mage.concentration);
+    $("#mage-concentration").text(mage.magicalAbilities.concentration);
     $("#mage-condition").text(mage.condition);
     if(mage.equipment.weapon!=null){
         $("#mage-damage").text(mage.equipment.weapon.damage.minDamage+"-"+mage.equipment.weapon.damage.maxDamage);
@@ -92,7 +92,7 @@ function displayAbilities(abilities, mage) {
             notEnoughMana.style.backgroundColor = "cornflowerblue";
             button.setAttribute("onclick", "send('" + ability.name + "');");
 
-            if (ability.cost <= mage.manaPoints) {
+            if (ability.cost <= mage.magicalAbilities.manaPoints) {
                 p.append(button);
             } else {
                 p.append(notEnoughMana);
