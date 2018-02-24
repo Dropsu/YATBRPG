@@ -25,6 +25,7 @@ public class AccountServiceTest {
     public void setUpMocksAndService (){
         mockAccountRepository = mock(AccountRepository.class);
         mockMageCreator = mock(MageCreator.class);
+        passwordEncoder = mock(PasswordEncoder.class);
         service = new AccountServiceImpl(mockAccountRepository, mockMageCreator,passwordEncoder);
     }
 

@@ -69,4 +69,12 @@ public class PromotionService {
         }
         else return true;
     }
+
+    public int[] getExperienceTable() {
+        return experienceTable;
+    }
+
+    public int getAbilitiesPointsPerLevel() {
+        return abilitiesPointsPerLevel;
+    }
 }
